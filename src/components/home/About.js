@@ -1,0 +1,66 @@
+import React from "react";
+import Heading from "../common/Heading";
+import { about } from "../data/Data";
+
+export default function About() {
+  return (
+    <>
+      <div className="container-xxl py-5">
+        <div className="container">
+          <div className="row g-5 align-items-center">
+            <div className="col-lg-6">
+              <h6 className="section-title text-start text-primary text-uppercase">
+                Kampung Kwau
+              </h6>
+              <h1 className="mb-4">
+                Selamat Datang Di{" "}
+                <span className="text-primary text-uppercase">Kampung Kwau</span>
+              </h1>
+              <p className="mb-4">
+                Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit.
+                Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit,
+                sed stet lorem sit clita duo justo magna dolore erat amet
+              </p>
+              <a className="btn btn-primary py-3 px-5 mt-2" href="">
+                Explore More
+              </a>
+            </div>
+            <div className="col-lg-6">
+              <div className="row g-3">
+                <div className="col-6 text-end">
+                  <img
+                    className="img-fluid rounded w-75 wow zoomIn"
+                    data-wow-delay="0.1s"
+                    src="/assets/img/about-1.jpg"
+                    style={{ marginTop: "25%" }}
+                  />
+                </div>
+                <div className="col-6 text-start">
+                  <img
+                    className="img-fluid rounded w-100 wow zoomIn"
+                    data-wow-delay="0.3s"
+                    src="/assets/img/about-2.jpg"
+                  />
+                </div>
+                <div className="col-6 text-end">
+                  <img
+                    className="img-fluid rounded w-50 wow zoomIn"
+                    data-wow-delay="0.5s"
+                    src="/assets/img/about-3.jpg"
+                  />
+                </div>
+                <div className="col-6 text-start">
+                  <img
+                    className="img-fluid rounded w-75 wow zoomIn"
+                    data-wow-delay="0.7s"
+                    src="/assets/img/about-4.jpg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
