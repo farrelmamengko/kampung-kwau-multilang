@@ -81,6 +81,24 @@ export const carouselData = [
     btn2: "Book Room",
   },
 ];
+
+export const Foto = [
+  {
+    img: "../assets/img/Sayur.JPG",
+    title: "Kebun Sayur",
+    subtitle: "Kampung Kwau",
+  },
+  {
+    img: "../assets/img/Sayur2.JPG",
+    subtitle: "Kampung Kwau",
+  },
+  {
+    img: "../assets/img/kopi.JPG",
+    title: "Kebun Kopi",
+    subtitle: "Kampung Kwau",
+  },
+];
+
 export const about = [
   {
     icon: <i class="fa fa-hotel fa-2x text-primary mb-2"></i>,

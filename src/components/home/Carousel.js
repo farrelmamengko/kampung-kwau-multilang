@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { carouselData } from "../data/Data";
+import { Foto } from "../data/Data";
 
 export default function Carousel() {
   const sliderRef = useRef(null);
@@ -36,7 +36,7 @@ export default function Carousel() {
         >
           <div className="carousel-inner">
             <Slider ref={sliderRef} {...settings}>
-              {carouselData.map((val, index) => (
+              {Foto.map((val, index) => (
                 <div className="carousel-item" key={index}>
                   <img className="w-100" src={val.img} alt="Image" />
                   <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
@@ -47,7 +47,7 @@ export default function Carousel() {
                       <h1 className="display-3 text-white mb-4 animated slideInDown">
                         {val.title}
                       </h1>
-                      <a
+                      {/* <a
                         href=""
                         className="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft"
                       >
@@ -58,7 +58,7 @@ export default function Carousel() {
                         className="btn btn-light py-md-3 px-md-5 animated slideInRight"
                       >
                         {val.btn2}
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 </div>
