@@ -10,9 +10,9 @@ export default function Newsletter() {
             <div className="border rounded text-center p-1">
               <div className="bg-white rounded text-center p-5">
                 <h4 className="mb-4">
-                  Subscribe Our
+                  Booking 
                   <span className="text-primary text-uppercase">
-                    Newsletter
+                    Disini
                   </span>
                 </h4>
                 <div
@@ -22,7 +22,7 @@ export default function Newsletter() {
                   <input
                     className="form-control w-100 py-3 ps-4 pe-5"
                     type="text"
-                    placeholder="Enter your email"
+                    placeholder="Masukan Email Anda"
                   />
                   <button
                     type="button"
