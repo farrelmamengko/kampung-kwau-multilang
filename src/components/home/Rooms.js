@@ -1,6 +1,6 @@
 import React from "react";
 import CommonHeading from "../common/CommonHeading";
-import { facility, kwau } from "../data/Data";
+import { facility, roomItems } from "../data/Data";
 
 export default function Rooms() {
   return (
@@ -13,7 +13,7 @@ export default function Rooms() {
             subtitle="Explore Our"
           />
           <div className="row g-4">
-            {kwau.map((item, key) => (
+            {roomItems.map((item, key) => (
               <div className="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div className="room-item shadow rounded overflow-hidden">
                   <div className="position-relative">

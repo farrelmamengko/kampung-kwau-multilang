@@ -17,11 +17,13 @@ export default function About() {
                 <span className="text-primary text-uppercase">Kampung Kwau</span>
               </h1>
               <p className="mb-4">
-                Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit.
-                Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit,
-                sed stet lorem sit clita duo justo magna dolore erat amet
+              Kampung Kwau, yang terletak di Distrik Minyambouw, Kabupaten Manokwari, Papua
+              Barat, dikenal sebagai kawasan hutan konservasi dengan keanekaragaman hayati yang luar biasa,
+              terutama burung endemik Papua. Selain menjadi habitat alami bagi berbagai spesies langka,
+              Kampung Kwau juga memiliki potensi besar sebagai destinasi wisata berbasis alam yang menarik
+              bagi wisatawan lokal maupun mancanegara.
               </p>
-              <a className="btn btn-primary py-3 px-5 mt-2" href="">
+              <a className="btn btn-primary py-3 px-5 mt-2" href="/about">
                 Explore More
               </a>
             </div>

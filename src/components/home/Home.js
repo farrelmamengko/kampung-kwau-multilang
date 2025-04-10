@@ -13,7 +13,7 @@ export default function Home() {
       <Carousel />
       {/* <Book /> */}
       <About />
-      <Rooms />
+      {/* <Rooms /> */}
       <Services />
       <Sliders />
       <Teams />
