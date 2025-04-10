@@ -24,7 +24,7 @@ export default function About() {
               bagi wisatawan lokal maupun mancanegara.
               </p>
               <a className="btn btn-primary py-3 px-5 mt-2" href="/about">
-                Explore More
+                Baca Selengkapnya
               </a>
             </div>
             <div className="col-lg-6">

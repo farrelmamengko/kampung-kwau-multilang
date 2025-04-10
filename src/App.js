@@ -18,6 +18,7 @@ import {
   Testimonial,
 } from "./pages/index";
 import Footer from "./components/common/Footer";
+import Birdmapping from "./pages/Birdmapping";
 export default function App() {
   return (
     <>
@@ -27,13 +28,14 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/booking" element={<Booking />} />
-            <Route path="/team" element={<Team />} />
+            <Route path="/strukturkampung" element={<Team />} />
             <Route path="/testimonial" element={<Testimonial />} />
             <Route path="/about" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/*" element={<PageNotFound />} />
-            <Route path="/rooms" element={<Room />} />
-            <Route path="/services" element={<Services />} />
+            <Route path="/paketwisata" element={<Room />} />
+            <Route path="/potensilokal" element={<Services />} />
+            <Route path="/birdmapping" element={<Birdmapping />} />
           </Routes>
           <Footer />
         </Router>

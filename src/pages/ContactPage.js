@@ -11,9 +11,9 @@ export default function Contact() {
       <div class="container-xxl py-5">
         <div class="container">
           <CommonHeading
-            heading="Contact Us"
-            subtitle="Contact "
-            title="For Any Query"
+            heading="Kontak Kami"
+            subtitle="Kontak "
+            title="Kami Untuk Info Lebih Lanjut"
           />
           <div class="row g-4">
             <div class="col-12">
@@ -54,7 +54,7 @@ export default function Contact() {
                           id="name"
                           placeholder="Your Name"
                         />
-                        <label for="name">Your Name</label>
+                        <label for="name">Nama Anda</label>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -65,7 +65,7 @@ export default function Contact() {
                           id="email"
                           placeholder="Your Email"
                         />
-                        <label for="email">Your Email</label>
+                        <label for="email">Email Anda</label>
                       </div>
                     </div>
                     <div class="col-12">
@@ -87,12 +87,12 @@ export default function Contact() {
                           id="message"
                           style={{ height: "150px" }}
                         ></textarea>
-                        <label for="message">Message</label>
+                        <label for="message">Pesan</label>
                       </div>
                     </div>
                     <div class="col-12">
                       <button class="btn btn-primary w-100 py-3" type="submit">
-                        Send Message
+                        Kirim Pesan
                       </button>
                     </div>
                   </div>

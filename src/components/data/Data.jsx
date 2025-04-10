@@ -11,12 +11,12 @@ export const navList = [
   },
   {
     id: 3,
-    path: "/services",
+    path: "/potensilokal",
     text: "Potensi Lokal",
   },
   {
     id: 4,
-    path: "/rooms",
+    path: "/paketwisata",
     text: "Paket Wisata",
   },
   {
@@ -31,13 +31,13 @@ export const navList = [
       },
       {
         id: 52,
-        path: "/team",
-        text: "Our Team",
+        path: "/strukturkampung",
+        text: "Struktur Pengurus Kampung",
       },
       {
         id: 53,
-        path: "/testimonial",
-        text: "Testimonial",
+        path: "/birdmapping",
+        text: "Bird Mapping",
       },
     ],
   },
@@ -119,12 +119,12 @@ export const about = [
 
 export const services = [
   {
-    icon: <i class="fa fa-hotel fa-2x text-primary"></i>,
+    icon: <i class="fa fa-binoculars fa-2x text-primary"></i>,
     name: "Birds Watching",
     discription: "Daya Tarik Utama Kampung Kwau adalah Burung Endemik Papua, salah satunya Western Parotia yang dinikmati melalui kegiatan Birds Watching",
   },
   {
-    icon: <i class="fa fa-utensils fa-2x text-primary"></i>,
+    icon: <i class="fa fa-bug fa-2x text-primary"></i>,
     name: "Keanekaragaman Kupu-Kupu",
     discription: "Kampung Kwau menjadi rumah bagi berbagai spesies kupu-kupu yang indah dan beragam, menjadikannya tempat yang menarik untuk pengamatan kupu-kupu.",
   },
@@ -140,42 +140,42 @@ export const services = [
     discription: "Air Terjun di Kampung Kwau adalah daya tarik alam yang menakjubkan, menawarkan pemandangan spektakuler dan suasana yang menenangkan.",
   },
   {
-    icon: <i class="fa fa-glass-cheers fa-2x text-primary"></i>,
+    icon: <i class="fa fa-leaf fa-2x text-primary"></i>,
     name: "Macam-macam tanaman angrek",
     discription: "Angrek merupakan salah satu tanaman hias yang banyak diminati oleh masyarakat. Di Kampung Kwau, terdapat berbagai jenis angrek yang tumbuh subur dan indah.",
   },
 
   {
-    icon: <i class="fa fa-dumbbell fa-2x text-primary"></i>,
+    icon: <i class="fa fa-music fa-2x text-primary"></i>,
     name: "Tari Tumbu Tanah",
     discription: "Kampung Kwau juga menawarkan pengalaman budaya yang kaya, termasuk tarian tradisional yang berasal dari suku Arfak yaitu Tari Tumbu Tanah. Tarian ini merupakan bagian penting dari budaya masyarakat setempat dan sering ditampilkan dalam acara-acara adat.",
   },
   {
-    icon: <i class="fa fa-dumbbell fa-2x text-primary"></i>,
+    icon: <i class="fa fa-house-user fa-2x text-primary"></i>,
     name: "Rumah Kaki Seribu",
     discription: "Rumah Kaki Seribu adalah salah satu daya tarik unik di Kampung Kwau. Rumah ini terbuat dari kayu dan memiliki desain yang khas, dengan banyak tiang penyangga yang menyerupai kaki seribu.",
   }
 ];
 export const team = [
   {
-    image: "../assets/img/team-1.jpg",
-    name: "Full Name",
-    designation: "Designation",
+    image: "../assets/img/user.png",
+    name: "Kepala Kampung",
+    designation: "",
   },
   {
-    image: "../assets/img/team-2.jpg",
-    name: "Full Name",
-    designation: "Designation",
+    image: "../assets/img/user.png",
+    name: "Sekertaris Kampung",
+    designation: "",
   },
   {
-    image: "../assets/img/team-3.jpg",
-    name: "Full Name",
-    designation: "Designation",
+    image: "../assets/img/user.png",
+    name: "Bendahara Kampung",
+    designation: "",
   },
   {
-    image: "../assets/img/team-3.jpg",
-    name: "Full Name",
-    designation: "Designation",
+    image: "../assets/img/user.png",
+    name: "Keamanan Kampung",
+    designation: "",
   },
 ];
 
@@ -291,9 +291,9 @@ export const testimonial = [
 
 export const roomItems = [
   {
-    img: "../assets/img/room-1.jpg",
-    price: "$110/night",
-    name: "Junior Suit",
+    img: "../assets/img/Kamar1.JPG",
+    price: "RP.1/malam",
+    name: "Paket 1",
     star: [
       <small class="fa fa-star text-primary"></small>,
       <small class="fa fa-star text-primary"></small>,
@@ -303,14 +303,14 @@ export const roomItems = [
     ],
     description:
       "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
-    yellowbtn: "View Detail",
-    darkbtn: "book now",
+    yellowbtn: "Detail",
+    darkbtn: "buking",
   },
 
   {
-    img: "../assets/img/room-2.jpg",
-    price: "$110/night",
-    name: "Executive Suite",
+    img: "../assets/img/Kamar2.JPG",
+    price: "Rp.2/malam",
+    name: "Paket 2",
     star: [
       <small class="fa fa-star text-primary"></small>,
       <small class="fa fa-star text-primary"></small>,
@@ -320,13 +320,13 @@ export const roomItems = [
     ],
     description:
       "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
-    yellowbtn: "View Detail",
-    darkbtn: "book now",
+    yellowbtn: "Detail",
+    darkbtn: "buking",
   },
   {
-    img: "../assets/img/room-3.jpg",
-    price: "$110/night",
-    name: "Super Deluxe",
+    img: "../assets/img/Kamar1.JPG",
+    price: "Rp.3/malam",
+    name: "Paket 3",
     star: [
       <small class="fa fa-star text-primary"></small>,
       <small class="fa fa-star text-primary"></small>,
@@ -336,8 +336,8 @@ export const roomItems = [
     ],
     description:
       "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
-    yellowbtn: "View Detail",
-    darkbtn: "book now",
+    yellowbtn: "Detail",
+    darkbtn: "buking",
   },
 ];
 
