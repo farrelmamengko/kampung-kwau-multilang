@@ -1,12 +1,11 @@
 import React from "react";
-import Heading from "../components/common/Heading";
-import About from "../components/home/About";
 import Team from "../components/home/Team";
+import Headings from "../components/common/Headings";
 
 export default function AboutUs() {
   return (
     <>
-      <Heading heading="About" title="Home" subtitle="About" />
+      <Headings heading="About" title="Home" subtitle="About" />
       <div className="container-xxl py-5">
         <div className="container">
           <div className="row g-5 align-items-center">
