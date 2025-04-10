@@ -12,12 +12,12 @@ export const navList = [
   {
     id: 3,
     path: "/services",
-    text: "Services",
+    text: "Potensi Lokal",
   },
   {
     id: 4,
     path: "/rooms",
-    text: "Rooms",
+    text: "Paket Wisata",
   },
   {
     id: 5,
@@ -120,36 +120,41 @@ export const about = [
 export const services = [
   {
     icon: <i class="fa fa-hotel fa-2x text-primary"></i>,
-    name: "Rooms & Appartment",
-    discription: "Contrary to popular belief, ipsum is not simply random.",
+    name: "Birds Watching",
+    discription: "Daya Tarik Utama Kampung Kwau adalah Burung Endemik Papua, salah satunya Western Parotia yang dinikmati melalui kegiatan Birds Watching",
   },
   {
     icon: <i class="fa fa-utensils fa-2x text-primary"></i>,
-    name: "Food & Restaurant",
-    discription: "Contrary to popular belief, ipsum is not simply random.",
+    name: "Keanekaragaman Kupu-Kupu",
+    discription: "Kampung Kwau menjadi rumah bagi berbagai spesies kupu-kupu yang indah dan beragam, menjadikannya tempat yang menarik untuk pengamatan kupu-kupu.",
   },
   {
     icon: <i class="fa fa-spa fa-2x text-primary"></i>,
-    name: "Spa & Fitness",
-    discription: "Contrary to popular belief, ipsum is not simply random.",
+    name: "Pohon Pisang Hutan Raksasa (Musa Ingens W.Simmonds)",
+    discription: "Kampung Kwau menjadi habitat dari pohon pisang hutan raksasa yang merupakan salah satu spesies endemik Papua. Pohon pisang ini dapat tumbuh hingga tinggi 20 meter dan memiliki daun yang sangat besar.",
   },
 
   {
     icon: <i class="fa fa-swimmer fa-2x text-primary"></i>,
-    name: "Sports & Gaming",
-    discription: "Contrary to popular belief, ipsum is not simply random.",
+    name: "Air Terjun",
+    discription: "Air Terjun di Kampung Kwau adalah daya tarik alam yang menakjubkan, menawarkan pemandangan spektakuler dan suasana yang menenangkan.",
   },
   {
     icon: <i class="fa fa-glass-cheers fa-2x text-primary"></i>,
-    name: "Event & Party",
-    discription: "Contrary to popular belief, ipsum is not simply random.",
+    name: "Macam-macam tanaman angrek",
+    discription: "Angrek merupakan salah satu tanaman hias yang banyak diminati oleh masyarakat. Di Kampung Kwau, terdapat berbagai jenis angrek yang tumbuh subur dan indah.",
   },
 
   {
     icon: <i class="fa fa-dumbbell fa-2x text-primary"></i>,
-    name: "GYM & Yoga",
-    discription: "Contrary to popular belief, ipsum is not simply random.",
+    name: "Tari Tumbu Tanah",
+    discription: "Kampung Kwau juga menawarkan pengalaman budaya yang kaya, termasuk tarian tradisional yang berasal dari suku Arfak yaitu Tari Tumbu Tanah. Tarian ini merupakan bagian penting dari budaya masyarakat setempat dan sering ditampilkan dalam acara-acara adat.",
   },
+  {
+    icon: <i class="fa fa-dumbbell fa-2x text-primary"></i>,
+    name: "Rumah Kaki Seribu",
+    discription: "Rumah Kaki Seribu adalah salah satu daya tarik unik di Kampung Kwau. Rumah ini terbuat dari kayu dan memiliki desain yang khas, dengan banyak tiang penyangga yang menyerupai kaki seribu.",
+  }
 ];
 export const team = [
   {

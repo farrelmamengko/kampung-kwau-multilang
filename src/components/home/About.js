@@ -17,7 +17,7 @@ export default function About() {
                 <span className="text-primary text-uppercase">Kampung Kwau</span>
               </h1>
               <p className="mb-4">
-              Kampung Kwau, yang terletak di Distrik Minyambouw, Kabupaten Manokwari, Papua
+              Kampung Kwau, yang terletak di Distrik Mokwam, Kabupaten Manokwari, Papua
               Barat, dikenal sebagai kawasan hutan konservasi dengan keanekaragaman hayati yang luar biasa,
               terutama burung endemik Papua. Selain menjadi habitat alami bagi berbagai spesies langka,
               Kampung Kwau juga memiliki potensi besar sebagai destinasi wisata berbasis alam yang menarik

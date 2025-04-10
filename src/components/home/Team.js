@@ -9,9 +9,9 @@ export default function Teams() {
       <div className="container-xxl py-5">
         <div className="container">
           <CommonHeading
-            heading="Our Team"
-            subtitle="Explore Our"
-            title="Staffs"
+            heading="Struktur Pengurus Kampung"
+            subtitle="Kampung Kwau"
+            // title="Staffs"
           />
           <div className="row g-4">
             {team.map((item, index) => (

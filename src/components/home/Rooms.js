@@ -8,9 +8,9 @@ export default function Rooms() {
       <div className="container-xxl py-5">
         <div className="container">
           <CommonHeading
-            heading="Our Rooms"
-            title="Rooms"
-            subtitle="Explore Our"
+            heading="Jika Anda Berkunjung Ke Kampung Kwau, Tersedia Beberapa Pilihan Paket Wisata"
+            // title="Rooms"
+            // subtitle="Explore Our"
           />
           <div className="row g-4">
             {roomItems.map((item, key) => (
