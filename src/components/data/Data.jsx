@@ -128,11 +128,6 @@ export const services = [
     name: "Keanekaragaman Kupu-Kupu",
     discription: "Kampung Kwau menjadi rumah bagi berbagai spesies kupu-kupu yang indah dan beragam, menjadikannya tempat yang menarik untuk pengamatan kupu-kupu.",
   },
-  {
-    icon: <i class="fa fa-spa fa-2x text-primary"></i>,
-    name: "Pohon Pisang Hutan Raksasa (Musa Ingens W.Simmonds)",
-    discription: "Kampung Kwau menjadi habitat dari pohon pisang hutan raksasa yang merupakan salah satu spesies endemik Papua. Pohon pisang ini dapat tumbuh hingga tinggi 20 meter dan memiliki daun yang sangat besar.",
-  },
 
   {
     icon: <i class="fa fa-swimmer fa-2x text-primary"></i>,

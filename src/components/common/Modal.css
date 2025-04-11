@@ -29,5 +29,44 @@
     border: 1px solid rgba(0, 0, 0, 0.3);
     background-clip: padding-box;
     border-radius: 0.3rem;
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.react-modal-header,
+.react-modal-body,
+.react-modal-footer{
+padding: 1rem;
+}
+
+.react-modal-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #dedede;
+}
+
+.react-modal-title{
+    line-height: 1.5;
+    font-size: 1.25rem;
+}
+
+.btn-close{
+    border: none;
+    font-size: 1rem;
+    padding: 0.25rem;
+    cursor: pointer;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+}
+
+.react-modal-footer{
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid #dedede;
+}
+
+.react-modal-footer > *{
+    margin: 0 0.25rem;
 }

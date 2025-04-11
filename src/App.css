@@ -36,3 +36,7 @@
 .bg-foto3{
     background-image: url('../public/assets/img/Burung.png');
 }
+
+.img-foto{
+    max-width: 25%;
+}

@@ -46,9 +46,16 @@ export default function Services() {
         </div>
       </div>
       <Modal isOpen={openModal} onClose={() => setOpenModal(false)}>
+        <Modal.Header>Pohon Pisang Hutan Raksasa (Musa Ingens W.Simmonds)</Modal.Header>
+        <Modal.Body>
         <p>
-          coba
+        Kampung Kwau menjadi habitat dari pohon pisang hutan raksasa yang merupakan salah satu spesies endemik Papua. Pohon pisang ini dapat tumbuh hingga tinggi 20 meter dan memiliki daun yang sangat besar.
         </p>
+        <img src="../assets/img/pisang.JPG" alt="gambar" className="img-foto" />
+        </Modal.Body>
+        <Modal.Footer>
+          <Modal.DismissButton className="btn btn-secondary">Keluar</Modal.DismissButton>
+        </Modal.Footer>
       </Modal>
     </>
   );
