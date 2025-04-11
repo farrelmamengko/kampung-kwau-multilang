@@ -1,10 +1,10 @@
 import React from 'react'
-import Heading from '../components/common/Heading'
+import Heads from '../components/common/Heads'
 
 function Birdmapping() {
   return (
         <>
-          <Heading heading="Bird Mapping" title="Home" subtitle="Birdmapping" />
+          <Heads heading="Bird Mapping" title="Home" subtitle="Birdmapping" />
         </>
   )
 }

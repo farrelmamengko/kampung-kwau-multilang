@@ -1,11 +1,11 @@
 import React from "react";
-import Heading from "../components/common/Heading";
 import Teams from "../components/home/Team";
+import Head from "../components/common/Head";
 
 export default function Team() {
   return (
     <>
-      <Heading heading="Struktur Pengurus Kampung"  />
+      <Head heading="Struktur Pengurus Kampung"  />
       <Teams />
     </>
   );

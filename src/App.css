@@ -28,3 +28,11 @@
 .bg-foto{
     background-image: url('../public/assets/img/airterjun.JPG');
 }
+
+.bg-foto2{
+    background-image: url('../public/assets/img/Kampung.JPG');
+}
+
+.bg-foto3{
+    background-image: url('../public/assets/img/Burung.png');
+}
