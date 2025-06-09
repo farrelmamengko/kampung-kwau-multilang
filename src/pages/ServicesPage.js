@@ -8,7 +8,7 @@ export default function Service() {
     <>
       <Headngss heading="Potensi Lokal" title="Home" subtitle="Potensi Lokal" />
       <Services />
-      <Sliders />
+    {/* <Sliders /> */}
     </>
   );
 }

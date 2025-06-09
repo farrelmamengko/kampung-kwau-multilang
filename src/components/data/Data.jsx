@@ -222,11 +222,11 @@ export const footerItem = [
 export const footerContact = [
   {
     icon: <i className="fa fa-map-marker-alt me-3"></i>,
-    name: "123 Street, New York, USA",
+    name: "Kampung Kwau",
   },
   {
     icon: <i className="fa fa-phone-alt me-3"></i>,
-    name: "+012 345 67890",
+    name: "08233333",
   },
   {
     icon: <i className="fa fa-envelope me-3"></i>,
