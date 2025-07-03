@@ -31,11 +31,16 @@ export const navList = [
       },
       {
         id: 52,
+        path: "/booking-status",
+        text: "Cek Status Booking",
+      },
+      {
+        id: 53,
         path: "/strukturkampung",
         text: "Struktur Pengurus Kampung",
       },
       {
-        id: 53,
+        id: 54,
         path: "/birdmapping",
         text: "Bird Mapping",
       },
@@ -286,9 +291,13 @@ export const testimonial = [
 
 export const roomItems = [
   {
+    id: 1,
     img: "../assets/img/Kamar1.JPG",
-    price: "RP.1/malam",
-    name: "Paket 1",
+    price: "Rp 250.000/malam",
+    basePrice: 250000,
+    name: "Paket Basic",
+    duration: "2D1N",
+    maxGuests: 4,
     star: [
       <small class="fa fa-star text-primary"></small>,
       <small class="fa fa-star text-primary"></small>,
@@ -297,15 +306,25 @@ export const roomItems = [
       <small class="fa fa-star text-primary"></small>,
     ],
     description:
-      "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
+      "Paket wisata dasar yang mencakup akomodasi homestay, makanan lokal, dan aktivitas birdwatching dengan guide lokal berpengalaman.",
+    includes: [
+      "1 malam homestay",
+      "3x makanan lokal",
+      "Birdwatching tour (3 jam)",
+      "Guide lokal",
+      "Transportasi lokal"
+    ],
     yellowbtn: "Detail",
-    darkbtn: "buking",
+    darkbtn: "Booking",
   },
-
   {
+    id: 2,
     img: "../assets/img/Kamar2.JPG",
-    price: "Rp.2/malam",
-    name: "Paket 2",
+    price: "Rp 450.000/malam",
+    basePrice: 450000,
+    name: "Paket Standard",
+    duration: "3D2N",
+    maxGuests: 6,
     star: [
       <small class="fa fa-star text-primary"></small>,
       <small class="fa fa-star text-primary"></small>,
@@ -314,14 +333,26 @@ export const roomItems = [
       <small class="fa fa-star text-primary"></small>,
     ],
     description:
-      "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
+      "Paket wisata lengkap dengan pengalaman budaya suku Arfak, eksplorasi alam, dan berbagai aktivitas menarik lainnya.",
+    includes: [
+      "2 malam homestay premium",
+      "Semua makanan + snack",
+      "Birdwatching + trekking",
+      "Cultural tour",
+      "Air terjun tour",
+      "Workshop kerajinan"
+    ],
     yellowbtn: "Detail",
-    darkbtn: "buking",
+    darkbtn: "Booking",
   },
   {
+    id: 3,
     img: "../assets/img/Kamar1.JPG",
-    price: "Rp.3/malam",
-    name: "Paket 3",
+    price: "Rp 750.000/malam",
+    basePrice: 750000,
+    name: "Paket Premium",
+    duration: "4D3N",
+    maxGuests: 8,
     star: [
       <small class="fa fa-star text-primary"></small>,
       <small class="fa fa-star text-primary"></small>,
@@ -330,9 +361,17 @@ export const roomItems = [
       <small class="fa fa-star text-primary"></small>,
     ],
     description:
-      "Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.",
+      "Paket wisata premium dengan semua fasilitas terbaik, pengalaman eksklusif, dan layanan private guide profesional.",
+    includes: [
+      "3 malam homestay VIP",
+      "All meals + welcome drink",
+      "Private birdwatching",
+      "Photography workshop",
+      "Cooking class",
+      "Souvenir package"
+    ],
     yellowbtn: "Detail",
-    darkbtn: "buking",
+    darkbtn: "Booking",
   },
 ];
 
@@ -403,4 +442,56 @@ export const facility = [
     icon: <i class="fa fa-wifi text-primary me-2"></i>,
     facility: "Wifi",
   },
+];
+
+// Additional activities for booking
+export const additionalActivities = [
+  {
+    id: 1,
+    name: "Extended Birdwatching Tour",
+    description: "Tour birdwatching ekstra 3 jam dengan guide spesialis burung",
+    price: 75000,
+    duration: "3 jam",
+    icon: <i className="fa fa-binoculars"></i>
+  },
+  {
+    id: 2,
+    name: "Photography Workshop",
+    description: "Workshop fotografi alam dan wildlife dengan fotografer profesional",
+    price: 100000,
+    duration: "4 jam",
+    icon: <i className="fa fa-camera"></i>
+  },
+  {
+    id: 3,
+    name: "Traditional Cooking Class",
+    description: "Belajar memasak makanan tradisional Papua dengan mama-mama lokal",
+    price: 85000,
+    duration: "3 jam",
+    icon: <i className="fa fa-utensils"></i>
+  },
+  {
+    id: 4,
+    name: "Night Forest Walk",
+    description: "Jalan malam di hutan untuk melihat aktivitas nokturnal",
+    price: 90000,
+    duration: "2 jam",
+    icon: <i className="fa fa-moon"></i>
+  },
+  {
+    id: 5,
+    name: "Butterfly Garden Tour",
+    description: "Tour khusus ke taman kupu-kupu dengan panduan lepidopteris",
+    price: 60000,
+    duration: "2 jam",
+    icon: <i className="fa fa-leaf"></i>
+  },
+  {
+    id: 6,
+    name: "Traditional Craft Workshop",
+    description: "Workshop pembuatan kerajinan tangan tradisional suku Arfak",
+    price: 95000,
+    duration: "4 jam",
+    icon: <i className="fa fa-palette"></i>
+  }
 ];

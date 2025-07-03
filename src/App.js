@@ -9,6 +9,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import {
   Home,
   Booking,
+  BookingStatus,
   AboutUs,
   Contact,
   PageNotFound,
@@ -28,6 +29,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/booking" element={<Booking />} />
+            <Route path="/booking-status" element={<BookingStatus />} />
             <Route path="/strukturkampung" element={<Team />} />
             <Route path="/testimonial" element={<Testimonial />} />
             <Route path="/about" element={<AboutUs />} />

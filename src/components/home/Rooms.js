@@ -39,11 +39,11 @@ export default function Rooms() {
                     <div className="d-flex justify-content-between">
                       <a
                         className="btn btn-sm btn-primary rounded py-2 px-4"
-                        href=""
+                        href="#"
                       >
                         {item.yellowbtn}
                       </a>
-                      <a className="btn btn-sm btn-dark rounded py-2 px-4" href="">
+                      <a className="btn btn-sm btn-dark rounded py-2 px-4" href="/booking">
                         {item.darkbtn}
                       </a>
                     </div>
