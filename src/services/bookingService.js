@@ -46,9 +46,15 @@ export const calculateTotalPrice = (packageData, guests, activities = [], durati
   const adultPrice = basePrice * guests.adults * duration;
   const childPrice = basePrice * guests.children * 0.5 * duration; // 50% for children
   
-  const activitiesPrice = activities.reduce((total, activity) => {
-    return total + (activity.price * (guests.adults + guests.children));
-  }, 0);
+  // Ensure activities is an array and has valid structure
+  let activitiesPrice = 0;
+  if (Array.isArray(activities) && activities.length > 0) {
+    activitiesPrice = activities.reduce((total, activity) => {
+      // Ensure activity has price property
+      const activityPrice = activity && typeof activity.price === 'number' ? activity.price : 0;
+      return total + (activityPrice * (guests.adults + guests.children));
+    }, 0);
+  }
   
   const subtotal = adultPrice + childPrice + activitiesPrice;
   const tax = subtotal * 0.1; // 10% tax
@@ -64,15 +70,38 @@ export const calculateTotalPrice = (packageData, guests, activities = [], durati
   };
 };
 
+// Helper function to clean circular references
+const cleanCircularReferences = (obj) => {
+  const seen = new WeakSet();
+  return JSON.parse(JSON.stringify(obj, (key, value) => {
+    if (typeof value === 'object' && value !== null) {
+      if (seen.has(value)) {
+        return '[Circular Reference]';
+      }
+      seen.add(value);
+    }
+    return value;
+  }));
+};
+
 // Create new booking
 export const createBooking = async (bookingData) => {
   try {
+    // Clean the input data to prevent circular references
+    const cleanBookingData = cleanCircularReferences(bookingData);
+    
     const bookingNumber = generateBookingNumber();
+    // Ensure all required data is valid before calculating price
+    const validPackage = cleanBookingData.package || { basePrice: 250000, id: 0, name: 'Unknown Package' };
+    const validGuests = cleanBookingData.guests || { adults: 1, children: 0 };
+    const validActivities = Array.isArray(cleanBookingData.activities) ? cleanBookingData.activities : [];
+    const validDuration = typeof cleanBookingData.duration === 'number' ? cleanBookingData.duration : 1;
+    
     const pricing = calculateTotalPrice(
-      bookingData.package,
-      bookingData.guests,
-      bookingData.activities,
-      bookingData.duration
+      validPackage,
+      validGuests,
+      validActivities,
+      validDuration
     );
     
     const booking = {
@@ -81,31 +110,40 @@ export const createBooking = async (bookingData) => {
       
       // Customer data
       customer: {
-        name: bookingData.customer.name,
-        email: bookingData.customer.email,
-        phone: bookingData.customer.phone,
-        nationality: bookingData.customer.nationality || 'Indonesia',
-        emergencyContact: bookingData.customer.emergencyContact
+        name: cleanBookingData.customer?.name || 'Unknown Customer',
+        email: cleanBookingData.customer?.email || '',
+        phone: cleanBookingData.customer?.phone || '',
+        nationality: cleanBookingData.customer?.nationality || 'Indonesia',
+        emergencyContact: cleanBookingData.customer?.emergencyContact || ''
       },
       
       // Booking details
       booking: {
-        packageId: bookingData.package.id,
-        packageName: bookingData.package.name,
-        checkIn: bookingData.checkIn,
-        checkOut: bookingData.checkOut,
-        duration: bookingData.duration,
-        guests: bookingData.guests
+        packageId: validPackage.id,
+        packageName: validPackage.name,
+        checkIn: cleanBookingData.checkIn,
+        checkOut: cleanBookingData.checkOut,
+        duration: validDuration,
+        guests: validGuests
       },
       
-      // Activities
-      activities: bookingData.activities || [],
+      // Activities - clean and extract only needed properties
+      activities: Array.isArray(cleanBookingData.activities) ? 
+        cleanBookingData.activities
+          .filter(activity => activity && typeof activity === 'object')
+          .map(activity => ({
+            id: activity.id || 0,
+            name: activity.name || 'Unknown Activity',
+            description: activity.description || '',
+            price: typeof activity.price === 'number' ? activity.price : 0,
+            duration: activity.duration || ''
+          })) : [],
       
       // Pricing
       pricing,
       
       // Special requests
-      specialRequests: bookingData.specialRequests || {},
+      specialRequests: cleanBookingData.specialRequests || {},
       
       // Metadata
       createdAt: TESTING_MODE ? createMockTimestamp() : Timestamp.now(),

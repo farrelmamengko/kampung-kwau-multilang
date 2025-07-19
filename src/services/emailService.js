@@ -2,11 +2,11 @@ import emailjs from '@emailjs/browser';
 
 // EmailJS Configuration
 const EMAIL_CONFIG = {
-  serviceId: 'service_kwau_booking', // You'll need to create this in EmailJS dashboard
-  templateId: 'template_booking_confirmation', // You'll need to create this template
-  userId: 'your_emailjs_user_id', // Your EmailJS user ID
-  // For testing, we'll use demo mode
-  testMode: true,
+  serviceId: 'service_iggrh35', // Gmail service ID dari EmailJS dashboard
+  templateId: 'template_n1es8q7', // Template Order Confirmation yang sudah diedit
+  userId: 'cERh5Eezr8mKQn9Vt', // Public Key dari EmailJS Account
+  // Set false untuk production mode
+  testMode: false, // Production mode - email akan terkirim real
   // Default admin email for notifications
   adminEmail: 'farrelmamengko@gmail.com'
 };
@@ -46,49 +46,52 @@ const formatDate = (date) => {
 // Send booking confirmation email to customer
 export const sendBookingConfirmation = async (bookingData) => {
   try {
+    // Clean booking data to prevent circular references
+    const cleanBookingData = JSON.parse(JSON.stringify(bookingData));
+    
     // In test mode, just log the email data
     if (EMAIL_CONFIG.testMode) {
       console.log('📧 Test Mode: Email yang akan dikirim:');
       console.log('──────────────────────────────────────');
-      console.log('To:', bookingData.customer.email);
-      console.log('Subject: Konfirmasi Booking Kampung Kwau - ' + bookingData.bookingNumber);
+      console.log('To:', cleanBookingData.customer.email);
+      console.log('Subject: Konfirmasi Booking Kampung Kwau - ' + cleanBookingData.bookingNumber);
       console.log('──────────────────────────────────────');
       console.log('Email Content:');
       console.log(`
-Halo ${bookingData.customer.name},
+Halo ${cleanBookingData.customer.name},
 
 Terima kasih telah melakukan booking di Kampung Kwau!
 
 DETAIL BOOKING:
 ═══════════════════════════════════════
-Nomor Booking: ${bookingData.bookingNumber}
-Status: ${bookingData.status === 'pending' ? 'Menunggu Konfirmasi' : bookingData.status}
+Nomor Booking: ${cleanBookingData.bookingNumber}
+Status: ${cleanBookingData.status === 'pending' ? 'Menunggu Konfirmasi' : cleanBookingData.status}
 
 PAKET WISATA:
-${bookingData.booking.packageName}
-Check-in: ${formatDate(bookingData.booking.checkIn)}
-Check-out: ${formatDate(bookingData.booking.checkOut)}
-Durasi: ${bookingData.booking.duration} hari
-Jumlah Tamu: ${bookingData.booking.guests.adults} dewasa${bookingData.booking.guests.children > 0 ? `, ${bookingData.booking.guests.children} anak` : ''}
+${cleanBookingData.booking.packageName}
+Check-in: ${formatDate(cleanBookingData.booking.checkIn)}
+Check-out: ${formatDate(cleanBookingData.booking.checkOut)}
+Durasi: ${cleanBookingData.booking.duration} hari
+Jumlah Tamu: ${cleanBookingData.booking.guests.adults} dewasa${cleanBookingData.booking.guests.children > 0 ? `, ${cleanBookingData.booking.guests.children} anak` : ''}
 
-${bookingData.activities && bookingData.activities.length > 0 ? `
+${cleanBookingData.activities && cleanBookingData.activities.length > 0 ? `
 AKTIVITAS TAMBAHAN:
-${bookingData.activities.map(activity => `• ${activity.name} - ${formatCurrency(activity.price)}`).join('\n')}
+${cleanBookingData.activities.map(activity => `• ${activity.name} - ${formatCurrency(activity.price)}`).join('\n')}
 ` : ''}
 
 RINCIAN BIAYA:
 ═══════════════════════════════════════
-Paket: ${formatCurrency(bookingData.pricing.packageTotal)}
-${bookingData.activities && bookingData.activities.length > 0 ? `Aktivitas: ${formatCurrency(bookingData.pricing.activitiesTotal)}` : ''}
-Pajak (10%): ${formatCurrency(bookingData.pricing.tax)}
+Paket: ${formatCurrency(cleanBookingData.pricing.packageTotal)}
+${cleanBookingData.activities && cleanBookingData.activities.length > 0 ? `Aktivitas: ${formatCurrency(cleanBookingData.pricing.activitiesTotal)}` : ''}
+Pajak (10%): ${formatCurrency(cleanBookingData.pricing.tax)}
 ──────────────────────────────────────
-TOTAL: ${formatCurrency(bookingData.pricing.total)}
+TOTAL: ${formatCurrency(cleanBookingData.pricing.total)}
 
-KONTAK DARURAT: ${bookingData.customer.emergencyContact || 'Tidak ada'}
+KONTAK DARURAT: ${cleanBookingData.customer.emergencyContact || 'Tidak ada'}
 
-${bookingData.specialRequests && Object.keys(bookingData.specialRequests).length > 0 ? `
+${cleanBookingData.specialRequests && Object.keys(cleanBookingData.specialRequests).length > 0 ? `
 PERMINTAAN KHUSUS:
-${Object.entries(bookingData.specialRequests).map(([key, value]) => `${key}: ${value ? 'Ya' : 'Tidak'}`).join('\n')}
+${Object.entries(cleanBookingData.specialRequests).map(([key, value]) => `${key}: ${value ? 'Ya' : 'Tidak'}`).join('\n')}
 ` : ''}
 
 LANGKAH SELANJUTNYA:
@@ -113,26 +116,32 @@ Ekowisata Papua Barat
     // Production mode - send actual email
     initEmailJS();
     
+    // Validate required data
+    if (!cleanBookingData.customer?.email) {
+      throw new Error('Email customer tidak boleh kosong');
+    }
+    
+    if (!cleanBookingData.customer?.name) {
+      throw new Error('Nama customer tidak boleh kosong');
+    }
+    
+    // Prepare template parameters - using only essential variables
     const templateParams = {
-      to_email: bookingData.customer.email,
-      customer_name: bookingData.customer.name,
-      booking_number: bookingData.bookingNumber,
-      package_name: bookingData.booking.packageName,
-      check_in: formatDate(bookingData.booking.checkIn),
-      check_out: formatDate(bookingData.booking.checkOut),
-      duration: bookingData.booking.duration,
-      adults: bookingData.booking.guests.adults,
-      children: bookingData.booking.guests.children,
-      activities: bookingData.activities?.map(a => `${a.name} - ${formatCurrency(a.price)}`).join(', ') || 'Tidak ada',
-      package_total: formatCurrency(bookingData.pricing.packageTotal),
-      activities_total: formatCurrency(bookingData.pricing.activitiesTotal || 0),
-      tax: formatCurrency(bookingData.pricing.tax),
-      total: formatCurrency(bookingData.pricing.total),
-      emergency_contact: bookingData.customer.emergencyContact || 'Tidak ada',
-      special_requests: bookingData.specialRequests ? 
-        Object.entries(bookingData.specialRequests).map(([key, value]) => `${key}: ${value ? 'Ya' : 'Tidak'}`).join(', ') :
-        'Tidak ada'
+      email: cleanBookingData.customer.email, // For "To Email" field
+      customer_name: cleanBookingData.customer.name || 'Customer',
+      booking_number: cleanBookingData.bookingNumber || 'N/A',
+      package_name: cleanBookingData.booking?.packageName || 'Paket Wisata',
+      check_in: cleanBookingData.booking?.checkIn ? formatDate(cleanBookingData.booking.checkIn) : 'TBD',
+      check_out: cleanBookingData.booking?.checkOut ? formatDate(cleanBookingData.booking.checkOut) : 'TBD',
+      duration: cleanBookingData.booking?.duration || 1,
+      adults: cleanBookingData.booking?.guests?.adults || 1,
+      children: cleanBookingData.booking?.guests?.children || 0,
+      package_total: cleanBookingData.pricing?.packageTotal ? formatCurrency(cleanBookingData.pricing.packageTotal) : 'Rp 0',
+      tax: cleanBookingData.pricing?.tax ? formatCurrency(cleanBookingData.pricing.tax) : 'Rp 0',
+      total: cleanBookingData.pricing?.total ? formatCurrency(cleanBookingData.pricing.total) : 'Rp 0'
     };
+    
+    console.log('📧 Template Parameters:', templateParams);
 
     const result = await emailjs.send(
       EMAIL_CONFIG.serviceId,
@@ -145,19 +154,35 @@ Ekowisata Papua Barat
 
   } catch (error) {
     console.error('❌ Error mengirim email:', error);
-    throw new Error('Gagal mengirim email konfirmasi: ' + error.message);
+    
+    // If email fails, fallback to test mode for debugging
+    console.log('🔄 Fallback ke test mode untuk debugging...');
+    console.log('📧 Email yang gagal dikirim:');
+    console.log('To:', cleanBookingData.customer?.email);
+    console.log('Subject: Konfirmasi Booking Kampung Kwau - ' + (cleanBookingData.bookingNumber || 'N/A'));
+    
+    // Don't throw error - booking is still valid
+    return { 
+      success: false, 
+      error: error.message,
+      mode: 'fallback',
+      message: 'Booking berhasil dibuat, tapi email gagal dikirim. Silakan cek konfigurasi EmailJS.'
+    };
   }
 };
 
 // Send notification email to admin/staff
 export const sendAdminNotification = async (bookingData) => {
   try {
+    // Clean booking data to prevent circular references
+    const cleanBookingData = JSON.parse(JSON.stringify(bookingData));
+    
     // In test mode, just log the admin notification
     if (EMAIL_CONFIG.testMode) {
       console.log('📧 Test Mode: Notifikasi Admin');
       console.log('To:', EMAIL_CONFIG.adminEmail);
-      console.log('Subject: [BOOKING BARU] ' + bookingData.bookingNumber);
-      console.log('Body: Booking baru dari ' + bookingData.customer.name + ' dengan total ' + formatCurrency(bookingData.pricing.total));
+      console.log('Subject: [BOOKING BARU] ' + cleanBookingData.bookingNumber);
+      console.log('Body: Booking baru dari ' + cleanBookingData.customer.name + ' dengan total ' + formatCurrency(cleanBookingData.pricing.total));
       return { success: true, mode: 'test' };
     }
 

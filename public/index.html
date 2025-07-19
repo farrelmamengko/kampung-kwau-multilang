@@ -33,6 +33,9 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
       rel="stylesheet"
     />
+    <!-- EmailJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
     <!-- Script untuk memastikan Font Awesome dimuat -->
     <script>
       // Memastikan Font Awesome dimuat dengan benar
@@ -45,6 +48,14 @@
           link.rel = 'stylesheet';
           link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
           document.head.appendChild(link);
+        }
+        
+        // Initialize EmailJS
+        if (typeof emailjs !== 'undefined') {
+          emailjs.init('cERh5Eezr8mKQn9Vt');
+          console.log('✅ EmailJS initialized successfully!');
+        } else {
+          console.error('❌ EmailJS library not loaded!');
         }
       });
     </script>

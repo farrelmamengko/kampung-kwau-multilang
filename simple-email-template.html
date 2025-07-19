@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konfirmasi Booking Kampung Kwau</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #28a745;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #28a745;
+            margin: 0;
+        }
+        .section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #007bff;
+        }
+        .section h3 {
+            color: #007bff;
+            margin: 0 0 15px 0;
+        }
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .info-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .info-table td:first-child {
+            font-weight: bold;
+            width: 40%;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🏞️ Kampung Kwau</h1>
+            <p><strong>Konfirmasi Booking</strong></p>
+            <p>Ekowisata Papua Barat</p>
+        </div>
+
+        <!-- Greeting -->
+        <p>Halo <strong>{{customer_name}}</strong>,</p>
+        <p>Terima kasih telah melakukan booking di <strong>Kampung Kwau</strong>!</p>
+
+        <!-- Booking Details -->
+        <div class="section">
+            <h3>📋 Detail Booking</h3>
+            <table class="info-table">
+                <tr>
+                    <td>Nomor Booking:</td>
+                    <td><strong>{{booking_number}}</strong></td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td><span style="color: #ff9800; font-weight: bold;">Menunggu Konfirmasi</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Package Information -->
+        <div class="section">
+            <h3>🏞️ Paket Wisata</h3>
+            <table class="info-table">
+                <tr>
+                    <td>Paket:</td>
+                    <td><strong>{{package_name}}</strong></td>
+                </tr>
+                <tr>
+                    <td>Check-in:</td>
+                    <td>{{check_in}}</td>
+                </tr>
+                <tr>
+                    <td>Check-out:</td>
+                    <td>{{check_out}}</td>
+                </tr>
+                <tr>
+                    <td>Durasi:</td>
+                    <td>{{duration}} hari</td>
+                </tr>
+                <tr>
+                    <td>Jumlah Tamu:</td>
+                    <td>{{adults}} dewasa, {{children}} anak</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Pricing -->
+        <div class="section">
+            <h3>💰 Rincian Biaya</h3>
+            <table class="info-table">
+                <tr>
+                    <td>Paket:</td>
+                    <td style="text-align: right;">{{package_total}}</td>
+                </tr>
+                <tr>
+                    <td>Pajak (10%):</td>
+                    <td style="text-align: right;">{{tax}}</td>
+                </tr>
+                <tr style="border-top: 2px solid #333; font-weight: bold;">
+                    <td><strong>TOTAL:</strong></td>
+                    <td style="text-align: right;"><strong>{{total}}</strong></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="section">
+            <h3>📋 Langkah Selanjutnya</h3>
+            <ol>
+                <li>Tim kami akan menghubungi Anda dalam 24 jam untuk konfirmasi</li>
+                <li>Setelah dikonfirmasi, Anda akan menerima instruksi pembayaran</li>
+                <li>Silakan simpan email ini sebagai bukti booking</li>
+            </ol>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="section">
+            <h3>📞 Informasi Kontak</h3>
+            <p><strong>Jika ada pertanyaan, hubungi kami:</strong></p>
+            <p>
+                📱 WhatsApp: +62-823-8888-8888<br>
+                📧 Email: farrelmamengko@gmail.com
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Terima kasih dan sampai jumpa di Kampung Kwau!</strong></p>
+            <p>Salam,<br>
+            <strong>Tim Kampung Kwau</strong><br>
+            Ekowisata Papua Barat</p>
+        </div>
+    </div>
+</body>
+</html> 
