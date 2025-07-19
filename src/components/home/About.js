@@ -1,8 +1,11 @@
 import React from "react";
 import Heading from "../common/Heading";
 import { about } from "../data/Data";
+import { useTranslation } from "react-i18next";
 
 export default function About() {
+  const { t } = useTranslation();
+  
   return (
     <>
       <div className="container-xxl py-5">
@@ -10,21 +13,17 @@ export default function About() {
           <div className="row g-5 align-items-center">
             <div className="col-lg-6">
               <h6 className="section-title text-start text-primary text-uppercase">
-                Kampung Kwau
+                {t('home:hero.subtitle')}
               </h6>
               <h1 className="mb-4">
-                Selamat Datang Di{" "}
-                <span className="text-primary text-uppercase">Kampung Kwau</span>
+                {t('home:hero.title')}{" "}
+                <span className="text-primary text-uppercase">{t('home:hero.subtitle')}</span>
               </h1>
               <p className="mb-4">
-              Kampung Kwau, yang terletak di Distrik Mokwam, Kabupaten Manokwari, Papua
-              Barat, dikenal sebagai kawasan hutan konservasi dengan keanekaragaman hayati yang luar biasa,
-              terutama burung endemik Papua. Selain menjadi habitat alami bagi berbagai spesies langka,
-              Kampung Kwau juga memiliki potensi besar sebagai destinasi wisata berbasis alam yang menarik
-              bagi wisatawan lokal maupun mancanegara.
+                {t('home:hero.description')}
               </p>
               <a className="btn btn-primary py-3 px-5 mt-2" href="/about">
-                Baca Selengkapnya
+                {t('common:readMore')}
               </a>
             </div>
             <div className="col-lg-6">

@@ -1,4 +1,5 @@
 import React from "react";
+import "./i18n"; // Import i18n configuration
 import "./css/style.css";
 import "./css/bootstrap.min.css";
 import "./css/animate.css";

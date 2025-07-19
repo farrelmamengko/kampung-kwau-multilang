@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "potensilokal": "Local Potential",
+    "paketwisata": "Tour Package",
+    "page": "Page",
+    "booking": "Booking",
+    "bookingStatus": "Check Booking Status",
+    "strukturkampung": "Village Management Structure",
+    "birdmapping": "Bird Mapping",
+    "contact": "Contact"
+  },
+  "footer": {
+    "kampungKwau": "KWAU VILLAGE",
+    "description": "With its unique ecosystem and culture, Kwau Village is the perfect destination for anyone who wants to enjoy the natural beauty of West Papua while experiencing authentic local cultural wisdom.",
+    "contact": "CONTACT",
+    "company": "COMPANY",
+    "services": "SERVICES",
+    "aboutUs": "About Us",
+    "contactUs": "Contact Us",
+    "privacyPolicy": "Privacy Policy",
+    "termsCondition": "Terms & Condition",
+    "support": "Support",
+    "foodRestaurant": "Food & Restaurant",
+    "spaFitness": "Spa & Fitness",
+    "sportsGaming": "Sports & Gaming",
+    "eventParty": "Event & Party",
+    "gymYoga": "GYM & Yoga"
+  },
+  "common": {
+    "readMore": "Read More",
+    "submit": "SUBMIT",
+    "enterEmail": "Enter Your Email",
+    "bookingHere": "Book HERE",
+    "close": "Close"
+  }
+} 

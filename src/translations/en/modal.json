@@ -1,0 +1,238 @@
+{
+  "bananaTree": {
+    "title": "Giant Forest Banana Tree (Musa Ingens W.Simmonds)",
+    "description": "Kwau Village is home to giant forest banana trees, which are one of Papua's endemic species. These banana trees can grow up to 20 meters tall and have very large leaves."
+  },
+  "birdWatching": {
+    "title": "Bird Watching - Papua's Endemic Birds",
+    "description": "The main attraction of Kwau Village is Papua's endemic birds, including the Western Parotia, which can be enjoyed through bird watching activities. Kwau Village is home to various rare and exotic Papua endemic bird species.",
+    "speciesTitle": "Bird Species That Can Be Observed:",
+    "species": [
+      "Western Parotia (Parotia sefilata) - Bird of paradise with charming feathers",
+      "Papua King Bird - One of the most beautiful birds in the world",
+      "Mambruk Bird - Crown pigeon with its own uniqueness",
+      "Cassowary Bird - Large bird that cannot fly but is very unique"
+    ],
+    "bestTimeTitle": "Best Time for Bird Watching:",
+    "bestTime": [
+      "Morning (05:30 - 08:00): Highest bird activity",
+      "Evening (16:00 - 18:00): Birds return to nests",
+      "Dry season (April - September): Best visibility"
+    ],
+    "facilitiesTitle": "Available Facilities:",
+    "facilities": [
+      "Experienced local guide",
+      "Binoculars",
+      "Bird watching tower",
+      "Trail map and bird checklist"
+    ]
+  },
+  "butterflies": {
+    "title": "Papua Butterfly Diversity",
+    "description": "Kwau Village is home to various beautiful and diverse butterfly species, making it an attractive place for butterfly observation. Papua's tropical forest has extraordinary butterfly diversity with stunning exotic colors.",
+    "speciesTitle": "Butterfly Species That Can Be Observed:",
+    "species": [
+      "King Butterfly (Troides helena) - Large butterfly with shiny golden wings",
+      "Birdwing Butterfly (Ornithoptera priamus) - One of the largest butterflies in the world",
+      "Swallowtail Butterfly (Papilio ulysses) - Stunning metallic blue",
+      "Leaf Butterfly (Kallima paralekta) - Camouflage expert like dry leaves",
+      "Papua Morpho Butterfly - Shimmering electric blue"
+    ],
+    "bestTimeTitle": "Best Time for Observation:",
+    "bestTime": [
+      "Morning (08:00 - 11:00): Butterflies actively seeking nectar",
+      "Bright midday: Optimal activity in open areas",
+      "After rain: Butterflies appear in large numbers",
+      "Flowering season (October - February): Most varieties"
+    ],
+    "locationsTitle": "Best Observation Locations:",
+    "locations": [
+      "Forest edge areas: Habitat transition",
+      "Rivers and springs: Butterfly drinking spots",
+      "Local flower gardens: Nectar sources",
+      "Forest trails: Various forest species"
+    ],
+    "tipsTitle": "Observation Tips:",
+    "tips": [
+      "Wear bright colored clothing to attract butterflies",
+      "Move slowly and avoid sudden movements",
+      "Bring a camera with macro lens",
+      "Use local guide for species identification"
+    ],
+    "quote": "Papua is home to more than 600 butterfly species, making it a paradise for lepidoptera enthusiasts"
+  },
+  "waterfall": {
+    "title": "Kwau Village Waterfall",
+    "description": "The waterfall in Kwau Village is an amazing natural attraction, offering spectacular views and a soothing atmosphere. Surrounded by pristine tropical forest, this waterfall becomes a perfect natural oasis for relaxation and adventure.",
+    "characteristicsTitle": "Waterfall Characteristics:",
+    "characteristics": [
+      "Height: About 25-30 meters with multiple cascade",
+      "Water Flow: Stable throughout the year, strongest during rainy season",
+      "Natural Pool: 2-3 meters deep, safe for swimming",
+      "Water Temperature: Cool and fresh (18-22°C)",
+      "Water Quality: Clear and clean directly from mountain springs"
+    ],
+    "activitiesTitle": "Activities That Can Be Done:",
+    "activities": [
+      "Swimming in natural pool",
+      "Landscape and nature photography",
+      "Meditation and yoga by the water",
+      "Trekking around the waterfall area",
+      "Family picnic in the provided area"
+    ],
+    "accessTitle": "Access and Facilities:",
+    "access": [
+      "Distance from village: 1.5 km (30-45 minutes trekking)",
+      "Difficulty level: Easy to moderate",
+      "Trail: Safe footpath already made",
+      "Facilities: Rest area, simple toilet, changing room"
+    ],
+    "bestTimeTitle": "Best Time to Visit:",
+    "bestTime": [
+      "Dry season (April-September): Clear water, easy access",
+      "Morning (07:00-10:00): Best light for photos",
+      "Evening (15:00-17:00): Romantic atmosphere",
+      "After rain: Maximum water volume (be careful of slippery conditions)"
+    ]
+  },
+  "orchids": {
+    "title": "Papua Orchid Plant Diversity",
+    "description": "Orchids are one of the ornamental plants that are highly sought after by the community. In Kwau Village, there are various types of orchids that grow lushly and beautifully, making this area a paradise for orchid and botany enthusiasts.",
+    "speciesTitle": "Papua Endemic Orchid Species:",
+    "species": [
+      "Dendrobium nobile Papua - Dendrobium orchid with white-purple flowers",
+      "Paphiopedilum mastersianum - Lady slipper orchid with unique patterns",
+      "Bulbophyllum papuanum - Micro orchid with distinctive aroma",
+      "Coelogyne asperata - White orchid with spotted petals",
+      "Cymbidium hartinahianum - Large orchid with yellow flowers"
+    ],
+    "habitatTitle": "Habitat and Characteristics:",
+    "habitat": [
+      "Epiphytic: Grows attached to forest trees",
+      "Terrestrial: Grows in soil with thick humus",
+      "Lithophytic: Grows in rock crevices",
+      "Altitude: 500-2000 masl with cool climate",
+      "Humidity: 70-85% throughout the year"
+    ],
+    "bloomingTitle": "Blooming Season:",
+    "blooming": [
+      "Dry season (June-September): Dendrobium and Bulbophyllum",
+      "Rainy season (December-March): Paphiopedilum and Coelogyne",
+      "Year-round: Cymbidium (with certain peaks)",
+      "Special conditions: Some species bloom after dry periods"
+    ],
+    "conservationTitle": "Conservation and Education:",
+    "conservation": [
+      "In-situ conservation program in natural habitat",
+      "Nursery and tissue culture",
+      "Community education about orchid protection",
+      "Biodiversity and ecology research"
+    ],
+    "tipsTitle": "Tips for Observing Orchids:",
+    "tips": [
+      "Use magnifying glass for flower details",
+      "Do not pick or damage plants",
+      "Document with photos from various angles",
+      "Note location and habitat conditions",
+      "Use local guide for identification"
+    ],
+    "quote": "Papua has more than 300 orchid species, 40% of which are endemic species not found elsewhere"
+  },
+  "dance": {
+    "title": "Tumbu Tanah Dance - Arfak Tribe Cultural Heritage",
+    "description": "Kwau Village also offers a rich cultural experience, including traditional dances originating from the Arfak tribe, namely the Tumbu Tanah Dance. This dance is an important part of local community culture and is often performed in traditional ceremonies.",
+    "meaningTitle": "Meaning and Philosophy:",
+    "meaning": [
+      "Tumbu: Means \"respect\" in Arfak language",
+      "Tanah: Symbolizes earth and nature that gives life",
+      "Philosophy: Expression of gratitude to nature and ancestors",
+      "Spirituality: Connection between humans, nature, and spiritual world",
+      "Identity: Symbol of pride and Arfak tribe identity"
+    ],
+    "movementsTitle": "Dance Movements and Elements:",
+    "movements": [
+      "Foot Movements: Mimicking forest animal steps like cassowary",
+      "Hand Movements: Symbolizing bird wings and tree branches",
+      "Formation: Circle symbolizing life cycle",
+      "Tempo: Starts slow, gets faster towards climax",
+      "Coordination: Harmony between male and female dancers"
+    ],
+    "costumeTitle": "Costume and Props:",
+    "costume": [
+      "Bird of Paradise Feathers: Head decoration symbolizing beauty",
+      "Koteka/Skin Skirt: Traditional clothing made from natural materials",
+      "Bead Accessories: Jewelry from colorful beads",
+      "Body Paint: Traditional motifs with natural dyes",
+      "Musical Instruments: Tifa, bamboo flute, and traditional gong"
+    ],
+    "eventsTitle": "Events and Performances:",
+    "events": [
+      "Traditional Rituals: Wedding ceremonies, initiation, harvest",
+      "Cultural Festivals: Annual celebrations and holidays",
+      "Guest Reception: Welcome ceremony for tourists",
+      "Education: Cultural learning for young generation"
+    ],
+    "experienceTitle": "Tourist Experience:",
+    "experience": [
+      "Watch live performance with authentic dancers",
+      "Learn basic movements from local dance master",
+      "Understand the meaning of each movement and symbolism",
+      "Photo together with traditional costumes",
+      "Workshop making simple dance props"
+    ],
+    "quote": "Tumbu Tanah Dance is not just a performance, but a moving prayer that connects humans with the universe"
+  },
+  "house": {
+    "title": "Centipede House - Traditional Arfak Architecture",
+    "description": "The Centipede House is one of the unique attractions in Kwau Village. This house is made of wood and has a distinctive design, with many supporting pillars that resemble centipede legs. This traditional architecture reflects local wisdom in adapting to nature.",
+    "constructionTitle": "Construction and Materials:",
+    "construction": [
+      "Main Pillars: Ulin wood or ironwood that is durable",
+      "Walls: Combination of wood and bamboo with natural ventilation",
+      "Roof: Sago or rumbia leaves that are waterproof",
+      "Floor: Wooden planks with gaps for air circulation",
+      "Foundation: River stones as pillar base"
+    ],
+    "philosophyTitle": "Philosophy and Meaning:",
+    "philosophy": [
+      "\"Centipede\": Symbolizing community stability and strength",
+      "Elevation: Stilt house as protection from wild animals",
+      "Orientation: Facing east to welcome sunlight",
+      "Communal Space: Central area for gathering and rituals",
+      "Nature Harmony: Design that integrates with environment"
+    ],
+    "functionTitle": "Function and Rooms:",
+    "function": [
+      "Main Room: Extended family gathering area",
+      "Bedroom: Separate compartments for privacy",
+      "Kitchen: Cooking area with traditional fireplace",
+      "Granary: Storage for harvest and equipment",
+      "Veranda: Place to receive guests and daily activities"
+    ],
+    "advantagesTitle": "Architectural Advantages:",
+    "advantages": [
+      "Earthquake Resistant: Flexible structure with traditional joints",
+      "Natural Ventilation: Optimal air circulation",
+      "Environmentally Friendly: 100% natural materials",
+      "Energy Efficient: No air conditioning needed",
+      "Easy to Repair: Practical modular system"
+    ],
+    "experienceTitle": "Tourist Experience:",
+    "experience": [
+      "Stay in authentic traditional house",
+      "Learn traditional construction techniques",
+      "Workshop making centipede house miniature",
+      "Hear stories and legends from tribal elders",
+      "Experience communal life of Arfak community"
+    ],
+    "conservationTitle": "Conservation and Preservation:",
+    "conservation": [
+      "Training program for young generation",
+      "Documentation of traditional construction techniques",
+      "Research on environmentally friendly materials and methods",
+      "Revitalization of damaged old houses",
+      "Integration with sustainable tourism"
+    ],
+    "quote": "The Centipede House is proof of ancestral wisdom in creating dwellings that harmonize with nature"
+  }
+} 

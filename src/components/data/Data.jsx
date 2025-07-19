@@ -2,54 +2,54 @@ export const navList = [
   {
     id: 1,
     path: "/",
-    text: "Home",
+    text: "home",
   },
   {
     id: 2,
     path: "/about",
-    text: "About",
+    text: "about",
   },
   {
     id: 3,
     path: "/potensilokal",
-    text: "Potensi Lokal",
+    text: "potensilokal",
   },
   {
     id: 4,
     path: "/paketwisata",
-    text: "Paket Wisata",
+    text: "paketwisata",
   },
   {
     id: 5,
     path: "/page",
-    text: "Page",
+    text: "page",
     subItems: [
       {
         id: 51,
         path: "/booking",
-        text: "Booking",
+        text: "booking",
       },
       {
         id: 52,
         path: "/booking-status",
-        text: "Cek Status Booking",
+        text: "bookingStatus",
       },
       {
         id: 53,
         path: "/strukturkampung",
-        text: "Struktur Pengurus Kampung",
+        text: "strukturkampung",
       },
       {
         id: 54,
         path: "/birdmapping",
-        text: "Bird Mapping",
+        text: "birdmapping",
       },
     ],
   },
   {
     id: 6,
     path: "/contact",
-    text: "Contact",
+    text: "contact",
   },
 ];
 export const socialIcons = [
@@ -130,56 +130,56 @@ export const about = [
 export const services = [
   {
     icon: <i className="fa fa-binoculars fa-2x text-primary"></i>,
-    name: "Birds Watching",
-    discription: "Daya Tarik Utama Kampung Kwau adalah Burung Endemik Papua, salah satunya Western Parotia yang dinikmati melalui kegiatan Birds Watching",
+    name: "birdWatching",
+    discription: "birdWatching",
   },
   {
     icon: <i className="fa fa-bug fa-2x text-primary"></i>,
-    name: "Keanekaragaman Kupu-Kupu",
-    discription: "Kampung Kwau menjadi rumah bagi berbagai spesies kupu-kupu yang indah dan beragam, menjadikannya tempat yang menarik untuk pengamatan kupu-kupu.",
+    name: "butterflies",
+    discription: "butterflies",
   },
 
   {
     icon: <i className="fa fa-swimmer fa-2x text-primary"></i>,
-    name: "Air Terjun",
-    discription: "Air Terjun di Kampung Kwau adalah daya tarik alam yang menakjubkan, menawarkan pemandangan spektakuler dan suasana yang menenangkan.",
+    name: "waterfall",
+    discription: "waterfall",
   },
   {
     icon: <i className="fa fa-leaf fa-2x text-primary"></i>,
-    name: "Macam-macam tanaman angrek",
-    discription: "Angrek merupakan salah satu tanaman hias yang banyak diminati oleh masyarakat. Di Kampung Kwau, terdapat berbagai jenis angrek yang tumbuh subur dan indah.",
+    name: "orchids",
+    discription: "orchids",
   },
 
   {
     icon: <i className="fa fa-music fa-2x text-primary"></i>,
-    name: "Tari Tumbu Tanah",
-    discription: "Kampung Kwau juga menawarkan pengalaman budaya yang kaya, termasuk tarian tradisional yang berasal dari suku Arfak yaitu Tari Tumbu Tanah. Tarian ini merupakan bagian penting dari budaya masyarakat setempat dan sering ditampilkan dalam acara-acara adat.",
+    name: "dance",
+    discription: "dance",
   },
   {
     icon: <i className="fa fa-house-user fa-2x text-primary"></i>,
-    name: "Rumah Kaki Seribu",
-    discription: "Rumah Kaki Seribu adalah salah satu daya tarik unik di Kampung Kwau. Rumah ini terbuat dari kayu dan memiliki desain yang khas, dengan banyak tiang penyangga yang menyerupai kaki seribu.",
+    name: "house",
+    discription: "house",
   }
 ];
 export const team = [
   {
     image: "/assets/img/user.png",
-    name: "Kepala Kampung",
+    name: "kepalaKampung",
     designation: "",
   },
   {
     image: "/assets/img/user.png",
-    name: "Sekertaris Kampung",
+    name: "sekertarisKampung",
     designation: "",
   },
   {
     image: "/assets/img/user.png",
-    name: "Bendahara Kampung",
+    name: "bendaharaKampung",
     designation: "",
   },
   {
     image: "/assets/img/user.png",
-    name: "Keamanan Kampung",
+    name: "keamananKampung",
     designation: "",
   },
 ];

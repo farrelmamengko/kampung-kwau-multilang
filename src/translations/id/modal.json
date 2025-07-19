@@ -1,0 +1,238 @@
+{
+  "bananaTree": {
+    "title": "Pohon Pisang Hutan Raksasa (Musa Ingens W.Simmonds)",
+    "description": "Kampung Kwau menjadi habitat dari pohon pisang hutan raksasa yang merupakan salah satu spesies endemik Papua. Pohon pisang ini dapat tumbuh hingga tinggi 20 meter dan memiliki daun yang sangat besar."
+  },
+  "birdWatching": {
+    "title": "Birds Watching - Burung Endemik Papua",
+    "description": "Daya Tarik Utama Kampung Kwau adalah Burung Endemik Papua, salah satunya Western Parotia yang dinikmati melalui kegiatan Birds Watching. Kampung Kwau adalah rumah bagi berbagai spesies burung endemik Papua yang langka dan eksotis.",
+    "speciesTitle": "Spesies Burung yang Dapat Diamati:",
+    "species": [
+      "Western Parotia (Parotia sefilata) - Burung cendrawasih dengan bulu yang menawan",
+      "Burung Raja Papua - Salah satu burung paling indah di dunia",
+      "Burung Mambruk - Merpati mahkota dengan keunikan tersendiri",
+      "Burung Kasuari - Burung besar yang tidak bisa terbang namun sangat unik"
+    ],
+    "bestTimeTitle": "Waktu Terbaik untuk Bird Watching:",
+    "bestTime": [
+      "Pagi hari (05:30 - 08:00): Aktivitas burung paling tinggi",
+      "Sore hari (16:00 - 18:00): Burung kembali ke sarang",
+      "Musim kering (April - September): Visibility terbaik"
+    ],
+    "facilitiesTitle": "Fasilitas yang Tersedia:",
+    "facilities": [
+      "Guide lokal berpengalaman",
+      "Teropong binoculars",
+      "Bird watching tower",
+      "Trail map dan bird checklist"
+    ]
+  },
+  "butterflies": {
+    "title": "Keanekaragaman Kupu-Kupu Papua",
+    "description": "Kampung Kwau menjadi rumah bagi berbagai spesies kupu-kupu yang indah dan beragam, menjadikannya tempat yang menarik untuk pengamatan kupu-kupu. Hutan tropis Papua memiliki keanekaragaman kupu-kupu yang luar biasa dengan warna-warna eksotis yang memukau.",
+    "speciesTitle": "Spesies Kupu-Kupu yang Dapat Diamati:",
+    "species": [
+      "Kupu-kupu Raja (Troides helena) - Kupu-kupu berukuran besar dengan sayap emas mengkilap",
+      "Kupu-kupu Sayap Burung (Ornithoptera priamus) - Salah satu kupu-kupu terbesar di dunia",
+      "Kupu-kupu Ekor Walet (Papilio ulysses) - Biru metalik yang memukau",
+      "Kupu-kupu Daun (Kallima paralekta) - Ahli penyamaran seperti daun kering",
+      "Kupu-kupu Morfo Papua - Biru elektrik yang berkilauan"
+    ],
+    "bestTimeTitle": "Waktu Terbaik untuk Pengamatan:",
+    "bestTime": [
+      "Pagi hari (08:00 - 11:00): Kupu-kupu aktif mencari nektar",
+      "Siang hari cerah: Aktivitas optimal di area terbuka",
+      "Setelah hujan: Kupu-kupu bermunculan dalam jumlah banyak",
+      "Musim berbunga (Oktober - Februari): Varietas terbanyak"
+    ],
+    "locationsTitle": "Lokasi Pengamatan Terbaik:",
+    "locations": [
+      "Area tepi hutan: Transisi habitat",
+      "Sungai dan mata air: Tempat minum kupu-kupu",
+      "Kebun bunga lokal: Sumber nektar",
+      "Trail hutan: Berbagai spesies hutan"
+    ],
+    "tipsTitle": "Tips Pengamatan:",
+    "tips": [
+      "Gunakan pakaian berwarna cerah untuk menarik kupu-kupu",
+      "Bergerak perlahan dan hindari gerakan mendadak",
+      "Bawa kamera dengan lensa makro",
+      "Gunakan guide lokal untuk identifikasi spesies"
+    ],
+    "quote": "Papua adalah rumah bagi lebih dari 600 spesies kupu-kupu, menjadikannya surga bagi para pecinta lepidoptera"
+  },
+  "waterfall": {
+    "title": "Air Terjun Kampung Kwau",
+    "description": "Air Terjun di Kampung Kwau adalah daya tarik alam yang menakjubkan, menawarkan pemandangan spektakuler dan suasana yang menenangkan. Dikelilingi oleh hutan tropis yang masih asri, air terjun ini menjadi oasis alami yang sempurna untuk relaksasi dan petualangan.",
+    "characteristicsTitle": "Karakteristik Air Terjun:",
+    "characteristics": [
+      "Ketinggian: Sekitar 25-30 meter dengan multiple cascade",
+      "Debit Air: Stabil sepanjang tahun, paling deras saat musim hujan",
+      "Kolam Alami: Kedalaman 2-3 meter, aman untuk berenang",
+      "Suhu Air: Sejuk dan segar (18-22°C)",
+      "Kualitas Air: Jernih dan bersih langsung dari mata air pegunungan"
+    ],
+    "activitiesTitle": "Aktivitas yang Dapat Dilakukan:",
+    "activities": [
+      "Berenang di kolam alami",
+      "Fotografi landscape dan nature",
+      "Meditasi dan yoga di tepi air",
+      "Trekking di sekitar area air terjun",
+      "Piknik keluarga di area yang telah disediakan"
+    ],
+    "accessTitle": "Akses dan Fasilitas:",
+    "access": [
+      "Jarak dari kampung: 1.5 km (trekking 30-45 menit)",
+      "Tingkat kesulitan: Mudah hingga sedang",
+      "Trail: Sudah dibuat jalur setapak yang aman",
+      "Fasilitas: Area istirahat, toilet sederhana, tempat ganti"
+    ],
+    "bestTimeTitle": "Waktu Terbaik Berkunjung:",
+    "bestTime": [
+      "Musim kering (April-September): Air jernih, akses mudah",
+      "Pagi hari (07:00-10:00): Cahaya terbaik untuk foto",
+      "Sore hari (15:00-17:00): Suasana romantis",
+      "Setelah hujan: Volume air maksimal (hati-hati licin)"
+    ]
+  },
+  "orchids": {
+    "title": "Keanekaragaman Tanaman Anggrek Papua",
+    "description": "Anggrek merupakan salah satu tanaman hias yang banyak diminati oleh masyarakat. Di Kampung Kwau, terdapat berbagai jenis anggrek yang tumbuh subur dan indah, menjadikan kawasan ini sebagai surga bagi para pecinta anggrek dan botani.",
+    "speciesTitle": "Spesies Anggrek Endemik Papua:",
+    "species": [
+      "Dendrobium nobile Papua - Anggrek dendrobium dengan bunga putih keunguan",
+      "Paphiopedilum mastersianum - Anggrek kantong semar dengan corak unik",
+      "Bulbophyllum papuanum - Anggrek mikro dengan aroma khas",
+      "Coelogyne asperata - Anggrek putih dengan kelopak berbintik",
+      "Cymbidium hartinahianum - Anggrek besar dengan bunga kuning"
+    ],
+    "habitatTitle": "Habitat dan Karakteristik:",
+    "habitat": [
+      "Epiphytic: Tumbuh menempel pada pohon hutan",
+      "Terrestrial: Tumbuh di tanah dengan humus tebal",
+      "Lithophytic: Tumbuh di celah-celah batu",
+      "Ketinggian: 500-2000 mdpl dengan iklim sejuk",
+      "Kelembaban: 70-85% sepanjang tahun"
+    ],
+    "bloomingTitle": "Musim Berbunga:",
+    "blooming": [
+      "Musim kering (Juni-September): Dendrobium dan Bulbophyllum",
+      "Musim hujan (Desember-Maret): Paphiopedilum dan Coelogyne",
+      "Sepanjang tahun: Cymbidium (dengan peak tertentu)",
+      "Kondisi khusus: Beberapa spesies berbunga setelah periode kering"
+    ],
+    "conservationTitle": "Konservasi dan Edukasi:",
+    "conservation": [
+      "Program konservasi in-situ di habitat asli",
+      "Pembibitan dan kultur jaringan",
+      "Edukasi masyarakat tentang perlindungan anggrek",
+      "Penelitian keanekaragaman dan ekologi"
+    ],
+    "tipsTitle": "Tips Mengamati Anggrek:",
+    "tips": [
+      "Gunakan kaca pembesar untuk detail bunga",
+      "Jangan memetik atau merusak tanaman",
+      "Dokumentasi dengan foto dari berbagai sudut",
+      "Catat lokasi dan kondisi habitat",
+      "Gunakan guide lokal untuk identifikasi"
+    ],
+    "quote": "Papua memiliki lebih dari 300 spesies anggrek, 40% diantaranya adalah spesies endemik yang tidak ditemukan di tempat lain"
+  },
+  "dance": {
+    "title": "Tari Tumbu Tanah - Warisan Budaya Suku Arfak",
+    "description": "Kampung Kwau juga menawarkan pengalaman budaya yang kaya, termasuk tarian tradisional yang berasal dari suku Arfak yaitu Tari Tumbu Tanah. Tarian ini merupakan bagian penting dari budaya masyarakat setempat dan sering ditampilkan dalam acara-acara adat.",
+    "meaningTitle": "Makna dan Filosofi:",
+    "meaning": [
+      "Tumbu: Berarti \"menghormati\" dalam bahasa Arfak",
+      "Tanah: Melambangkan bumi dan alam yang memberikan kehidupan",
+      "Filosofi: Ungkapan rasa syukur kepada alam dan leluhur",
+      "Spiritualitas: Koneksi antara manusia, alam, dan dunia spiritual",
+      "Identitas: Simbol kebanggaan dan identitas suku Arfak"
+    ],
+    "movementsTitle": "Gerakan dan Elemen Tari:",
+    "movements": [
+      "Gerakan Kaki: Meniru langkah hewan hutan seperti kasuari",
+      "Gerakan Tangan: Melambangkan sayap burung dan ranting pohon",
+      "Formasi: Lingkaran yang melambangkan siklus kehidupan",
+      "Tempo: Dimulai lambat, semakin cepat menuju klimaks",
+      "Koordinasi: Harmoni antara penari pria dan wanita"
+    ],
+    "costumeTitle": "Kostum dan Properti:",
+    "costume": [
+      "Bulu Cendrawasih: Hiasan kepala simbol keindahan",
+      "Koteka/Rok Kulit: Pakaian tradisional berbahan alam",
+      "Aksesoris Manik: Perhiasan dari manik-manik warna-warni",
+      "Cat Tubuh: Motif tradisional dengan pewarna alami",
+      "Alat Musik: Tifa, suling bambu, dan gong tradisional"
+    ],
+    "eventsTitle": "Acara dan Pertunjukan:",
+    "events": [
+      "Ritual Adat: Upacara pernikahan, inisiasi, panen",
+      "Festival Budaya: Perayaan tahunan dan hari besar",
+      "Penyambutan Tamu: Welcome ceremony untuk wisatawan",
+      "Edukasi: Pembelajaran budaya untuk generasi muda"
+    ],
+    "experienceTitle": "Pengalaman Wisatawan:",
+    "experience": [
+      "Menonton pertunjukan langsung dengan penari asli",
+      "Belajar gerakan dasar dari maestro tari lokal",
+      "Memahami makna setiap gerakan dan simbolisme",
+      "Foto bersama dengan kostum tradisional",
+      "Workshop membuat properti tari sederhana"
+    ],
+    "quote": "Tari Tumbu Tanah bukan hanya pertunjukan, tetapi doa bergerak yang menghubungkan manusia dengan alam semesta"
+  },
+  "house": {
+    "title": "Rumah Kaki Seribu - Arsitektur Tradisional Arfak",
+    "description": "Rumah Kaki Seribu adalah salah satu daya tarik unik di Kampung Kwau. Rumah ini terbuat dari kayu dan memiliki desain yang khas, dengan banyak tiang penyangga yang menyerupai kaki seribu. Arsitektur tradisional ini mencerminkan kearifan lokal dalam beradaptasi dengan alam.",
+    "constructionTitle": "Konstruksi dan Material:",
+    "construction": [
+      "Tiang Utama: Kayu ulin atau kayu besi yang tahan lama",
+      "Dinding: Kombinasi kayu dan bambu dengan ventilasi alami",
+      "Atap: Daun sagu atau rumbia yang kedap air",
+      "Lantai: Papan kayu dengan celah untuk sirkulasi udara",
+      "Fondasi: Batu sungai sebagai alas tiang"
+    ],
+    "philosophyTitle": "Filosofi dan Makna:",
+    "philosophy": [
+      "\"Kaki Seribu\": Melambangkan stabilitas dan kekuatan komunitas",
+      "Elevasi: Rumah panggung sebagai perlindungan dari binatang buas",
+      "Orientasi: Menghadap timur untuk menyambut cahaya matahari",
+      "Ruang Komunal: Area tengah untuk berkumpul dan ritual",
+      "Harmoni Alam: Desain yang menyatu dengan lingkungan"
+    ],
+    "functionTitle": "Fungsi dan Ruangan:",
+    "function": [
+      "Ruang Utama: Area berkumpul keluarga besar",
+      "Ruang Tidur: Bilik-bilik terpisah untuk privasi",
+      "Dapur: Area memasak dengan perapian tradisional",
+      "Lumbung: Penyimpanan hasil panen dan peralatan",
+      "Teras: Tempat menerima tamu dan aktivitas harian"
+    ],
+    "advantagesTitle": "Keunggulan Arsitektur:",
+    "advantages": [
+      "Tahan Gempa: Struktur fleksibel dengan sambungan tradisional",
+      "Ventilasi Alami: Sirkulasi udara yang optimal",
+      "Ramah Lingkungan: Material 100% dari alam",
+      "Efisiensi Energi: Tidak memerlukan pendingin ruangan",
+      "Mudah Diperbaiki: Sistem modular yang praktis"
+    ],
+    "experienceTitle": "Pengalaman Wisatawan:",
+    "experience": [
+      "Menginap dalam rumah tradisional autentik",
+      "Belajar teknik konstruksi tradisional",
+      "Workshop membuat miniatur rumah kaki seribu",
+      "Mendengar cerita dan legenda dari tetua adat",
+      "Merasakan kehidupan komunal masyarakat Arfak"
+    ],
+    "conservationTitle": "Konservasi dan Pelestarian:",
+    "conservation": [
+      "Program pelatihan untuk generasi muda",
+      "Dokumentasi teknik konstruksi tradisional",
+      "Penelitian material dan metode ramah lingkungan",
+      "Revitalisasi rumah-rumah tua yang rusak",
+      "Integrasi dengan pariwisata berkelanjutan"
+    ],
+    "quote": "Rumah Kaki Seribu adalah bukti kearifan nenek moyang dalam menciptakan hunian yang selaras dengan alam"
+  }
+} 

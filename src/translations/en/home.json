@@ -1,0 +1,65 @@
+{
+  "hero": {
+    "title": "Welcome to",
+    "subtitle": "Kwau Village",
+    "description": "Kwau Village, located in Mokwam District, Manokwari Regency, West Papua, is known as a conservation forest area with extraordinary biodiversity, especially Papua's endemic birds. Besides being a natural habitat for various rare species, Kwau Village also has great potential as a nature-based tourism destination that attracts both local and international tourists."
+  },
+  "services": {
+    "title": "Some Local Potentials Owned by",
+    "subtitle": "Kwau Village",
+    "bananaTree": {
+      "title": "Giant Forest Banana Tree (Musa Ingens W.Simmonds)",
+      "description": "Kwau Village is home to giant forest banana trees, which are one of Papua's endemic species. These banana trees can grow up to 20 meters tall and have very large leaves."
+    },
+    "birdWatching": {
+      "title": "Bird Watching",
+      "subtitle": "Papua's Endemic Birds",
+      "description": "The main attraction of Kwau Village is Papua's endemic birds, including the Western Parotia, which can be enjoyed through bird watching activities. Kwau Village is home to various rare and exotic Papua endemic bird species.",
+      "speciesTitle": "Bird Species That Can Be Observed:",
+      "parotia": "Bird of paradise with charming feathers",
+      "rajaPapua": "Papua King Bird",
+      "rajaPapuaDesc": "One of the most beautiful birds in the world",
+      "mambruk": "Mambruk Bird",
+      "mambrukDesc": "Crown pigeon with its own uniqueness",
+      "kasuari": "Cassowary Bird",
+      "kasuariDesc": "Large bird that cannot fly but is very unique",
+      "bestTimeTitle": "Best Time for Bird Watching:",
+      "morning": "Morning (05:30 - 08:00): Highest bird activity",
+      "evening": "Evening (16:00 - 18:00): Birds return to nests",
+      "drySeason": "Dry season (April - September): Best visibility",
+      "facilitiesTitle": "Available Facilities:",
+      "guide": "Experienced local guide",
+      "binoculars": "Binoculars",
+      "tower": "Bird watching tower",
+      "trailMap": "Trail map and bird checklist"
+    },
+    "butterflies": {
+      "title": "Butterfly Diversity",
+      "description": "Kwau Village is home to various beautiful and diverse butterfly species, making it an attractive place for butterfly observation."
+    },
+    "waterfall": {
+      "title": "Waterfall",
+      "description": "The waterfall in Kwau Village is an amazing natural attraction, offering spectacular views and a soothing atmosphere."
+    },
+    "orchids": {
+      "title": "Various Orchid Plants",
+      "description": "Orchids are one of the ornamental plants that are highly sought after by the community. In Kwau Village, there are various types of orchids that grow lushly and beautifully."
+    },
+    "dance": {
+      "title": "Tumbu Tanah Dance",
+      "description": "Kwau Village also offers a rich cultural experience, including traditional dances originating from the Arfak tribe, namely the Tumbu Tanah Dance. This dance is an important part of local community culture and is often performed in traditional ceremonies."
+    },
+    "house": {
+      "title": "Centipede House",
+      "description": "The Centipede House is one of the unique attractions in Kwau Village. This house is made of wood and has a distinctive design, with many supporting pillars that resemble centipede legs."
+    }
+  },
+  "team": {
+    "title": "Village Management Structure",
+    "subtitle": "Kwau Village",
+    "kepalaKampung": "Village Head",
+    "sekertarisKampung": "Village Secretary",
+    "bendaharaKampung": "Village Treasurer",
+    "keamananKampung": "Village Security"
+  }
+} 

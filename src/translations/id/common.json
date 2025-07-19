@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "potensilokal": "Potensi Lokal",
+    "paketwisata": "Paket Wisata",
+    "page": "Page",
+    "booking": "Booking",
+    "bookingStatus": "Cek Status Booking",
+    "strukturkampung": "Struktur Pengurus Kampung",
+    "birdmapping": "Bird Mapping",
+    "contact": "Contact"
+  },
+  "footer": {
+    "kampungKwau": "KAMPUNG KWAU",
+    "description": "Dengan keunikan ekosistem dan budaya yang dimilikinya, Kampung Kwau merupakan destinasi yang sempurna bagi siapa saja yang ingin menikmati keindahan alam Papua Barat sekaligus merasakan kearifan budaya lokal yang autentik.",
+    "contact": "CONTACT",
+    "company": "COMPANY",
+    "services": "SERVICES",
+    "aboutUs": "About Us",
+    "contactUs": "Contact Us",
+    "privacyPolicy": "Privacy Policy",
+    "termsCondition": "Terms & Condition",
+    "support": "Support",
+    "foodRestaurant": "Food & Restaurant",
+    "spaFitness": "Spa & Fitness",
+    "sportsGaming": "Sports & Gaming",
+    "eventParty": "Event & Party",
+    "gymYoga": "GYM & Yoga"
+  },
+  "common": {
+    "readMore": "Baca Selengkapnya",
+    "submit": "SUBMIT",
+    "enterEmail": "Masukan Email Anda",
+    "bookingHere": "Booking DISINI",
+    "close": "Keluar"
+  }
+} 

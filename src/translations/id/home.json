@@ -1,0 +1,65 @@
+{
+  "hero": {
+    "title": "Selamat Datang Di",
+    "subtitle": "Kampung Kwau",
+    "description": "Kampung Kwau, yang terletak di Distrik Mokwam, Kabupaten Manokwari, Papua Barat, dikenal sebagai kawasan hutan konservasi dengan keanekaragaman hayati yang luar biasa, terutama burung endemik Papua. Selain menjadi habitat alami bagi berbagai spesies langka, Kampung Kwau juga memiliki potensi besar sebagai destinasi wisata berbasis alam yang menarik bagi wisatawan lokal maupun mancanegara."
+  },
+  "services": {
+    "title": "Beberapa Potensi Lokal Yang Dimiliki",
+    "subtitle": "Kampung Kwau",
+    "bananaTree": {
+      "title": "Pohon Pisang Hutan Raksasa (Musa Ingens W.Simmonds)",
+      "description": "Kampung Kwau menjadi habitat dari pohon pisang hutan raksasa yang merupakan salah satu spesies endemik Papua. Pohon pisang ini dapat tumbuh hingga tinggi 20 meter dan memiliki daun yang sangat besar."
+    },
+    "birdWatching": {
+      "title": "Birds Watching",
+      "subtitle": "Burung Endemik Papua",
+      "description": "Daya Tarik Utama Kampung Kwau adalah Burung Endemik Papua, salah satunya Western Parotia yang dinikmati melalui kegiatan Birds Watching. Kampung Kwau adalah rumah bagi berbagai spesies burung endemik Papua yang langka dan eksotis.",
+      "speciesTitle": "Spesies Burung yang Dapat Diamati:",
+      "parotia": "Burung cendrawasih dengan bulu yang menawan",
+      "rajaPapua": "Burung Raja Papua",
+      "rajaPapuaDesc": "Salah satu burung paling indah di dunia",
+      "mambruk": "Burung Mambruk",
+      "mambrukDesc": "Merpati mahkota dengan keunikan tersendiri",
+      "kasuari": "Burung Kasuari",
+      "kasuariDesc": "Burung besar yang tidak bisa terbang namun sangat unik",
+      "bestTimeTitle": "Waktu Terbaik untuk Bird Watching:",
+      "morning": "Pagi hari (05:30 - 08:00): Aktivitas burung paling tinggi",
+      "evening": "Sore hari (16:00 - 18:00): Burung kembali ke sarang",
+      "drySeason": "Musim kering (April - September): Visibility terbaik",
+      "facilitiesTitle": "Fasilitas yang Tersedia:",
+      "guide": "Guide lokal berpengalaman",
+      "binoculars": "Teropong binoculars",
+      "tower": "Bird watching tower",
+      "trailMap": "Trail map dan bird checklist"
+    },
+    "butterflies": {
+      "title": "Keanekaragaman Kupu-Kupu",
+      "description": "Kampung Kwau menjadi rumah bagi berbagai spesies kupu-kupu yang indah dan beragam, menjadikannya tempat yang menarik untuk pengamatan kupu-kupu."
+    },
+    "waterfall": {
+      "title": "Air Terjun",
+      "description": "Air Terjun di Kampung Kwau adalah daya tarik alam yang menakjubkan, menawarkan pemandangan spektakuler dan suasana yang menenangkan."
+    },
+    "orchids": {
+      "title": "Macam-macam tanaman angrek",
+      "description": "Angrek merupakan salah satu tanaman hias yang banyak diminati oleh masyarakat. Di Kampung Kwau, terdapat berbagai jenis angrek yang tumbuh subur dan indah."
+    },
+    "dance": {
+      "title": "Tari Tumbu Tanah",
+      "description": "Kampung Kwau juga menawarkan pengalaman budaya yang kaya, termasuk tarian tradisional yang berasal dari suku Arfak yaitu Tari Tumbu Tanah. Tarian ini merupakan bagian penting dari budaya masyarakat setempat dan sering ditampilkan dalam acara-acara adat."
+    },
+    "house": {
+      "title": "Rumah Kaki Seribu",
+      "description": "Rumah Kaki Seribu adalah salah satu daya tarik unik di Kampung Kwau. Rumah ini terbuat dari kayu dan memiliki desain yang khas, dengan banyak tiang penyangga yang menyerupai kaki seribu."
+    }
+  },
+  "team": {
+    "title": "Struktur Pengurus Kampung",
+    "subtitle": "Kampung Kwau",
+    "kepalaKampung": "Kepala Kampung",
+    "sekertarisKampung": "Sekertaris Kampung",
+    "bendaharaKampung": "Bendahara Kampung",
+    "keamananKampung": "Keamanan Kampung"
+  }
+} 

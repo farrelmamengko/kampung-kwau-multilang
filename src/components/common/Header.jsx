@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { navList } from "../data/Data";
 import SocialIcons from "./SocialIcons";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
   const [navbarCollapse, setNavbarCollapse] = useState(false);
-
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const { t } = useTranslation();
 
   const handleMouseEnter = (itemId) => {
     setActiveDropdown(itemId);
@@ -57,7 +59,7 @@ export default function Header() {
                           onMouseLeave={handleMouseLeave}
                         >
                           <Link className="nav-link dropdown-toggle">
-                            {item.text}
+                            {t(`common:nav.${item.text.toLowerCase().replace(/\s+/g, '')}`)}
                           </Link>
                           <div
                             className={`dropdown-menu rounded-0 m-0 ${
@@ -66,19 +68,20 @@ export default function Header() {
                           >
                             {item.subItems.map((sub) => (
                               <Link to={sub.path} className="dropdown-item">
-                                {sub.text}
+                                {t(`common:nav.${sub.text.toLowerCase().replace(/\s+/g, '')}`)}
                               </Link>
                             ))}
                           </div>
                         </div>
                       ) : (
                         <Link to={item.path} className="nav-item nav-link">
-                          {item.text}
+                          {t(`common:nav.${item.text.toLowerCase().replace(/\s+/g, '')}`)}
                         </Link>
                       )}
                     </div>
                   ))}
                 </div>
+                <LanguageSwitcher />
                 <SocialIcons />
               </div>
             </nav>
