@@ -1,9 +1,12 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import Heading from "../components/common/Heading";
 import CommonHeading from "../components/common/CommonHeading";
 import { contact } from "../components/data/Data";
 
 export default function Contact() {
+  const { t } = useTranslation();
+
   return (
     <>
       <Heading heading="Contact" title="Home" subtitle="Contact" />
@@ -11,9 +14,9 @@ export default function Contact() {
       <div class="container-xxl py-5">
         <div class="container">
           <CommonHeading
-            heading="Kontak Kami"
-            subtitle="Kontak "
-            title="Kami Untuk Info Lebih Lanjut"
+            heading={t('pages:contact.title')}
+            subtitle={t('pages:contact.subtitle')}
+            title={t('pages:contact.description')}
           />
           <div class="row g-4">
             <div class="col-12">
@@ -54,7 +57,7 @@ export default function Contact() {
                           id="name"
                           placeholder="Your Name"
                         />
-                        <label for="name">Nama Anda</label>
+                        <label for="name">{t('pages:contact.form.name')}</label>
                       </div>
                     </div>
                     <div class="col-md-6">
@@ -65,7 +68,7 @@ export default function Contact() {
                           id="email"
                           placeholder="Your Email"
                         />
-                        <label for="email">Email Anda</label>
+                        <label for="email">{t('pages:contact.form.email')}</label>
                       </div>
                     </div>
                     <div class="col-12">
@@ -76,7 +79,7 @@ export default function Contact() {
                           id="subject"
                           placeholder="Subject"
                         />
-                        <label for="subject">Subject</label>
+                        <label for="subject">{t('pages:contact.form.subject')}</label>
                       </div>
                     </div>
                     <div class="col-12">
@@ -87,12 +90,12 @@ export default function Contact() {
                           id="message"
                           style={{ height: "150px" }}
                         ></textarea>
-                        <label for="message">Pesan</label>
+                        <label for="message">{t('pages:contact.form.message')}</label>
                       </div>
                     </div>
                     <div class="col-12">
                       <button class="btn btn-primary w-100 py-3" type="submit">
-                        Kirim Pesan
+                        {t('pages:contact.form.submit')}
                       </button>
                     </div>
                   </div>

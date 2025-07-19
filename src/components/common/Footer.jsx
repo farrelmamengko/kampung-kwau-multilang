@@ -45,9 +45,9 @@ export default function Footer() {
                       {t(`footer:${section.header.toLowerCase()}`)}
                     </h6>
                     {section.UnitItem.map((item, itemIndex) => (
-                                              <a className="btn btn-link" href="" key={itemIndex}>
+                      <a className="btn btn-link" href="" key={itemIndex}>
                           {t(`footer:${item.name.toLowerCase().replace(/\s+/g, '')}`)}
-                        </a>
+                      </a>
                     ))}
                   </div>
                 ))}

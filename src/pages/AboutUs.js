@@ -1,8 +1,11 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import Team from "../components/home/Team";
 import Headings from "../components/common/Headings";
 
 export default function AboutUs() {
+  const { t } = useTranslation();
+
   return (
     <>
       <Headings heading="About" title="Home" subtitle="About" />
@@ -11,32 +14,14 @@ export default function AboutUs() {
           <div className="row g-5 align-items-center">
             <div className="col-lg-6">
               <h6 className="section-title text-start text-primary text-uppercase">
-                Kampung Kwau
+                {t('pages:about.title')}
               </h6>
               <h1 className="mb-4">
-                Selamat Datang Di{" "}
-                <span className="text-primary text-uppercase">Kampung Kwau</span>
+                {t('pages:about.welcome')}{" "}
+                <span className="text-primary text-uppercase">{t('pages:about.title')}</span>
               </h1>
               <p className="mb-4">
-              Kampung Kwau, yang terletak di Distrik Mokwam, Kabupaten Manokwari, Papua
-              Barat, dikenal sebagai kawasan hutan konservasi dengan keanekaragaman hayati yang luar biasa,
-              terutama burung endemik Papua. Selain menjadi habitat alami bagi berbagai spesies langka,
-              Kampung Kwau juga memiliki potensi besar sebagai destinasi wisata berbasis alam yang menarik
-              bagi wisatawan lokal maupun mancanegara. 
-              Salah satu daya tarik utama Kampung Kwau adalah keberagaman faunanya, khususnya
-              burung endemik Papua yang dapat diamati melalui kegiatan birdwatching. Selain itu, pengunjung
-              juga dapat menikmati keindahan kupu-kupu yang beraneka ragam. Dari segi flora, kampung ini
-              memiliki kekayaan alam yang unik, seperti pohon pisang hutan raksasa Musa ingens W.
-              Simmonds, yang merupakan spesies endemik Papua, serta berbagai jenis anggrek yang tumbuh
-              subur dan mempercantik lanskap hutan.
-              Selain keindahan alamnya, Kampung Kwau juga menawarkan pesona budaya yang khas.
-              Salah satu atraksi budaya yang menarik adalah Tari Tumbu Tanah, tarian tradisional yang
-              mencerminkan kekayaan dan kearifan lokal masyarakat setempat. Keindahan alam semakin
-              lengkap dengan adanya air terjun yang menambah daya tarik bagi para pencinta petualangan dan
-              wisata alam.
-              Dengan keunikan ekosistem dan budaya yang dimilikinya, Kampung Kwau merupakan
-              destinasi yang sempurna bagi siapa saja yang ingin menikmati keindahan alam Papua Barat
-              sekaligus merasakan kearifan budaya lokal yang autentik.
+                {t('pages:about.description')}
               </p>
               {/* <a className="btn btn-primary py-3 px-5 mt-2" href="/about">
                 Explore More

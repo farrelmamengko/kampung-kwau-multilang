@@ -1,0 +1,202 @@
+{
+  "about": {
+    "title": "Kampung Kwau",
+    "welcome": "Welcome to",
+    "description": "Kampung Kwau, located in Mokwam District, Manokwari Regency, West Papua, is known as a conservation forest area with extraordinary biodiversity, especially endemic Papuan birds. In addition to being a natural habitat for various rare species, Kampung Kwau also has great potential as an attractive nature-based tourism destination for both local and foreign tourists. One of the main attractions of Kampung Kwau is its faunal diversity, especially endemic Papuan birds that can be observed through birdwatching activities. In addition, visitors can also enjoy the beauty of various butterflies. From the flora side, this village has unique natural wealth, such as the giant forest banana tree Musa ingens W. Simmonds, which is an endemic Papuan species, as well as various types of orchids that grow lushly and beautify the forest landscape. In addition to its natural beauty, Kampung Kwau also offers distinctive cultural charm. One of the interesting cultural attractions is the Tumbu Tanah Dance, a traditional dance that reflects the richness and local wisdom of the local community. The natural beauty is even more complete with the presence of waterfalls that add to the appeal for adventure and nature tourism enthusiasts. With its unique ecosystem and culture, Kampung Kwau is the perfect destination for anyone who wants to enjoy the natural beauty of West Papua while experiencing authentic local cultural wisdom."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Contact",
+    "description": "Us For More Information",
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message"
+    }
+  },
+  "booking": {
+    "title": "Choose Tour Package",
+    "duration": "Duration",
+    "maxGuests": "Max",
+    "guests": "people",
+    "includes": "Includes",
+    "selectPackage": "Select Package",
+    "next": "Next",
+    "back": "Back",
+    "confirm": "Confirm",
+    "success": "Booking Successful!",
+    "successMessage": "Thank you for trusting Kampung Kwau for your vacation.",
+    "bookingDetails": "Booking Details:",
+    "bookingNumber": "Booking Number",
+    "package": "Package",
+    "total": "Total",
+    "status": "Status",
+    "waitingConfirmation": "Waiting for Confirmation",
+    "emailInfo": "Confirmation email will be sent within 1x24 hours. Our team will contact you for payment confirmation and further details.",
+    "backToHome": "Back to Home",
+    "createBooking": "Create Booking",
+    "processing": "Processing...",
+    "step2": {
+      "title": "Date & Number of Guests",
+      "checkIn": "Check-in Date",
+      "checkOut": "Check-out Date",
+      "checkInPlaceholder": "Select check-in date",
+      "checkOutPlaceholder": "Select check-out date",
+      "adults": "Adults",
+      "children": "Children (0-12 years)",
+      "adultsOption": "people",
+      "childrenOption": "children",
+      "adultsRequired": "Number of adults must be filled",
+      "priceEstimate": "Price Estimate:",
+      "adultsPrice": "Adults",
+      "childrenPrice": "Children",
+      "days": "days",
+      "subtotal": "Subtotal"
+    },
+    "step3": {
+      "title": "Additional Activities (Optional)",
+      "totalPrice": "Total Price:",
+      "packagePrice": "Package",
+      "additionalActivities": "Additional activities",
+      "tax": "Tax (10%)"
+    },
+    "step4": {
+      "title": "Personal Information",
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "nationality": "Nationality",
+      "emergencyContact": "Emergency Contact",
+      "specialRequests": "Special Requests",
+      "dietaryRestrictions": "Dietary Restrictions",
+      "accessibilityNeeds": "Accessibility Needs",
+      "specialOccasion": "Special Occasion",
+      "additionalNotes": "Additional Notes",
+      "placeholder": {
+        "fullName": "Enter full name",
+        "email": "Enter email address",
+        "phone": "Enter phone number",
+        "emergencyContact": "Name - Phone number",
+        "dietaryRestrictions": "Example: Vegetarian, seafood allergy",
+        "accessibilityNeeds": "Example: Wheelchair, special access",
+        "specialOccasion": "Example: Anniversary, birthday",
+        "additionalNotes": "Additional notes for our team"
+      }
+    },
+    "step5": {
+      "title": "Booking Confirmation",
+      "reviewBooking": "Review Your Booking",
+      "personalInfo": "Personal Information",
+      "bookingInfo": "Booking Information",
+      "activities": "Additional Activities",
+      "specialRequests": "Special Requests",
+      "noActivities": "No additional activities",
+      "noSpecialRequests": "No special requests"
+    }
+  },
+  "activities": {
+    "extendedBirdwatching": {
+      "name": "Extended Birdwatching Tour",
+      "description": "Extra 3-hour birdwatching tour with specialist bird guide"
+    },
+    "photographyWorkshop": {
+      "name": "Photography Workshop",
+      "description": "Nature and wildlife photography workshop with professional photographer"
+    },
+    "cookingClass": {
+      "name": "Traditional Cooking Class",
+      "description": "Learn to cook traditional Papuan food with local mamas"
+    },
+    "nightForestWalk": {
+      "name": "Night Forest Walk",
+      "description": "Night walk in the forest to see nocturnal activities"
+    },
+    "butterflyGarden": {
+      "name": "Butterfly Garden Tour",
+      "description": "Special tour to butterfly garden with lepidopterist guide"
+    },
+    "craftWorkshop": {
+      "name": "Traditional Craft Workshop",
+      "description": "Traditional handicraft making workshop of Arfak tribe"
+    }
+  },
+  "bookingStatus": {
+    "title": "Check Booking Status",
+    "searchTitle": "Search Your Booking",
+    "searchBy": "Search by:",
+    "bookingNumber": "Booking Number",
+    "email": "Email",
+    "searchPlaceholder": "Enter booking number (KW-YYYYMMDD-XXX)",
+    "emailPlaceholder": "Enter email address",
+    "search": "Search",
+    "noResults": "No bookings found. Please check your booking number or email again.",
+    "bookingDetails": "Booking Details",
+    "customerInfo": "Customer Information",
+    "packageInfo": "Package Information",
+    "activities": "Additional Activities",
+    "specialRequests": "Special Requests",
+    "pricing": "Cost Breakdown",
+    "createdAt": "Booking Date"
+  },
+  "tourPackage": {
+    "title": "Tour Package",
+    "heading": "If You Visit Kampung Kwau, Several Tour Package Options Are Available",
+    "packages": {
+      "basic": {
+        "name": "Basic Package",
+        "description": "Basic tour package covering homestay accommodation, local food, and birdwatching activities with an experienced local guide.",
+        "price": "Rp 250.000/night",
+        "duration": "2D1N",
+        "maxGuests": 4,
+        "includes": [
+          "1 night homestay",
+          "3x local meals",
+          "Birdwatching tour (3 hours)",
+          "Local guide",
+          "Local transportation"
+        ]
+      },
+      "standard": {
+        "name": "Standard Package",
+        "description": "Complete tour package with Arfak tribe cultural experience, nature exploration, and various other interesting activities.",
+        "price": "Rp 450.000/night",
+        "duration": "3D2N",
+        "maxGuests": 6,
+        "includes": [
+          "2 nights premium homestay",
+          "All meals + snacks",
+          "Birdwatching + tracking",
+          "Cultural tour",
+          "Waterfall tour",
+          "Craft workshop"
+        ]
+      },
+      "premium": {
+        "name": "Premium Package",
+        "description": "Premium tour package with all the best facilities, exclusive experience, and professional private guide service.",
+        "price": "Rp 750.000/night",
+        "duration": "4D3N",
+        "maxGuests": 8,
+        "includes": [
+          "3 nights VIP homestay",
+          "All meals + welcome drink",
+          "Private birdwatching",
+          "Photography workshop",
+          "Cooking class",
+          "Souvenir package"
+        ]
+      }
+    },
+    "facilities": {
+      "bed": "bed",
+      "bath": "bath",
+      "wifi": "Wifi"
+    },
+    "buttons": {
+      "detail": "Detail",
+      "booking": "Booking"
+    }
+  }
+} 

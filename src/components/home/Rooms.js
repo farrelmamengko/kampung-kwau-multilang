@@ -1,14 +1,19 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import CommonHeading from "../common/CommonHeading";
-import { facility, roomItems } from "../data/Data";
+import { getFacility, getRoomItems } from "../data/Data";
 
 export default function Rooms() {
+  const { t } = useTranslation();
+  const roomItems = getRoomItems(t);
+  const facility = getFacility(t);
+
   return (
     <>
       <div className="container-xxl py-5">
         <div className="container">
           <CommonHeading
-            heading="Jika Anda Berkunjung Ke Kampung Kwau, Tersedia Beberapa Pilihan Paket Wisata"
+            heading={t('pages:tourPackage.heading')}
             // title="Rooms"
             // subtitle="Explore Our"
           />

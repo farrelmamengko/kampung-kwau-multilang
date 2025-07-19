@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Heading from "../components/common/Heading";
-import { roomItems, additionalActivities } from '../components/data/Data';
+import { getRoomItems, getAdditionalActivities } from '../components/data/Data';
 import { createBooking, calculateTotalPrice } from '../services/bookingService';
 
 const BookingPage = () => {
+  const { t } = useTranslation();
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const roomItems = getRoomItems(t);
+  const additionalActivities = getAdditionalActivities(t);
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [checkInDate, setCheckInDate] = useState(null);
@@ -165,7 +169,7 @@ const BookingPage = () => {
             {currentStep === 1 && (
               <div className="row">
                 <div className="col-12">
-                  <h3 className="mb-4 text-center">Pilih Paket Wisata</h3>
+                  <h3 className="mb-4 text-center">{t('pages:booking.title')}</h3>
                   <div className="row g-4">
                     {roomItems.map((pkg) => (
                       <div key={pkg.id} className="col-lg-4 col-md-6">
@@ -177,15 +181,17 @@ const BookingPage = () => {
                             <p className="card-text">{pkg.description}</p>
                             <div className="mb-3">
                               <small className="text-muted">
-                                <strong>Durasi:</strong> {pkg.duration} | <strong>Max:</strong> {pkg.maxGuests} orang
+                                <strong>{t('pages:booking.duration')}:</strong> {pkg.duration} | <strong>{t('pages:booking.maxGuests')}:</strong> {pkg.maxGuests} {t('pages:booking.guests')}
                               </small>
                             </div>
                             <div className="mb-3">
-                              <strong>Termasuk:</strong>
+                              <strong>{t('pages:booking.includes')}:</strong>
                               <ul className="list-unstyled mt-2">
-                                {pkg.includes.map((item, idx) => (
+                                {Array.isArray(pkg.includes) ? pkg.includes.map((item, idx) => (
                                   <li key={idx}><i className="fa fa-check text-primary me-2"></i>{item}</li>
-                                ))}
+                                )) : (
+                                  <li><i className="fa fa-check text-primary me-2"></i>{pkg.includes}</li>
+                                )}
                               </ul>
                             </div>
                             <button 
@@ -193,7 +199,7 @@ const BookingPage = () => {
                               className="btn btn-primary mt-auto"
                               onClick={() => handlePackageSelect(pkg)}
                             >
-                              Pilih Paket
+                              {t('pages:booking.selectPackage')}
                             </button>
                           </div>
                         </div>
@@ -208,49 +214,49 @@ const BookingPage = () => {
             {currentStep === 2 && selectedPackage && (
               <div className="row">
                 <div className="col-lg-8 mx-auto">
-                  <h3 className="mb-4 text-center">Tanggal & Jumlah Tamu</h3>
+                  <h3 className="mb-4 text-center">{t('pages:booking.step2.title')}</h3>
                   <div className="card">
                     <div className="card-body">
                       <div className="row g-3">
                         <div className="col-md-6">
-                          <label className="form-label">Tanggal Check-in</label>
+                          <label className="form-label">{t('pages:booking.step2.checkIn')}</label>
                           <DatePicker
                             selected={checkInDate}
                             onChange={handleCheckInChange}
                             minDate={new Date()}
                             dateFormat="dd/MM/yyyy"
                             className="form-control"
-                            placeholderText="Pilih tanggal check-in"
+                            placeholderText={t('pages:booking.step2.checkInPlaceholder')}
                           />
                         </div>
                         <div className="col-md-6">
-                          <label className="form-label">Tanggal Check-out</label>
+                          <label className="form-label">{t('pages:booking.step2.checkOut')}</label>
                           <DatePicker
                             selected={checkOutDate}
                             onChange={setCheckOutDate}
                             minDate={checkInDate ? new Date(checkInDate.getTime() + 24*60*60*1000) : new Date()}
                             dateFormat="dd/MM/yyyy"
                             className="form-control"
-                            placeholderText="Pilih tanggal check-out"
+                            placeholderText={t('pages:booking.step2.checkOutPlaceholder')}
                           />
                         </div>
                         <div className="col-md-6">
-                          <label className="form-label">Dewasa</label>
+                          <label className="form-label">{t('pages:booking.step2.adults')}</label>
                           <select 
                             className="form-select" 
-                            {...register('adults', { required: 'Jumlah dewasa harus diisi', min: 1 })}
+                            {...register('adults', { required: t('pages:booking.step2.adultsRequired'), min: 1 })}
                           >
                             {[1,2,3,4,5,6,7,8].map(num => (
-                              <option key={num} value={num}>{num} orang</option>
+                              <option key={num} value={num}>{num} {t('pages:booking.step2.adultsOption')}</option>
                             ))}
                           </select>
                           {errors.adults && <div className="text-danger">{errors.adults.message}</div>}
                         </div>
                         <div className="col-md-6">
-                          <label className="form-label">Anak-anak (0-12 tahun)</label>
+                          <label className="form-label">{t('pages:booking.step2.children')}</label>
                           <select className="form-select" {...register('children')}>
                             {[0,1,2,3,4].map(num => (
-                              <option key={num} value={num}>{num} anak</option>
+                              <option key={num} value={num}>{num} {t('pages:booking.step2.childrenOption')}</option>
                             ))}
                           </select>
                         </div>
@@ -259,20 +265,20 @@ const BookingPage = () => {
                       {/* Price Preview */}
                       {totalPricing && (
                         <div className="mt-4 p-3 bg-light rounded">
-                          <h6>Estimasi Harga:</h6>
+                          <h6>{t('pages:booking.step2.priceEstimate')}</h6>
                           <div className="d-flex justify-content-between">
-                            <span>Dewasa ({watchedAdults} x {duration} hari)</span>
+                            <span>{t('pages:booking.step2.adultsPrice')} ({watchedAdults} x {duration} {t('pages:booking.step2.days')})</span>
                             <span>Rp {totalPricing.adultPrice.toLocaleString()}</span>
                           </div>
                           {totalPricing.childPrice > 0 && (
                             <div className="d-flex justify-content-between">
-                              <span>Anak-anak ({watchedChildren} x {duration} hari)</span>
+                              <span>{t('pages:booking.step2.childrenPrice')} ({watchedChildren} x {duration} {t('pages:booking.step2.days')})</span>
                               <span>Rp {totalPricing.childPrice.toLocaleString()}</span>
                             </div>
                           )}
                           <hr />
                           <div className="d-flex justify-content-between fw-bold">
-                            <span>Subtotal</span>
+                            <span>{t('pages:booking.step2.subtotal')}</span>
                             <span>Rp {totalPricing.subtotal.toLocaleString()}</span>
                           </div>
                         </div>
@@ -284,7 +290,7 @@ const BookingPage = () => {
                           className="btn btn-secondary"
                           onClick={() => setCurrentStep(1)}
                         >
-                          Kembali
+                          {t('pages:booking.back')}
                         </button>
                         <button 
                           type="button" 
@@ -292,7 +298,7 @@ const BookingPage = () => {
                           onClick={() => setCurrentStep(3)}
                           disabled={!checkInDate || !checkOutDate}
                         >
-                          Lanjut
+                          {t('pages:booking.next')}
                         </button>
                       </div>
                     </div>
@@ -305,7 +311,7 @@ const BookingPage = () => {
             {currentStep === 3 && (
               <div className="row">
                 <div className="col-lg-10 mx-auto">
-                  <h3 className="mb-4 text-center">Aktivitas Tambahan (Opsional)</h3>
+                  <h3 className="mb-4 text-center">{t('pages:booking.step3.title')}</h3>
                   <div className="row g-3">
                     {additionalActivities.map((activity) => (
                       <div key={activity.id} className="col-md-6">
@@ -343,24 +349,24 @@ const BookingPage = () => {
                   {/* Updated Price with Activities */}
                   {totalPricing && (
                     <div className="mt-4 p-3 bg-light rounded">
-                      <h6>Total Harga:</h6>
+                      <h6>{t('pages:booking.step3.totalPrice')}</h6>
                       <div className="d-flex justify-content-between">
-                        <span>Paket ({duration} hari)</span>
+                        <span>{t('pages:booking.step3.packagePrice')} ({duration} {t('pages:booking.step2.days')})</span>
                         <span>Rp {(totalPricing.adultPrice + totalPricing.childPrice).toLocaleString()}</span>
                       </div>
                       {totalPricing.activitiesPrice > 0 && (
                         <div className="d-flex justify-content-between">
-                          <span>Aktivitas tambahan</span>
+                          <span>{t('pages:booking.step3.additionalActivities')}</span>
                           <span>Rp {totalPricing.activitiesPrice.toLocaleString()}</span>
                         </div>
                       )}
                       <div className="d-flex justify-content-between">
-                        <span>Pajak (10%)</span>
+                        <span>{t('pages:booking.step3.tax')}</span>
                         <span>Rp {totalPricing.tax.toLocaleString()}</span>
                       </div>
                       <hr />
                       <div className="d-flex justify-content-between fw-bold fs-5">
-                        <span>Total</span>
+                        <span>{t('pages:booking.total')}</span>
                         <span className="text-primary">Rp {totalPricing.total.toLocaleString()}</span>
                       </div>
                     </div>
@@ -372,14 +378,14 @@ const BookingPage = () => {
                       className="btn btn-secondary"
                       onClick={() => setCurrentStep(2)}
                     >
-                      Kembali
+                      {t('pages:booking.back')}
                     </button>
                     <button 
                       type="button" 
                       className="btn btn-primary"
                       onClick={() => setCurrentStep(4)}
                     >
-                      Lanjut
+                      {t('pages:booking.next')}
                     </button>
                   </div>
                 </div>
@@ -390,26 +396,28 @@ const BookingPage = () => {
             {currentStep === 4 && (
               <div className="row">
                 <div className="col-lg-8 mx-auto">
-                  <h3 className="mb-4 text-center">Data Pribadi</h3>
+                  <h3 className="mb-4 text-center">{t('pages:booking.step4.title')}</h3>
                   <div className="card">
                     <div className="card-body">
                       <div className="row g-3">
                         <div className="col-md-6">
-                          <label className="form-label">Nama Lengkap *</label>
+                          <label className="form-label">{t('pages:booking.step4.fullName')} *</label>
                           <input 
                             type="text" 
                             className="form-control" 
-                            {...register('customerName', { required: 'Nama lengkap harus diisi' })}
+                            placeholder={t('pages:booking.step4.placeholder.fullName')}
+                            {...register('customerName', { required: t('pages:booking.step4.fullName') + ' harus diisi' })}
                           />
                           {errors.customerName && <div className="text-danger">{errors.customerName.message}</div>}
                         </div>
                         <div className="col-md-6">
-                          <label className="form-label">Email *</label>
+                          <label className="form-label">{t('pages:booking.step4.email')} *</label>
                           <input 
                             type="email" 
                             className="form-control" 
+                            placeholder={t('pages:booking.step4.placeholder.email')}
                             {...register('email', { 
-                              required: 'Email harus diisi',
+                              required: t('pages:booking.step4.email') + ' harus diisi',
                               pattern: {
                                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                                 message: 'Format email tidak valid'
@@ -419,70 +427,71 @@ const BookingPage = () => {
                           {errors.email && <div className="text-danger">{errors.email.message}</div>}
                         </div>
                         <div className="col-md-6">
-                          <label className="form-label">No. Telepon *</label>
+                          <label className="form-label">{t('pages:booking.step4.phone')} *</label>
                           <input 
                             type="tel" 
                             className="form-control" 
-                            {...register('phone', { required: 'No. telepon harus diisi' })}
+                            placeholder={t('pages:booking.step4.placeholder.phone')}
+                            {...register('phone', { required: t('pages:booking.step4.phone') + ' harus diisi' })}
                           />
                           {errors.phone && <div className="text-danger">{errors.phone.message}</div>}
                         </div>
                         <div className="col-md-6">
-                          <label className="form-label">Kewarganegaraan</label>
+                          <label className="form-label">{t('pages:booking.step4.nationality')}</label>
                           <select className="form-select" {...register('nationality')}>
                             <option value="Indonesia">Indonesia</option>
                             <option value="Malaysia">Malaysia</option>
                             <option value="Singapore">Singapore</option>
                             <option value="Australia">Australia</option>
-                            <option value="Other">Lainnya</option>
+                            <option value="Other">Other</option>
                           </select>
                         </div>
                         <div className="col-12">
-                          <label className="form-label">Kontak Darurat</label>
+                          <label className="form-label">{t('pages:booking.step4.emergencyContact')}</label>
                           <input 
                             type="text" 
                             className="form-control" 
-                            placeholder="Nama dan nomor telepon kontak darurat"
+                            placeholder={t('pages:booking.step4.placeholder.emergencyContact')}
                             {...register('emergencyContact')}
                           />
                         </div>
                         
                         <div className="col-12">
-                          <h6 className="mt-3">Permintaan Khusus (Opsional)</h6>
+                          <h6 className="mt-3">{t('pages:booking.step4.specialRequests')} (Optional)</h6>
                         </div>
                         <div className="col-md-6">
-                          <label className="form-label">Pantangan Makanan</label>
+                          <label className="form-label">{t('pages:booking.step4.dietaryRestrictions')}</label>
                           <input 
                             type="text" 
                             className="form-control" 
-                            placeholder="Vegetarian, halal, alergi, dll"
+                            placeholder={t('pages:booking.step4.placeholder.dietaryRestrictions')}
                             {...register('dietaryRestrictions')}
                           />
                         </div>
                         <div className="col-md-6">
-                          <label className="form-label">Kebutuhan Khusus</label>
+                          <label className="form-label">{t('pages:booking.step4.accessibilityNeeds')}</label>
                           <input 
                             type="text" 
                             className="form-control" 
-                            placeholder="Kursi roda, dll"
+                            placeholder={t('pages:booking.step4.placeholder.accessibilityNeeds')}
                             {...register('accessibilityNeeds')}
                           />
                         </div>
                         <div className="col-md-6">
-                          <label className="form-label">Acara Spesial</label>
+                          <label className="form-label">{t('pages:booking.step4.specialOccasion')}</label>
                           <input 
                             type="text" 
                             className="form-control" 
-                            placeholder="Ulang tahun, anniversary, dll"
+                            placeholder={t('pages:booking.step4.placeholder.specialOccasion')}
                             {...register('specialOccasion')}
                           />
                         </div>
                         <div className="col-12">
-                          <label className="form-label">Catatan Tambahan</label>
+                          <label className="form-label">{t('pages:booking.step4.additionalNotes')}</label>
                           <textarea 
                             className="form-control" 
                             rows="3"
-                            placeholder="Catatan khusus untuk perjalanan Anda"
+                            placeholder={t('pages:booking.step4.placeholder.additionalNotes')}
                             {...register('additionalNotes')}
                           ></textarea>
                         </div>
@@ -494,14 +503,14 @@ const BookingPage = () => {
                           className="btn btn-secondary"
                           onClick={() => setCurrentStep(3)}
                         >
-                          Kembali
+                          {t('pages:booking.back')}
                         </button>
                         <button 
                           type="submit" 
                           className="btn btn-primary"
                           disabled={isSubmitting}
                         >
-                          {isSubmitting ? 'Memproses...' : 'Buat Booking'}
+                          {isSubmitting ? t('pages:booking.processing') : t('pages:booking.createBooking')}
                         </button>
                       </div>
                     </div>
@@ -517,20 +526,20 @@ const BookingPage = () => {
                   <div className="card">
                     <div className="card-body">
                       <i className="fa fa-check-circle text-success" style={{fontSize: '4rem'}}></i>
-                      <h3 className="mt-3 text-success">Booking Berhasil!</h3>
-                      <p className="text-muted">Terima kasih telah mempercayai Kampung Kwau untuk liburan Anda.</p>
+                      <h3 className="mt-3 text-success">{t('pages:booking.success')}</h3>
+                      <p className="text-muted">{t('pages:booking.successMessage')}</p>
                       
                       <div className="alert alert-info">
-                        <h5>Detail Booking:</h5>
-                        <p><strong>Nomor Booking:</strong> {bookingResult.bookingNumber}</p>
-                        <p><strong>Paket:</strong> {selectedPackage.name}</p>
-                        <p><strong>Total:</strong> Rp {totalPricing?.total.toLocaleString()}</p>
-                        <p className="mb-0"><strong>Status:</strong> Menunggu Konfirmasi</p>
+                        <h5>{t('pages:booking.bookingDetails')}</h5>
+                        <p><strong>{t('pages:booking.bookingNumber')}:</strong> {bookingResult.bookingNumber}</p>
+                        <p><strong>{t('pages:booking.package')}:</strong> {selectedPackage.name}</p>
+                        <p><strong>{t('pages:booking.total')}:</strong> Rp {totalPricing?.total.toLocaleString()}</p>
+                        <p className="mb-0"><strong>{t('pages:booking.status')}:</strong> {t('pages:booking.waitingConfirmation')}</p>
                       </div>
                       
                       <div className="alert alert-warning">
                         <p><i className="fa fa-info-circle me-2"></i>
-                          Email konfirmasi akan dikirim dalam 1x24 jam. Tim kami akan menghubungi Anda untuk konfirmasi pembayaran dan detail lebih lanjut.
+                          {t('pages:booking.emailInfo')}
                         </p>
                       </div>
                       
@@ -539,7 +548,7 @@ const BookingPage = () => {
                         className="btn btn-primary"
                         onClick={() => window.location.href = '/'}
                       >
-                        Kembali ke Home
+                        {t('pages:booking.backToHome')}
                       </button>
                     </div>
                   </div>

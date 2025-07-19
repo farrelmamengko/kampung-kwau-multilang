@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Heading from "../components/common/Heading";
 import { getBookingByNumber, getBookingsByCustomer } from '../services/bookingService';
 
 const BookingStatus = () => {
+  const { t } = useTranslation();
   const [searchType, setSearchType] = useState('booking'); // 'booking' or 'email'
   const [searchValue, setSearchValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -88,7 +90,7 @@ const BookingStatus = () => {
 
   return (
     <>
-      <Heading heading="Cek Status Booking" title="Home" subtitle="Status Booking" />
+      <Heading heading={t('pages:bookingStatus.title')} title="Home" subtitle="Status Booking" />
       
       <div className="container-xxl py-5">
         <div className="container">
@@ -97,10 +99,10 @@ const BookingStatus = () => {
               {/* Search Form */}
               <div className="card mb-4">
                 <div className="card-body">
-                  <h5 className="card-title">Cari Booking Anda</h5>
+                  <h5 className="card-title">{t('pages:bookingStatus.searchTitle')}</h5>
                   <form onSubmit={handleSearch}>
                     <div className="mb-3">
-                      <label className="form-label">Cari berdasarkan:</label>
+                      <label className="form-label">{t('pages:bookingStatus.searchBy')}</label>
                       <div className="d-flex gap-3 mb-3">
                         <div className="form-check">
                           <input
@@ -113,7 +115,7 @@ const BookingStatus = () => {
                             onChange={(e) => setSearchType(e.target.value)}
                           />
                           <label className="form-check-label" htmlFor="searchBooking">
-                            Nomor Booking
+                            {t('pages:bookingStatus.bookingNumber')}
                           </label>
                         </div>
                         <div className="form-check">
@@ -127,7 +129,7 @@ const BookingStatus = () => {
                             onChange={(e) => setSearchType(e.target.value)}
                           />
                           <label className="form-check-label" htmlFor="searchEmail">
-                            Email
+                            {t('pages:bookingStatus.email')}
                           </label>
                         </div>
                       </div>
@@ -137,7 +139,7 @@ const BookingStatus = () => {
                       <input
                         type={searchType === 'booking' ? 'text' : 'email'}
                         className="form-control"
-                        placeholder={searchType === 'booking' ? 'Masukkan nomor booking (KW-YYYYMMDD-XXX)' : 'Masukkan alamat email'}
+                        placeholder={searchType === 'booking' ? t('pages:bookingStatus.searchPlaceholder') : t('pages:bookingStatus.emailPlaceholder')}
                         value={searchValue}
                         onChange={(e) => setSearchValue(e.target.value)}
                       />
@@ -151,7 +153,7 @@ const BookingStatus = () => {
                         ) : (
                           <i className="fa fa-search me-2"></i>
                         )}
-                        Cari
+                        {t('pages:bookingStatus.search')}
                       </button>
                     </div>
                   </form>
@@ -165,7 +167,7 @@ const BookingStatus = () => {
                     <div className="col-12">
                       <div className="alert alert-info">
                         <i className="fa fa-info-circle me-2"></i>
-                        Tidak ada booking ditemukan. Periksa kembali nomor booking atau email Anda.
+                        {t('pages:bookingStatus.noResults')}
                       </div>
                     </div>
                   ) : (
