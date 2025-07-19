@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { footerContact, footerItem, socialIcons } from "../data/Data";
+import { footerContact, footerItem } from "../data/Data";
 import Newsletter from "../home/Newsletter";
+import SocialMediaIcons from "./SocialMediaIcons";
 
 export default function Footer() {
   return (
@@ -33,13 +34,7 @@ export default function Footer() {
                   {val.icon} {val.name}
                 </p>
               ))}
-              <div className="d-flex pt-2">
-                {socialIcons.slice(0, 4).map((val, index) => (
-                  <a className="btn btn-outline-light btn-social" href="">
-                    {val.icon}
-                  </a>
-                ))}
-              </div>
+              <SocialMediaIcons />
             </div>
             <div className="col-lg-5 col-md-12">
               <div className="row gy-5 g-4">

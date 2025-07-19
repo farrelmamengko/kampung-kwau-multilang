@@ -1,7 +1,7 @@
 import React from "react";
-import { socialIcons, team } from "../data/Data";
-import { Link } from "react-router-dom";
+import { team } from "../data/Data";
 import CommonHeading from "../common/CommonHeading";
+import SocialMediaIcons from "../common/SocialMediaIcons";
 
 export default function Teams() {
   return (
@@ -24,15 +24,7 @@ export default function Teams() {
                   <div className="position-relative">
                     <img className="img-fluid" src={item.image} alt="img" />
                     <div className="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
-                      {socialIcons.slice(0, 3).map((val, index) => (
-                        <a
-                          className="btn btn-square btn-primary mx-1"
-                          href=""
-                          key={index}
-                        >
-                          {val.icon}
-                        </a>
-                      ))}
+                      <SocialMediaIcons className="btn btn-square btn-primary mx-1" containerClass="d-flex" />
                     </div>
                   </div>
                   <div className="text-center p-4 mt-3">

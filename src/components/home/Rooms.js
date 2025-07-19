@@ -39,7 +39,7 @@ export default function Rooms() {
                     <div className="d-flex justify-content-between">
                       <a
                         className="btn btn-sm btn-primary rounded py-2 px-4"
-                        href="#"
+                        href="/paketwisata"
                       >
                         {item.yellowbtn}
                       </a>

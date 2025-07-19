@@ -225,6 +225,123 @@
     color: #FFFFFF !important;
 }
 
+/* Memastikan ikon Font Awesome tampil dengan benar */
+.service-item .service-icon i {
+    display: inline-block !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+/* Fallback untuk Font Awesome 5 */
+.service-item .service-icon i.fa {
+    font-family: "Font Awesome 5 Free" !important;
+}
+
+/* Memastikan ikon di footer tampil dengan benar */
+.footer .btn.btn-social i {
+    display: inline-block !important;
+    font-family: "Font Awesome 6 Free" !important;
+    font-weight: 900 !important;
+    font-style: normal !important;
+    font-variant: normal !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+    font-size: 16px !important;
+}
+
+/* Ikon brand untuk sosial media */
+.footer .btn.btn-social i.fab {
+    font-weight: 400 !important;
+    font-family: "Font Awesome 6 Brands" !important;
+}
+
+/* Fallback untuk Font Awesome 5 */
+.footer .btn.btn-social i.fab {
+    font-family: "Font Awesome 5 Brands" !important;
+}
+
+/* Memastikan ikon brand dimuat dengan benar */
+.fab.fa-facebook-f::before {
+    content: "\f39e" !important;
+}
+
+.fab.fa-twitter::before {
+    content: "\f099" !important;
+}
+
+.fab.fa-instagram::before {
+    content: "\f16d" !important;
+}
+
+.fab.fa-linkedin-in::before {
+    content: "\f0e1" !important;
+}
+
+.fab.fa-youtube::before {
+    content: "\f167" !important;
+}
+
+/* Memastikan tombol sosial media memiliki ukuran yang tepat */
+.footer .btn.btn-social {
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-right: 8px !important;
+    border-radius: 50% !important;
+    transition: all 0.3s ease !important;
+}
+
+.footer .btn.btn-social:hover {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Memastikan ikon sosial media di header tampil dengan benar */
+.navbar .btn-social i,
+.footer .btn-social i,
+.team-item .btn-social i {
+    font-size: 18px !important;
+    line-height: 1 !important;
+}
+
+/* Fallback untuk ikon yang tidak dimuat */
+.fab.fa-facebook-f:not([class*="fa-facebook-f"])::before {
+    content: "f" !important;
+    font-family: Arial, sans-serif !important;
+    font-weight: bold !important;
+}
+
+.fab.fa-twitter:not([class*="fa-twitter"])::before {
+    content: "t" !important;
+    font-family: Arial, sans-serif !important;
+    font-weight: bold !important;
+}
+
+.fab.fa-instagram:not([class*="fa-instagram"])::before {
+    content: "i" !important;
+    font-family: Arial, sans-serif !important;
+    font-weight: bold !important;
+}
+
+.fab.fa-linkedin-in:not([class*="fa-linkedin-in"])::before {
+    content: "in" !important;
+    font-family: Arial, sans-serif !important;
+    font-weight: bold !important;
+}
+
+.fab.fa-youtube:not([class*="fa-youtube"])::before {
+    content: "yt" !important;
+    font-family: Arial, sans-serif !important;
+    font-weight: bold !important;
+}
+
 
 /*** Youtube Video ***/
 .video {

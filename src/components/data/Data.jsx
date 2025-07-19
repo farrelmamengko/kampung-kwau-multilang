@@ -55,31 +55,36 @@ export const navList = [
 export const socialIcons = [
   {
     icon: <i className="fab fa-facebook-f"></i>,
+    href: "https://facebook.com/kampungkwaupapua",
   },
   {
     icon: <i className="fab fa-twitter"></i>,
+    href: "https://twitter.com/kampungkwaupapua",
   },
   {
     icon: <i className="fab fa-instagram"></i>,
+    href: "https://instagram.com/kampungkwaupapua",
   },
   {
     icon: <i className="fab fa-linkedin-in"></i>,
+    href: "https://linkedin.com/company/kampungkwaupapua",
   },
   {
     icon: <i className="fab fa-youtube"></i>,
+    href: "https://youtube.com/@kampungkwaupapua",
   },
 ];
 
 export const carouselData = [
   {
-    img: "../assets/img/carousel-1.jpg",
+    img: "/assets/img/carousel-1.jpg",
     title: "Discover A Brand Luxurious Hotel",
     subtitle: "luxury living",
     btn1: "Our Room",
     btn2: "Book Room",
   },
   {
-    img: "../assets/img/carousel-2.jpg",
+    img: "/assets/img/carousel-2.jpg",
     title: "Discover A Brand Luxurious Hotel",
     subtitle: "luxury living",
     btn1: "Our Room",
@@ -89,16 +94,16 @@ export const carouselData = [
 
 export const Foto = [
   {
-    img: "../assets/img/Sayur.JPG",
+    img: "/assets/img/Sayur.JPG",
     title: "Kebun Sayur",
     subtitle: "Kampung Kwau",
   },
   {
-    img: "../assets/img/Sayur2.JPG",
+    img: "/assets/img/Sayur2.JPG",
     subtitle: "Kampung Kwau",
   },
   {
-    img: "../assets/img/kopi.JPG",
+    img: "/assets/img/kopi.JPG",
     title: "Kebun Kopi",
     subtitle: "Kampung Kwau",
   },
@@ -106,17 +111,17 @@ export const Foto = [
 
 export const about = [
   {
-    icon: <i class="fa fa-hotel fa-2x text-primary mb-2"></i>,
+    icon: <i className="fa fa-hotel fa-2x text-primary mb-2"></i>,
     text: "Rooms",
     count: "7861",
   },
   {
-    icon: <i class="fa fa-users fa-2x text-primary mb-2"></i>,
+    icon: <i className="fa fa-users fa-2x text-primary mb-2"></i>,
     text: "Staffs",
     count: "1234",
   },
   {
-    icon: <i class="fa fa-users-cog fa-2x text-primary mb-2"></i>,
+    icon: <i className="fa fa-users-cog fa-2x text-primary mb-2"></i>,
     text: "Clients",
     count: "4321",
   },
@@ -124,56 +129,56 @@ export const about = [
 
 export const services = [
   {
-    icon: <i class="fa fa-binoculars fa-2x text-primary"></i>,
+    icon: <i className="fa fa-binoculars fa-2x text-primary"></i>,
     name: "Birds Watching",
     discription: "Daya Tarik Utama Kampung Kwau adalah Burung Endemik Papua, salah satunya Western Parotia yang dinikmati melalui kegiatan Birds Watching",
   },
   {
-    icon: <i class="fa fa-bug fa-2x text-primary"></i>,
+    icon: <i className="fa fa-bug fa-2x text-primary"></i>,
     name: "Keanekaragaman Kupu-Kupu",
     discription: "Kampung Kwau menjadi rumah bagi berbagai spesies kupu-kupu yang indah dan beragam, menjadikannya tempat yang menarik untuk pengamatan kupu-kupu.",
   },
 
   {
-    icon: <i class="fa fa-swimmer fa-2x text-primary"></i>,
+    icon: <i className="fa fa-swimmer fa-2x text-primary"></i>,
     name: "Air Terjun",
     discription: "Air Terjun di Kampung Kwau adalah daya tarik alam yang menakjubkan, menawarkan pemandangan spektakuler dan suasana yang menenangkan.",
   },
   {
-    icon: <i class="fa fa-leaf fa-2x text-primary"></i>,
+    icon: <i className="fa fa-leaf fa-2x text-primary"></i>,
     name: "Macam-macam tanaman angrek",
     discription: "Angrek merupakan salah satu tanaman hias yang banyak diminati oleh masyarakat. Di Kampung Kwau, terdapat berbagai jenis angrek yang tumbuh subur dan indah.",
   },
 
   {
-    icon: <i class="fa fa-music fa-2x text-primary"></i>,
+    icon: <i className="fa fa-music fa-2x text-primary"></i>,
     name: "Tari Tumbu Tanah",
     discription: "Kampung Kwau juga menawarkan pengalaman budaya yang kaya, termasuk tarian tradisional yang berasal dari suku Arfak yaitu Tari Tumbu Tanah. Tarian ini merupakan bagian penting dari budaya masyarakat setempat dan sering ditampilkan dalam acara-acara adat.",
   },
   {
-    icon: <i class="fa fa-house-user fa-2x text-primary"></i>,
+    icon: <i className="fa fa-house-user fa-2x text-primary"></i>,
     name: "Rumah Kaki Seribu",
     discription: "Rumah Kaki Seribu adalah salah satu daya tarik unik di Kampung Kwau. Rumah ini terbuat dari kayu dan memiliki desain yang khas, dengan banyak tiang penyangga yang menyerupai kaki seribu.",
   }
 ];
 export const team = [
   {
-    image: "../assets/img/user.png",
+    image: "/assets/img/user.png",
     name: "Kepala Kampung",
     designation: "",
   },
   {
-    image: "../assets/img/user.png",
+    image: "/assets/img/user.png",
     name: "Sekertaris Kampung",
     designation: "",
   },
   {
-    image: "../assets/img/user.png",
+    image: "/assets/img/user.png",
     name: "Bendahara Kampung",
     designation: "",
   },
   {
-    image: "../assets/img/user.png",
+    image: "/assets/img/user.png",
     name: "Keamanan Kampung",
     designation: "",
   },
@@ -265,7 +270,7 @@ export const testimonial = [
     icon: (
       <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
     ),
-    img: "../assets/img/testimonial-1.jpg",
+    img: "/assets/img/testimonial-1.jpg",
   },
   {
     description:
@@ -275,7 +280,7 @@ export const testimonial = [
     icon: (
       <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
     ),
-    img: "../assets/img/testimonial-2.jpg",
+    img: "/assets/img/testimonial-2.jpg",
   },
   {
     description:
@@ -285,14 +290,14 @@ export const testimonial = [
     icon: (
       <i class="fa fa-quote-right fa-3x text-primary position-absolute end-0 bottom-0 me-4 mb-n1"></i>
     ),
-    img: "../assets/img/testimonial-3.jpg",
+    img: "/assets/img/testimonial-3.jpg",
   },
 ];
 
 export const roomItems = [
   {
     id: 1,
-    img: "../assets/img/Kamar1.JPG",
+    img: "/assets/img/Kamar1.JPG",
     price: "Rp 250.000/malam",
     basePrice: 250000,
     name: "Paket Basic",
@@ -319,7 +324,7 @@ export const roomItems = [
   },
   {
     id: 2,
-    img: "../assets/img/Kamar2.JPG",
+    img: "/assets/img/Kamar2.JPG",
     price: "Rp 450.000/malam",
     basePrice: 450000,
     name: "Paket Standard",
@@ -347,7 +352,7 @@ export const roomItems = [
   },
   {
     id: 3,
-    img: "../assets/img/Kamar1.JPG",
+    img: "/assets/img/Kamar1.JPG",
     price: "Rp 750.000/malam",
     basePrice: 750000,
     name: "Paket Premium",
@@ -377,7 +382,7 @@ export const roomItems = [
 
 export const kwau = [
   {
-    img: "../assets/img/room-1.jpg",
+    img: "/assets/img/room-1.jpg",
     price: "",
     name: "Junior Suit",
     star: [
@@ -394,7 +399,7 @@ export const kwau = [
   },
 
   {
-    img: "../assets/img/room-2.jpg",
+    img: "/assets/img/room-2.jpg",
     price: "$110/night",
     name: "Executive Suite",
     star: [
@@ -410,7 +415,7 @@ export const kwau = [
     darkbtn: "book now",
   },
   {
-    img: "../assets/img/room-3.jpg",
+    img: "/assets/img/room-3.jpg",
     price: "$110/night",
     name: "Super Deluxe",
     star: [

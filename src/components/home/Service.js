@@ -44,7 +44,7 @@ export default function Services() {
                 <a className="service-item rounded">
                   <div className="service-icon bg-transparent border rounded p-1">
                     <div className="w-100 h-100 border rounded d-flex align-items-center justify-content-center">
-                    <i class="fa fa-spa fa-2x text-primary"></i>
+                    <i className="fa fa-spa fa-2x text-primary"></i>
                     </div>
                   </div>
                   <h5 className="mb-3">Pohon Pisang Hutan Raksasa (Musa Ingens W.Simmonds)</h5>
@@ -81,7 +81,7 @@ export default function Services() {
         <p>
         Kampung Kwau menjadi habitat dari pohon pisang hutan raksasa yang merupakan salah satu spesies endemik Papua. Pohon pisang ini dapat tumbuh hingga tinggi 20 meter dan memiliki daun yang sangat besar.
         </p>
-        <img src="../assets/img/pisang.JPG" alt="Pohon Pisang Hutan Raksasa" className="img-foto" />
+        <img src="/assets/img/pisang.JPG" alt="Pohon Pisang Hutan Raksasa" className="img-foto" />
         </Modal.Body>
         <Modal.Footer>
           <Modal.DismissButton className="btn btn-secondary">Keluar</Modal.DismissButton>
@@ -120,7 +120,7 @@ export default function Services() {
             <li>Trail map dan bird checklist</li>
           </ul>
 
-          <img src="../assets/img/Burung.png" alt="Burung Endemik Papua" className="img-foto" />
+          <img src="/assets/img/Burung.png" alt="Burung Endemik Papua" className="img-foto" />
         </Modal.Body>
         <Modal.Footer>
           <Modal.DismissButton className="btn btn-secondary">Keluar</Modal.DismissButton>
@@ -223,7 +223,7 @@ export default function Services() {
             <li><strong>Setelah hujan:</strong> Volume air maksimal (hati-hati licin)</li>
           </ul>
 
-          <img src="../assets/img/airterjun.JPG" alt="Air Terjun Kampung Kwau" className="img-foto" />
+          <img src="/assets/img/airterjun.JPG" alt="Air Terjun Kampung Kwau" className="img-foto" />
         </Modal.Body>
         <Modal.Footer>
           <Modal.DismissButton className="btn btn-secondary">Keluar</Modal.DismissButton>
