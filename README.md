@@ -1,70 +1,177 @@
-# Getting Started with Create React App
+# 🌏 Kampung Kwau - Website Multi-Bahasa
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Website resmi Kampung Kwau dengan fitur multi-bahasa (Indonesia & Inggris) yang menampilkan potensi lokal, budaya, dan destinasi wisata di Kampung Kwau, Distrik Mokwam, Kabupaten Manokwari, Papua Barat.
 
-## Available Scripts
+## ✨ Fitur Utama
 
-In the project directory, you can run:
+### 🌍 Multi-Bahasa
+- **Bahasa Indonesia** (default)
+- **Bahasa Inggris**
+- Language switcher yang mudah digunakan
+- Persistensi pilihan bahasa
+- Auto-detection bahasa browser
 
-### `npm start`
+### 🏞️ Potensi Lokal
+- **Pohon Pisang Hutan Raksasa** (Musa Ingens W.Simmonds)
+- **Birds Watching** - Burung Endemik Papua
+- **Keanekaragaman Kupu-Kupu**
+- **Air Terjun** - Destinasi alam
+- **Macam-macam Tanaman Anggrek**
+- **Tari Tumbu Tanah** - Warisan budaya suku Arfak
+- **Rumah Kaki Seribu** - Arsitektur tradisional
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 📱 Responsive Design
+- Mobile-friendly
+- Bootstrap 5
+- Modern UI/UX
+- Progressive Web App (PWA)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 🔧 Teknologi
+- **Frontend**: React.js
+- **Styling**: Bootstrap 5, CSS3
+- **Internationalization**: i18next
+- **Icons**: Font Awesome
+- **Routing**: React Router
+- **Forms**: React Hook Form
 
-### `npm test`
+## 🚀 Cara Menjalankan
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
+- Node.js (versi 14 atau lebih baru)
+- npm atau yarn
 
-### `npm run build`
+### Installation
+```bash
+# Clone repository
+git clone https://github.com/USERNAME/kampung-kwau-multilang.git
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Masuk ke direktori
+cd kampung-kwau-multilang
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Install dependencies
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Jalankan development server
+npm start
+```
 
-### `npm run eject`
+### Build untuk Production
+```bash
+# Build project
+npm run build
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Preview build
+npm run preview
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📁 Struktur Project
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+src/
+├── components/
+│   ├── common/          # Komponen umum (Header, Footer, dll.)
+│   ├── home/           # Komponen halaman utama
+│   └── data/           # Data statis
+├── translations/       # File terjemahan
+│   ├── id/            # Bahasa Indonesia
+│   └── en/            # Bahasa Inggris
+├── pages/             # Halaman-halaman
+├── css/               # File CSS
+└── i18n.js           # Konfigurasi i18next
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🌐 Fitur Multi-Bahasa
 
-## Learn More
+### Language Switcher
+- Tombol 🇮🇩 ID dan 🇺🇸 EN di header
+- Switch bahasa secara real-time
+- Persistensi pilihan di localStorage
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Konten yang Diterjemahkan
+- Navigation menu
+- Hero section
+- Services/potensi lokal
+- Modal detail untuk setiap potensi
+- Footer
+- Team section
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### File Terjemahan
+- `common.json` - Konten umum
+- `home.json` - Konten halaman utama
+- `modal.json` - Konten detail modal
 
-### Code Splitting
+## 🎨 Komponen Utama
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Header
+- Navigation menu dengan dropdown
+- Language switcher
+- Social media icons
 
-### Analyzing the Bundle Size
+### Hero Section
+- Welcome message
+- Deskripsi kampung
+- Call-to-action buttons
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Services Section
+- Grid potensi lokal
+- Modal detail untuk setiap item
+- Informasi lengkap dengan gambar
 
-### Making a Progressive Web App
+### Footer
+- Informasi kontak
+- Social media links
+- Menu company dan services
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📱 Responsive Features
 
-### Advanced Configuration
+- Mobile-first design
+- Tablet-friendly layout
+- Desktop optimization
+- Touch-friendly interactions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🔧 Development
 
-### Deployment
+### Scripts Available
+```bash
+npm start          # Development server
+npm run build      # Build production
+npm run preview    # Preview build
+npm test           # Run tests
+npm run eject      # Eject from Create React App
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Environment Variables
+Buat file `.env.local` untuk konfigurasi lokal:
+```env
+REACT_APP_API_URL=your_api_url
+REACT_APP_GOOGLE_MAPS_KEY=your_google_maps_key
+```
 
-### `npm run build` fails to minify
+## 📄 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📞 Contact
+
+- **Website**: [Kampung Kwau](https://kampung-kwau.com)
+- **Email**: info@kampung-kwau.com
+- **Phone**: +62 823-3333
+
+## 🙏 Acknowledgments
+
+- Masyarakat Kampung Kwau
+- Suku Arfak
+- Pemerintah Distrik Mokwam
+- Tim pengembang website
+
+---
+
+**Dibuat dengan ❤️ untuk Kampung Kwau**
