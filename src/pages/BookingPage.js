@@ -143,10 +143,97 @@ const BookingPage = () => {
 
       // Send to backend API
       const apiResult = await bookingAPI.create(cleanBookingData);
+      console.log('✅ Booking sent to API:', apiResult);
 
-      // Then send email (existing functionality)
-      const result = await createBooking(bookingData);
-      setBookingResult(result);
+      // Send admin notification email
+      try {
+        const adminNotificationData = {
+          customer: {
+            name: data.customerName,
+            email: data.email,
+            phone: data.phone,
+            nationality: data.nationality,
+            emergencyContact: data.emergencyContact
+          },
+          bookingNumber: apiResult.data.booking_number,
+          booking: {
+            packageName: selectedPackage.name,
+            checkIn: checkInDate.toISOString(),
+            checkOut: checkOutDate.toISOString(),
+            duration,
+            guests: {
+              adults: parseInt(data.adults),
+              children: parseInt(data.children)
+            }
+          },
+          pricing: {
+            total: totalPricing.total
+          },
+          specialRequests: {
+            dietaryRestrictions: data.dietaryRestrictions || '',
+            accessibilityNeeds: data.accessibilityNeeds || '',
+            specialOccasion: data.specialOccasion || '',
+            additionalNotes: data.additionalNotes || ''
+          }
+        };
+        
+        // Import sendAdminNotification
+        const { sendAdminNotification } = await import('../services/emailService');
+        await sendAdminNotification(adminNotificationData);
+        console.log('✅ Admin notification sent');
+      } catch (emailError) {
+        console.warn('⚠️ Admin notification failed:', emailError);
+        // Don't throw error - booking is still valid
+      }
+
+      // Send customer confirmation email
+      try {
+        const customerEmailData = {
+          customer: {
+            name: data.customerName,
+            email: data.email,
+            phone: data.phone,
+            nationality: data.nationality,
+            emergencyContact: data.emergencyContact
+          },
+          bookingNumber: apiResult.data.booking_number,
+          booking: {
+            packageName: selectedPackage.name,
+            checkIn: checkInDate.toISOString(),
+            checkOut: checkOutDate.toISOString(),
+            duration,
+            guests: {
+              adults: parseInt(data.adults),
+              children: parseInt(data.children)
+            }
+          },
+          pricing: {
+            total: totalPricing.total
+          },
+          specialRequests: {
+            dietaryRestrictions: data.dietaryRestrictions || '',
+            accessibilityNeeds: data.accessibilityNeeds || '',
+            specialOccasion: data.specialOccasion || '',
+            additionalNotes: data.additionalNotes || ''
+          }
+        };
+        
+        // Import sendBookingConfirmation
+        const { sendBookingConfirmation } = await import('../services/emailService');
+        await sendBookingConfirmation(customerEmailData);
+        console.log('✅ Customer confirmation email sent');
+      } catch (emailError) {
+        console.warn('⚠️ Customer email failed:', emailError);
+        // Don't throw error - booking is still valid
+      }
+
+      // Set booking result from API response
+      setBookingResult({
+        success: true,
+        bookingId: apiResult.data.id,
+        bookingNumber: apiResult.data.booking_number,
+        booking: apiResult.data
+      });
       setCurrentStep(5); // Success step
       toast.success('Booking berhasil dibuat!');
       

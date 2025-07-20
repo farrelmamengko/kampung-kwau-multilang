@@ -48,6 +48,12 @@ export const bookingAPI = {
     method: 'POST',
     body: JSON.stringify(bookingData),
   }),
+
+  // Update booking status
+  updateStatus: (bookingId, status) => apiRequest(`/bookings/${bookingId}/status`, {
+    method: 'PUT',
+    body: JSON.stringify({ status }),
+  }),
 };
 
 /**
@@ -55,7 +61,15 @@ export const bookingAPI = {
  */
 export const healthCheck = () => apiRequest('/health');
 
+// Convenience functions
+export const getBookings = () => bookingAPI.getAll();
+export const createBooking = (bookingData) => bookingAPI.create(bookingData);
+export const updateBookingStatus = (bookingId, status) => bookingAPI.updateStatus(bookingId, status);
+
 export default {
   bookingAPI,
   healthCheck,
+  getBookings,
+  createBooking,
+  updateBookingStatus,
 }; 

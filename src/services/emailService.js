@@ -186,11 +186,50 @@ export const sendAdminNotification = async (bookingData) => {
       return { success: true, mode: 'test' };
     }
 
-    // Production implementation would go here
-    return { success: true };
+    // Production mode - send actual admin notification
+    initEmailJS();
+    
+    // Prepare admin notification template parameters
+    const adminTemplateParams = {
+      email: EMAIL_CONFIG.adminEmail, // Send to admin email
+      customer_name: cleanBookingData.customer.name || 'Customer',
+      customer_email: cleanBookingData.customer.email || 'N/A',
+      customer_phone: cleanBookingData.customer.phone || 'N/A',
+      booking_number: cleanBookingData.bookingNumber || 'N/A',
+      package_name: cleanBookingData.booking?.packageName || 'Paket Wisata',
+      check_in: cleanBookingData.booking?.checkIn ? formatDate(cleanBookingData.booking.checkIn) : 'TBD',
+      check_out: cleanBookingData.booking?.checkOut ? formatDate(cleanBookingData.booking.checkOut) : 'TBD',
+      duration: cleanBookingData.booking?.duration || 1,
+      adults: cleanBookingData.booking?.guests?.adults || 1,
+      children: cleanBookingData.booking?.guests?.children || 0,
+      total: cleanBookingData.pricing?.total ? formatCurrency(cleanBookingData.pricing.total) : 'Rp 0',
+      special_requests: cleanBookingData.specialRequests ? JSON.stringify(cleanBookingData.specialRequests) : 'Tidak ada',
+      emergency_contact: cleanBookingData.customer.emergencyContact || 'Tidak ada'
+    };
+    
+    console.log('📧 Admin Notification Parameters:', adminTemplateParams);
+
+    // Send admin notification using the same service but different template
+    // You can create a separate admin template in EmailJS dashboard
+    const adminResult = await emailjs.send(
+      EMAIL_CONFIG.serviceId,
+      EMAIL_CONFIG.templateId, // Using same template for now, you can create admin-specific template
+      adminTemplateParams
+    );
+
+    console.log('✅ Admin notification sent:', adminResult);
+    return { success: true, result: adminResult };
+
   } catch (error) {
-    console.error('Error sending admin notification:', error);
-    throw error;
+    console.error('❌ Error sending admin notification:', error);
+    
+    // Don't throw error - admin notification failure shouldn't break booking
+    return { 
+      success: false, 
+      error: error.message,
+      mode: 'fallback',
+      message: 'Admin notification failed, but booking was created successfully.'
+    };
   }
 };
 

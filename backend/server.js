@@ -57,6 +57,74 @@ app.get('/api/bookings', (req, res) => {
   }
 });
 
+// PUT /api/bookings/:id/status - Update booking status
+app.put('/api/bookings/:id/status', (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+    
+    console.log(`📝 Updating booking ${id} status to: ${status}`);
+    
+    // Validate status
+    const validStatuses = ['pending', 'confirmed', 'completed', 'cancelled'];
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid status. Must be one of: pending, confirmed, completed, cancelled'
+      });
+    }
+    
+    // Update booking status
+    const result = db.prepare(`
+      UPDATE bookings 
+      SET status = ?, updated_at = CURRENT_TIMESTAMP 
+      WHERE id = ?
+    `).run(status, id);
+    
+    if (result.changes === 0) {
+      return res.status(404).json({
+        success: false,
+        error: 'Booking not found'
+      });
+    }
+    
+    // Add to status history
+    db.prepare(`
+      INSERT INTO booking_status_history (booking_id, status, notes)
+      VALUES (?, ?, ?)
+    `).run(id, status, `Status updated to ${status}`);
+    
+    // Get updated booking
+    const updatedBooking = db.prepare(`
+      SELECT 
+        b.*,
+        c.name as customer_name,
+        c.email as customer_email,
+        p.name as package_name
+      FROM bookings b
+      JOIN customers c ON b.customer_id = c.id
+      JOIN packages p ON b.package_id = p.id
+      WHERE b.id = ?
+    `).get(id);
+    
+    console.log('✅ Booking status updated:', updatedBooking.booking_number);
+    
+    res.json({
+      success: true,
+      message: 'Booking status updated successfully',
+      data: updatedBooking
+    });
+    
+  } catch (error) {
+    console.error('❌ Error updating booking status:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to update booking status',
+      message: error.message
+    });
+  }
+});
+
 // POST /api/bookings - Create new booking
 app.post('/api/bookings', (req, res) => {
   try {

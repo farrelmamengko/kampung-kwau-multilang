@@ -20,6 +20,7 @@ import {
   Team,
   Testimonial,
 } from "./pages/index";
+import Dashboard from "./pages/Dashboard";
 import Footer from "./components/common/Footer";
 import Birdmapping from "./pages/Birdmapping";
 export default function App() {
@@ -40,6 +41,7 @@ export default function App() {
             <Route path="/paketwisata" element={<Room />} />
             <Route path="/potensilokal" element={<Services />} />
             <Route path="/birdmapping" element={<Birdmapping />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
           <Footer />
         </Router>
