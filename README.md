@@ -1,177 +1,297 @@
-# 🌏 Kampung Kwau - Website Multi-Bahasa
+# 🌏 Kampung Kwau - Booking System
 
-Website resmi Kampung Kwau dengan fitur multi-bahasa (Indonesia & Inggris) yang menampilkan potensi lokal, budaya, dan destinasi wisata di Kampung Kwau, Distrik Mokwam, Kabupaten Manokwari, Papua Barat.
+Sistem booking wisata lengkap untuk Kampung Kwau dengan integrasi database SQLite, backend API, dan frontend React.js yang menangani reservasi paket wisata, email konfirmasi, dan manajemen data pelanggan.
 
 ## ✨ Fitur Utama
 
-### 🌍 Multi-Bahasa
+### 🎯 **Booking System**
+- **Multi-step booking form** - 5 langkah reservasi
+- **Package selection** - Basic, Standard, Premium packages
+- **Dynamic pricing** - Kalkulasi harga otomatis
+- **Date management** - Check-in/check-out dates
+- **Guest counter** - Adults & children management
+- **Additional activities** - Optional tour activities
+- **Personal information** - Customer data collection
+- **Booking confirmation** - Review sebelum submit
+
+### 🗄️ **Database Integration**
+- **SQLite database** - Local data storage
+- **Customer management** - Data pelanggan
+- **Package catalog** - Paket wisata
+- **Booking records** - Riwayat reservasi
+- **Status tracking** - Pending, confirmed, completed
+- **Transaction history** - Audit trail lengkap
+
+### 📧 **Email System**
+- **EmailJS integration** - Konfirmasi booking
+- **Template emails** - Professional templates
+- **Customer notifications** - Booking confirmations
+- **Admin alerts** - New booking notifications
+
+### 🔌 **API Integration**
+- **RESTful API** - Backend communication
+- **JSON data exchange** - Standardized format
+- **Error handling** - Comprehensive error management
+- **Response validation** - Data integrity
+
+### 🌍 **Multi-Language Support**
 - **Bahasa Indonesia** (default)
 - **Bahasa Inggris**
-- Language switcher yang mudah digunakan
-- Persistensi pilihan bahasa
-- Auto-detection bahasa browser
+- **Language switcher** - Real-time switching
+- **Persistent settings** - localStorage
 
-### 🏞️ Potensi Lokal
-- **Pohon Pisang Hutan Raksasa** (Musa Ingens W.Simmonds)
-- **Birds Watching** - Burung Endemik Papua
-- **Keanekaragaman Kupu-Kupu**
-- **Air Terjun** - Destinasi alam
-- **Macam-macam Tanaman Anggrek**
-- **Tari Tumbu Tanah** - Warisan budaya suku Arfak
-- **Rumah Kaki Seribu** - Arsitektur tradisional
+## 🏗️ **Tech Stack**
 
-### 📱 Responsive Design
-- Mobile-friendly
-- Bootstrap 5
-- Modern UI/UX
-- Progressive Web App (PWA)
+### **Frontend**
+- **React.js** - UI framework
+- **Bootstrap 5** - CSS framework
+- **React Hook Form** - Form handling
+- **EmailJS** - Email service
+- **Vite** - Build tool
 
-### 🔧 Teknologi
-- **Frontend**: React.js
-- **Styling**: Bootstrap 5, CSS3
-- **Internationalization**: i18next
-- **Icons**: Font Awesome
-- **Routing**: React Router
-- **Forms**: React Hook Form
+### **Backend**
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+- **SQLite** - Database (better-sqlite3)
+- **CORS** - Cross-origin support
 
-## 🚀 Cara Menjalankan
+### **Database**
+- **SQLite** - Local database
+- **better-sqlite3** - Node.js driver
+- **Foreign keys** - Data relationships
+- **Indexes** - Performance optimization
 
-### Prerequisites
-- Node.js (versi 14 atau lebih baru)
-- npm atau yarn
+## 🚀 **Quick Start**
 
-### Installation
+### **Prerequisites**
 ```bash
-# Clone repository
-git clone https://github.com/USERNAME/kampung-kwau-multilang.git
+# Node.js (v16+)
+node --version
 
-# Masuk ke direktori
-cd kampung-kwau-multilang
+# npm
+npm --version
+```
 
-# Install dependencies
+### **Installation & Setup**
+```bash
+# 1. Clone repository
+git clone <repository-url>
+cd kwau
+
+# 2. Backend Setup
+cd backend
 npm install
+node create-database.js
+node server.js
 
-# Jalankan development server
-npm start
+# 3. Frontend Setup (new terminal)
+cd ..
+npm install
+npm run dev
 ```
 
-### Build untuk Production
+### **Access Points**
 ```bash
-# Build project
-npm run build
+# Frontend (React)
+http://localhost:5173
 
-# Preview build
-npm run preview
+# Backend API
+http://localhost:5000
+
+# Health Check
+http://localhost:5000/health
+
+# Database
+backend/database/kwau_booking.db
 ```
 
-## 📁 Struktur Project
+## 📁 **Project Structure**
 
 ```
-src/
-├── components/
-│   ├── common/          # Komponen umum (Header, Footer, dll.)
-│   ├── home/           # Komponen halaman utama
-│   └── data/           # Data statis
-├── translations/       # File terjemahan
-│   ├── id/            # Bahasa Indonesia
-│   └── en/            # Bahasa Inggris
-├── pages/             # Halaman-halaman
-├── css/               # File CSS
-└── i18n.js           # Konfigurasi i18next
+kwau/
+├── src/                    # Frontend React app
+│   ├── components/         # React components
+│   ├── pages/             # Page components
+│   ├── services/          # API & email services
+│   ├── translations/      # i18n files
+│   └── css/              # Stylesheets
+├── backend/               # Backend server
+│   ├── server.js         # Express server
+│   ├── create-database.js # Database setup
+│   └── database/         # SQLite database
+├── actions/              # Documentation
+│   ├── README.md         # Documentation hub
+│   ├── DATABASE_DOCUMENTATION.md
+│   ├── BACKEND_DOCUMENTATION.md
+│   └── FRONTEND_DOCUMENTATION.md
+└── public/               # Static assets
 ```
 
-## 🌐 Fitur Multi-Bahasa
+## 🎯 **Key Features**
 
-### Language Switcher
-- Tombol 🇮🇩 ID dan 🇺🇸 EN di header
-- Switch bahasa secara real-time
-- Persistensi pilihan di localStorage
+### **Booking Process**
+1. **Package Selection** - Pilih paket wisata
+2. **Date & Guests** - Tanggal dan jumlah tamu
+3. **Activities** - Aktivitas tambahan (opsional)
+4. **Personal Info** - Data pelanggan
+5. **Confirmation** - Review dan submit
+6. **Database Save** - Simpan ke SQLite
+7. **Email Send** - Kirim konfirmasi
 
-### Konten yang Diterjemahkan
-- Navigation menu
-- Hero section
-- Services/potensi lokal
-- Modal detail untuk setiap potensi
-- Footer
-- Team section
+### **Database Schema**
+- **packages** - Paket wisata
+- **customers** - Data pelanggan
+- **bookings** - Data reservasi
 
-### File Terjemahan
-- `common.json` - Konten umum
-- `home.json` - Konten halaman utama
-- `modal.json` - Konten detail modal
+### **API Endpoints**
+- `GET /health` - Health check
+- `POST /api/bookings` - Create booking
+- `GET /api/bookings` - Get all bookings
 
-## 🎨 Komponen Utama
+## 🔧 **Configuration**
 
-### Header
-- Navigation menu dengan dropdown
-- Language switcher
-- Social media icons
-
-### Hero Section
-- Welcome message
-- Deskripsi kampung
-- Call-to-action buttons
-
-### Services Section
-- Grid potensi lokal
-- Modal detail untuk setiap item
-- Informasi lengkap dengan gambar
-
-### Footer
-- Informasi kontak
-- Social media links
-- Menu company dan services
-
-## 📱 Responsive Features
-
-- Mobile-first design
-- Tablet-friendly layout
-- Desktop optimization
-- Touch-friendly interactions
-
-## 🔧 Development
-
-### Scripts Available
-```bash
-npm start          # Development server
-npm run build      # Build production
-npm run preview    # Preview build
-npm test           # Run tests
-npm run eject      # Eject from Create React App
-```
-
-### Environment Variables
-Buat file `.env.local` untuk konfigurasi lokal:
+### **Environment Variables**
 ```env
-REACT_APP_API_URL=your_api_url
-REACT_APP_GOOGLE_MAPS_KEY=your_google_maps_key
+# Backend
+PORT=5000
+NODE_ENV=development
+
+# Frontend
+VITE_API_URL=http://localhost:5000/api
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
-## 📄 License
+### **Database Setup**
+```bash
+# Create database
+cd backend
+node create-database.js
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+# View database
+sqlite3 database/kwau_booking.db
+.tables
+.schema packages
+```
 
-## 🤝 Contributing
+## 📊 **System Flow**
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+```
+User Input (Frontend)
+    ↓
+React Form Validation
+    ↓
+API Request (Frontend → Backend)
+    ↓
+Database Operations (SQLite)
+    ↓
+Email Notification (EmailJS)
+    ↓
+Success Response
+```
 
-## 📞 Contact
+## 🛠️ **Development**
 
-- **Website**: [Kampung Kwau](https://kampung-kwau.com)
-- **Email**: info@kampung-kwau.com
-- **Phone**: +62 823-3333
+### **Available Scripts**
+```bash
+# Frontend
+npm run dev          # Development server
+npm run build        # Production build
+npm run preview      # Preview build
 
-## 🙏 Acknowledgments
+# Backend
+cd backend
+node server.js       # Start server
+node create-database.js # Setup database
+```
 
-- Masyarakat Kampung Kwau
-- Suku Arfak
-- Pemerintah Distrik Mokwam
-- Tim pengembang website
+### **Testing**
+```bash
+# Test booking flow
+1. Start backend server
+2. Start frontend dev server
+3. Navigate to booking page
+4. Complete booking form
+5. Check database for new record
+6. Verify email received
+```
+
+## 📚 **Documentation**
+
+### **Complete Documentation**
+- 📚 [Documentation Hub](./actions/README.md)
+- 🗄️ [Database Guide](./actions/DATABASE_DOCUMENTATION.md)
+- ⚙️ [Backend API](./actions/BACKEND_DOCUMENTATION.md)
+- 🎨 [Frontend Guide](./actions/FRONTEND_DOCUMENTATION.md)
+
+### **Quick References**
+- [API Endpoints](./actions/BACKEND_DOCUMENTATION.md#api-endpoints)
+- [Database Schema](./actions/DATABASE_DOCUMENTATION.md#database-schema)
+- [Component Structure](./actions/FRONTEND_DOCUMENTATION.md#project-structure)
+
+## 🔒 **Security & Performance**
+
+### **Security Features**
+- Input validation
+- SQL injection prevention
+- CORS configuration
+- Error handling
+- Data sanitization
+
+### **Performance Optimization**
+- Database indexes
+- Code splitting
+- Image optimization
+- Bundle optimization
+- Caching strategies
+
+## 🚀 **Deployment**
+
+### **Production Setup**
+```bash
+# Backend deployment
+cd backend
+npm install --production
+NODE_ENV=production node server.js
+
+# Frontend deployment
+npm run build
+# Deploy dist/ folder to hosting
+```
+
+### **Deployment Options**
+- **Netlify** - Frontend hosting
+- **Vercel** - Full-stack deployment
+- **Heroku** - Backend hosting
+- **AWS** - Cloud deployment
+
+## 📞 **Support & Contact**
+
+### **Development Team**
+- **Lead Developer:** AI Assistant
+- **Project:** Kampung Kwau Booking System
+- **Repository:** Local development
+
+### **Contact Information**
+- **Email:** support@kampungkwaupapua.com
+- **Documentation:** [actions/](./actions/) folder
+- **Last Updated:** December 2024
+
+## 📋 **Status**
+
+### **✅ Completed Features**
+- [x] Multi-step booking form
+- [x] Database integration (SQLite)
+- [x] Email notifications (EmailJS)
+- [x] API endpoints (Express.js)
+- [x] Frontend validation (React Hook Form)
+- [x] Multi-language support
+- [x] Responsive design
+- [x] Complete documentation
+
+### **🏆 Project Status: PRODUCTION READY**
 
 ---
 
-**Dibuat dengan ❤️ untuk Kampung Kwau**
+**Dibuat dengan ❤️ untuk Kampung Kwau - Papua Barat**

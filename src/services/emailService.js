@@ -158,8 +158,8 @@ Ekowisata Papua Barat
     // If email fails, fallback to test mode for debugging
     console.log('🔄 Fallback ke test mode untuk debugging...');
     console.log('📧 Email yang gagal dikirim:');
-    console.log('To:', cleanBookingData.customer?.email);
-    console.log('Subject: Konfirmasi Booking Kampung Kwau - ' + (cleanBookingData.bookingNumber || 'N/A'));
+    console.log('To:', bookingData.customer?.email);
+    console.log('Subject: Konfirmasi Booking Kampung Kwau - ' + (bookingData.bookingNumber || 'N/A'));
     
     // Don't throw error - booking is still valid
     return { 

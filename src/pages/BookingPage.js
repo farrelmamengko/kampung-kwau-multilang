@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Heading from "../components/common/Heading";
 import { getRoomItems, getAdditionalActivities } from '../components/data/Data';
 import { createBooking, calculateTotalPrice } from '../services/bookingService';
+import { bookingAPI } from '../services/apiService';
 
 const BookingPage = () => {
   const { t } = useTranslation();
@@ -110,6 +111,40 @@ const BookingPage = () => {
         }
       };
 
+      // Clean data before sending to API (remove React objects)
+      const cleanBookingData = {
+        customer: {
+          name: data.customerName,
+          email: data.email,
+          phone: data.phone,
+          nationality: data.nationality,
+          emergencyContact: data.emergencyContact
+        },
+        package: {
+          name: selectedPackage.name,
+          price: selectedPackage.price,
+          duration: selectedPackage.duration,
+          maxGuests: selectedPackage.maxGuests
+        },
+        check_in_date: checkInDate.toISOString().split('T')[0],
+        check_out_date: checkOutDate.toISOString().split('T')[0],
+        duration,
+        adults_count: parseInt(data.adults),
+        children_count: parseInt(data.children),
+        adult_price: totalPricing.adultPrice,
+        child_price: totalPricing.childPrice,
+        special_requests: {
+          dietaryRestrictions: data.dietaryRestrictions || '',
+          accessibilityNeeds: data.accessibilityNeeds || '',
+          specialOccasion: data.specialOccasion || '',
+          additionalNotes: data.additionalNotes || ''
+        }
+      };
+
+      // Send to backend API
+      const apiResult = await bookingAPI.create(cleanBookingData);
+
+      // Then send email (existing functionality)
       const result = await createBooking(bookingData);
       setBookingResult(result);
       setCurrentStep(5); // Success step
