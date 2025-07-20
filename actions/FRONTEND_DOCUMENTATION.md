@@ -1,25 +1,25 @@
-# 🎨 FRONTEND DOCUMENTATION - KAMPUNG KWAU
+# 🎨 FRONTEND DOCUMENTATION
+## Kampung Kwau Booking System
 
-## 📋 **OVERVIEW**
-Frontend React.js untuk website wisata Kampung Kwau yang menangani UI/UX, form handling, API communication, dan email integration.
+### 📋 **OVERVIEW**
+Frontend Kampung Kwau dibangun dengan **React.js** dan menggunakan **React Hook Form** untuk form handling, **EmailJS** untuk email service, dan **Bootstrap** untuk UI components.
 
 ---
 
-## 🏗️ **ARCHITECTURE**
+## 🏗️ **TECHNOLOGY STACK**
 
-### 📊 **Tech Stack:**
-- **Framework:** React.js
-- **Build Tool:** Vite
-- **UI Library:** Bootstrap 5
-- **Form Handling:** React Hook Form
-- **Email Service:** EmailJS
-- **API Client:** Fetch API
-- **Port:** 3000/5173
+### **Core Technologies:**
+- **React.js 18** - Frontend framework
+- **React Router** - Navigation & routing
+- **React Hook Form** - Form management
+- **React i18next** - Internationalization
+- **Bootstrap 5** - UI framework
+- **EmailJS** - Email service integration
 
-### 🔄 **Application Flow:**
-```
-User Input → React Components → API Calls → Backend → Database → Email → Success
-```
+### **Additional Libraries:**
+- **React DatePicker** - Date selection
+- **React Toastify** - Notifications
+- **React Icons** - Icon library
 
 ---
 
@@ -28,390 +28,396 @@ User Input → React Components → API Calls → Backend → Database → Email
 ```
 src/
 ├── components/
-│   ├── common/              # Shared components
-│   │   ├── Header.jsx
-│   │   ├── Footer.jsx
-│   │   ├── Modal.jsx
-│   │   └── SocialIcons.jsx
-│   ├── home/                # Home page components
-│   │   ├── Carousel.js
-│   │   ├── About.js
-│   │   ├── Services.js
-│   │   ├── Rooms.js
-│   │   └── Team.js
-│   └── data/                # Static data
-│       └── Data.jsx
-├── pages/                   # Page components
-│   ├── BookingPage.js       # Main booking form
-│   ├── BookingStatus.js     # Booking status check
-│   ├── AboutUs.js
-│   ├── ContactPage.js
-│   └── ServicesPage.js
-├── services/                # API & external services
-│   ├── apiService.js        # Backend API calls
-│   └── emailService.js      # EmailJS integration
-├── translations/            # i18n files
-│   ├── en/
-│   └── id/
-├── css/                     # Stylesheets
-│   ├── style.css
-│   └── bootstrap.min.css
-├── firebase/                # Firebase config
-│   └── config.js
-├── App.js                   # Main app component
-└── index.js                 # Entry point
-```
-
----
-
-## 🚀 **SETUP & INSTALLATION**
-
-### 📦 **Dependencies:**
-```json
-{
-  "react": "^18.2.0",
-  "react-dom": "^18.2.0",
-  "react-router-dom": "^6.8.0",
-  "react-hook-form": "^7.43.0",
-  "@emailjs/browser": "^3.11.0",
-  "bootstrap": "^5.3.0",
-  "vite": "^4.1.0"
-}
-```
-
-### 🛠️ **Installation Commands:**
-```bash
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
-
-### 🔧 **Environment Setup:**
-```bash
-# Development server
-http://localhost:5173
-
-# Production build
-npm run build
+│   ├── common/
+│   │   ├── Header.jsx          # Navigation header
+│   │   ├── Footer.jsx          # Site footer
+│   │   ├── Heading.jsx         # Page headings
+│   │   ├── Modal.jsx           # Modal components
+│   │   └── SocialIcons.jsx     # Social media icons
+│   ├── home/
+│   │   ├── Home.js             # Homepage components
+│   │   ├── About.js            # About section
+│   │   ├── Carousel.js         # Image carousel
+│   │   ├── Rooms.js            # Package display
+│   │   └── Team.js             # Team section
+│   └── data/
+│       └── Data.jsx            # Static data & translations
+├── pages/
+│   ├── BookingPage.js          # Booking form (multi-step)
+│   ├── Dashboard.js            # Admin dashboard
+│   ├── AboutUs.js              # About page
+│   ├── ContactPage.js          # Contact page
+│   └── PageNotFound.js         # 404 page
+├── services/
+│   ├── apiService.js           # Backend API integration
+│   ├── emailService.js         # Email service
+│   └── bookingService.js       # Booking logic
+├── css/
+│   ├── style.css               # Custom styles
+│   ├── bootstrap.min.css       # Bootstrap framework
+│   └── animate.css             # Animations
+└── translations/
+    ├── id/                     # Indonesian translations
+    └── en/                     # English translations
 ```
 
 ---
 
 ## 🎯 **KEY COMPONENTS**
 
-### 📝 **BOOKING PAGE (BookingPage.js)**
-
-#### **Component Overview:**
-Main booking form dengan 5 step wizard untuk membuat reservasi wisata.
+### **1. BookingPage.js - Multi-Step Booking Form**
 
 #### **Features:**
-- **Multi-step form** dengan React Hook Form
-- **Package selection** dengan pricing calculation
-- **Date picker** untuk check-in/check-out
-- **Guest counter** untuk dewasa dan anak-anak
-- **Additional activities** selection
-- **Personal information** form
-- **Booking confirmation** review
-- **API integration** dengan backend
-- **Email notification** via EmailJS
+- **5-Step Process:** Package → Date → Activities → Personal Info → Confirmation
+- **Real-time Pricing:** Automatic calculation based on selections
+- **Form Validation:** Required fields and data validation
+- **Email Integration:** Customer confirmation + admin notification
+- **API Integration:** Backend database storage
 
-#### **Form Steps:**
+#### **Step Flow:**
 ```javascript
-const steps = [
-  { id: 1, title: 'Select Package' },
-  { id: 2, title: 'Date & Guests' },
-  { id: 3, title: 'Additional Activities' },
-  { id: 4, title: 'Personal Information' },
-  { id: 5, title: 'Confirmation' }
+Step 1: Package Selection
+├── Display available packages
+├── Package details & pricing
+└── Select package
+
+Step 2: Date & Guests
+├── Check-in/out date picker
+├── Adults/children count
+└── Price preview
+
+Step 3: Additional Activities
+├── Optional activities
+├── Activity pricing
+└── Total calculation
+
+Step 4: Personal Information
+├── Customer details form
+├── Special requests
+└── Emergency contact
+
+Step 5: Confirmation
+├── Booking summary
+├── Email sending
+└── Success message
+```
+
+#### **Form Validation:**
+```javascript
+const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+// Required fields validation
+{...register('customerName', { 
+  required: 'Nama wajib diisi',
+  minLength: { value: 2, message: 'Nama minimal 2 karakter' }
+})}
+
+// Email validation
+{...register('email', { 
+  required: 'Email wajib diisi',
+  pattern: { 
+    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+    message: 'Email tidak valid'
+  }
+})}
+```
+
+### **2. Dashboard.js - Admin Dashboard**
+
+#### **Features:**
+- **Statistics Cards:** Total, pending, confirmed, completed, cancelled bookings
+- **Booking Management:** View, update status, view details
+- **Real-time Data:** Auto-refresh from backend API
+- **Responsive Design:** Mobile and desktop friendly
+
+#### **Dashboard Sections:**
+```javascript
+// Statistics Overview
+const stats = {
+  total: bookingData.length,
+  pending: bookingData.filter(b => b.status === 'pending').length,
+  confirmed: bookingData.filter(b => b.status === 'confirmed').length,
+  completed: bookingData.filter(b => b.status === 'completed').length,
+  cancelled: bookingData.filter(b => b.status === 'cancelled').length
+};
+
+// Booking List Table
+const bookingColumns = [
+  'Booking #', 'Customer', 'Package', 'Check-in', 
+  'Check-out', 'Guests', 'Total', 'Status', 'Actions'
+];
+
+// Status Management
+const updateBookingStatus = async (bookingId, newStatus) => {
+  await apiService.updateBookingStatus(bookingId, newStatus);
+  fetchBookings(); // Refresh data
+};
+```
+
+#### **Status Actions:**
+- **👁️ View Details:** Modal with complete booking information
+- **✅ Confirm:** Change status to 'confirmed'
+- **🏁 Complete:** Change status to 'completed'
+- **❌ Cancel:** Change status to 'cancelled'
+
+### **3. Header.jsx - Navigation**
+
+#### **Features:**
+- **Multi-language Support:** Indonesian/English toggle
+- **Responsive Menu:** Mobile hamburger menu
+- **Dropdown Navigation:** Organized page categories
+- **Social Media Links:** Direct social media access
+
+#### **Navigation Structure:**
+```javascript
+const navList = [
+  { path: "/", text: "home" },
+  { path: "/about", text: "about" },
+  { path: "/potensilokal", text: "potensilokal" },
+  { path: "/paketwisata", text: "paketwisata" },
+  { 
+    path: "/page", 
+    text: "page",
+    subItems: [
+      { path: "/booking", text: "booking" },
+      { path: "/booking-status", text: "bookingStatus" },
+      { path: "/dashboard", text: "dashboard" }, // Admin dashboard
+      { path: "/strukturkampung", text: "strukturkampung" },
+      { path: "/birdmapping", text: "birdmapping" }
+    ]
+  },
+  { path: "/contact", text: "contact" }
 ];
 ```
 
-#### **State Management:**
-```javascript
-const [currentStep, setCurrentStep] = useState(1);
-const [selectedPackage, setSelectedPackage] = useState(null);
-const [checkInDate, setCheckInDate] = useState(null);
-const [checkOutDate, setCheckOutDate] = useState(null);
-const [totalPricing, setTotalPricing] = useState({
-  adultPrice: 0,
-  childPrice: 0,
-  subtotal: 0,
-  tax: 0,
-  total: 0
-});
-```
-
 ---
 
-### 🔌 **API SERVICE (apiService.js)**
+## 🔧 **SERVICES INTEGRATION**
 
-#### **Service Overview:**
-Centralized API client untuk komunikasi dengan backend server.
+### **1. API Service (apiService.js)**
 
-#### **Key Methods:**
+#### **Backend Communication:**
 ```javascript
-// Create new booking
-const createBooking = async (bookingData) => {
-  const response = await fetch(`${API_BASE_URL}/bookings`, {
+const API_BASE_URL = 'http://localhost:5000/api';
+
+// Create booking
+export const createBooking = (bookingData) => 
+  apiRequest('/bookings', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(bookingData)
   });
-  return response.json();
-};
 
-// Get all bookings
-const getBookings = async () => {
-  const response = await fetch(`${API_BASE_URL}/bookings`);
-  return response.json();
-};
+// Get all bookings (dashboard)
+export const getBookings = () => 
+  apiRequest('/bookings');
+
+// Update booking status
+export const updateBookingStatus = (bookingId, status) =>
+  apiRequest(`/bookings/${bookingId}/status`, {
+    method: 'PUT',
+    body: JSON.stringify({ status })
+  });
 ```
 
-#### **Error Handling:**
+### **2. Email Service (emailService.js)**
+
+#### **Email Integration:**
 ```javascript
-const handleApiError = (error) => {
-  console.error('API Error:', error);
-  throw new Error('Failed to communicate with server');
-};
-```
-
----
-
-### 📧 **EMAIL SERVICE (emailService.js)**
-
-#### **Service Overview:**
-EmailJS integration untuk mengirim konfirmasi booking via email.
-
-#### **Configuration:**
-```javascript
-const EMAIL_CONFIG = {
-  serviceId: 'your_service_id',
-  templateId: 'your_template_id',
-  publicKey: 'your_public_key'
-};
-```
-
-#### **Key Methods:**
-```javascript
-// Send booking confirmation
-const sendBookingConfirmation = async (bookingData) => {
+// Customer confirmation email
+export const sendBookingConfirmation = async (bookingData) => {
   const templateParams = {
-    to_email: bookingData.customer.email,
+    email: bookingData.customer.email,
     customer_name: bookingData.customer.name,
-    booking_number: bookingData.booking_number,
-    package_name: bookingData.package.name,
-    check_in_date: bookingData.check_in_date,
-    total_amount: bookingData.total_amount
+    booking_number: bookingData.bookingNumber,
+    package_name: bookingData.booking.packageName,
+    // ... more parameters
   };
-
-  return emailjs.send(
+  
+  return await emailjs.send(
     EMAIL_CONFIG.serviceId,
     EMAIL_CONFIG.templateId,
-    templateParams,
-    EMAIL_CONFIG.publicKey
+    templateParams
   );
 };
-```
 
----
-
-## 🎨 **UI/UX COMPONENTS**
-
-### 🏠 **HEADER COMPONENT**
-```javascript
-// Navigation menu dengan responsive design
-const Header = () => {
-  return (
-    <nav className="navbar navbar-expand-lg">
-      <div className="container">
-        <a className="navbar-brand" href="/">
-          Kampung Kwau
-        </a>
-        <div className="navbar-nav">
-          <a className="nav-link" href="/">Home</a>
-          <a className="nav-link" href="/about">About</a>
-          <a className="nav-link" href="/booking">Booking</a>
-          <a className="nav-link" href="/contact">Contact</a>
-        </div>
-      </div>
-    </nav>
-  );
-};
-```
-
-### 📋 **MODAL COMPONENT**
-```javascript
-// Reusable modal untuk notifications
-const Modal = ({ isOpen, onClose, title, children }) => {
-  if (!isOpen) return null;
+// Admin notification email
+export const sendAdminNotification = async (bookingData) => {
+  const adminTemplateParams = {
+    email: EMAIL_CONFIG.adminEmail,
+    customer_name: bookingData.customer.name,
+    booking_number: bookingData.bookingNumber,
+    // ... more parameters
+  };
   
-  return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <div className="modal-header">
-          <h5>{title}</h5>
-          <button onClick={onClose}>&times;</button>
-        </div>
-        <div className="modal-body">
-          {children}
-        </div>
-      </div>
-    </div>
+  return await emailjs.send(
+    EMAIL_CONFIG.serviceId,
+    EMAIL_CONFIG.templateId,
+    adminTemplateParams
   );
 };
 ```
 
 ---
 
-## 🔄 **STATE MANAGEMENT**
+## 🌍 **INTERNATIONALIZATION**
 
-### 📊 **Local State:**
+### **Translation Structure:**
 ```javascript
-// Form data management
-const { register, handleSubmit, formState: { errors } } = useForm();
+// src/translations/id/common.json
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "booking": "Booking",
+    "dashboard": "Dashboard Admin"
+  },
+  "pages": {
+    "booking": {
+      "title": "Booking Paket Wisata",
+      "step1": "Pilih Paket",
+      "step2": "Tanggal & Tamu",
+      "step3": "Aktivitas Tambahan",
+      "step4": "Data Pribadi",
+      "step5": "Konfirmasi"
+    }
+  }
+}
+```
 
-// Component state
+### **Language Switching:**
+```javascript
+const { t, i18n } = useTranslation();
+
+// Change language
+const changeLanguage = (lng) => {
+  i18n.changeLanguage(lng);
+};
+
+// Use translations
+<h1>{t('pages:booking.title')}</h1>
+```
+
+---
+
+## 🎨 **UI/UX FEATURES**
+
+### **1. Responsive Design**
+- **Mobile First:** Optimized for mobile devices
+- **Bootstrap Grid:** Responsive layout system
+- **Touch Friendly:** Large buttons and touch targets
+
+### **2. Loading States**
+```javascript
 const [loading, setLoading] = useState(false);
-const [error, setError] = useState(null);
-const [success, setSuccess] = useState(false);
+
+// Show loading spinner
+{loading && (
+  <div className="spinner-border text-primary" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </div>
+)}
 ```
 
-### 🔗 **API State:**
+### **3. Toast Notifications**
 ```javascript
-// API response handling
-const [apiData, setApiData] = useState(null);
-const [apiLoading, setApiLoading] = useState(false);
-const [apiError, setApiError] = useState(null);
+import { toast } from 'react-toastify';
+
+// Success notification
+toast.success('Booking berhasil dibuat!');
+
+// Error notification
+toast.error('Gagal membuat booking: ' + error.message);
+
+// Info notification
+toast.info('Memproses booking...');
+```
+
+### **4. Form Validation**
+```javascript
+// Real-time validation
+const watchedAdults = watch('adults', 1);
+const watchedChildren = watch('children', 0);
+
+// Price calculation
+useEffect(() => {
+  if (selectedPackage && watchedAdults) {
+    const pricing = calculateTotalPrice(
+      selectedPackage,
+      { adults: watchedAdults, children: watchedChildren },
+      selectedActivities,
+      duration
+    );
+    setTotalPricing(pricing);
+  }
+}, [selectedPackage, watchedAdults, watchedChildren, selectedActivities, duration]);
 ```
 
 ---
 
-## 🎯 **FORM VALIDATION**
+## 🚀 **PERFORMANCE OPTIMIZATION**
 
-### ✅ **Validation Rules:**
+### **1. Code Splitting**
 ```javascript
-// Required fields validation
-const required = { required: 'This field is required' };
+// Lazy load components
+const Dashboard = React.lazy(() => import('./pages/Dashboard'));
 
-// Email validation
-const emailValidation = {
-  required: 'Email is required',
-  pattern: {
-    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    message: 'Please enter a valid email'
-  }
-};
-
-// Phone validation
-const phoneValidation = {
-  pattern: {
-    value: /^[\+]?[0-9\s\-\(\)]{10,}$/,
-    message: 'Please enter a valid phone number'
-  }
-};
+// Suspense wrapper
+<Suspense fallback={<div>Loading...</div>}>
+  <Dashboard />
+</Suspense>
 ```
 
-### 🚨 **Error Display:**
+### **2. Memoization**
 ```javascript
-// Error message component
-const ErrorMessage = ({ error }) => {
-  if (!error) return null;
-  return <span className="error-message">{error.message}</span>;
-};
+// Memoize expensive calculations
+const totalPricing = useMemo(() => {
+  return calculateTotalPrice(package, guests, activities, duration);
+}, [package, guests, activities, duration]);
+```
+
+### **3. Debounced Input**
+```javascript
+// Debounce search input
+const debouncedSearch = useCallback(
+  debounce((searchTerm) => {
+    // Perform search
+  }, 300),
+  []
+);
 ```
 
 ---
 
-## 🎨 **STYLING & THEMING**
+## 🔒 **SECURITY FEATURES**
 
-### 🎨 **CSS Architecture:**
-```css
-/* Global styles */
-:root {
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
-  --success-color: #28a745;
-  --danger-color: #dc3545;
-  --warning-color: #ffc107;
-  --info-color: #17a2b8;
-}
+### **1. Input Sanitization**
+```javascript
+// Sanitize user input
+const sanitizeInput = (input) => {
+  return input.replace(/[<>]/g, '');
+};
 
-/* Component styles */
-.booking-form {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.step-indicator {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-
-.package-card {
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.package-card.selected {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
-}
+// Validate email format
+const validateEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
 ```
 
-### 📱 **Responsive Design:**
-```css
-/* Mobile first approach */
-@media (max-width: 768px) {
-  .booking-form {
-    padding: 1rem;
-  }
+### **2. CSRF Protection**
+```javascript
+// Include CSRF token in API requests
+const apiRequest = async (endpoint, options = {}) => {
+  const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
   
-  .step-indicator {
-    flex-direction: column;
-    gap: 1rem;
-  }
+  const defaultOptions = {
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-Token': csrfToken
+    }
+  };
   
-  .package-card {
-    margin-bottom: 1rem;
-  }
-}
-```
-
----
-
-## 🔧 **CONFIGURATION**
-
-### ⚙️ **Environment Variables:**
-```javascript
-// API Configuration
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-
-// EmailJS Configuration
-const EMAILJS_CONFIG = {
-  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
-  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-};
-```
-
-### 🎯 **Feature Flags:**
-```javascript
-// Development features
-const DEV_FEATURES = {
-  debugMode: import.meta.env.DEV,
-  mockData: import.meta.env.VITE_USE_MOCK_DATA === 'true',
-  logApiCalls: import.meta.env.VITE_LOG_API_CALLS === 'true'
+  // ... rest of implementation
 };
 ```
 
@@ -419,48 +425,82 @@ const DEV_FEATURES = {
 
 ## 🧪 **TESTING**
 
-### 🧪 **Component Testing:**
+### **1. Unit Testing**
 ```javascript
-// Booking form test
-describe('BookingPage', () => {
-  test('renders booking form', () => {
-    render(<BookingPage />);
-    expect(screen.getByText('Choose Tour Package')).toBeInTheDocument();
-  });
-
-  test('validates required fields', async () => {
-    render(<BookingPage />);
-    const submitButton = screen.getByText('Create Booking');
+// Test booking form validation
+describe('BookingForm', () => {
+  test('validates required fields', () => {
+    render(<BookingForm />);
+    const submitButton = screen.getByText('Submit');
     fireEvent.click(submitButton);
     
-    await waitFor(() => {
-      expect(screen.getByText('Name is required')).toBeInTheDocument();
-    });
+    expect(screen.getByText('Nama wajib diisi')).toBeInTheDocument();
+    expect(screen.getByText('Email wajib diisi')).toBeInTheDocument();
   });
 });
 ```
 
-### 🔗 **API Testing:**
+### **2. Integration Testing**
 ```javascript
-// API service test
-describe('apiService', () => {
-  test('creates booking successfully', async () => {
-    const mockBookingData = {
-      customer: { name: 'John Doe', email: 'john@example.com' },
-      package: { name: 'Basic Package' }
-    };
-
-    const result = await createBooking(mockBookingData);
-    expect(result.success).toBe(true);
+// Test booking flow
+test('complete booking flow', async () => {
+  render(<BookingPage />);
+  
+  // Select package
+  fireEvent.click(screen.getByText('Basic Package'));
+  
+  // Fill form
+  fireEvent.change(screen.getByLabelText('Nama'), {
+    target: { value: 'Test Customer' }
+  });
+  
+  // Submit
+  fireEvent.click(screen.getByText('Submit'));
+  
+  // Check success
+  await waitFor(() => {
+    expect(screen.getByText('Booking berhasil dibuat!')).toBeInTheDocument();
   });
 });
 ```
 
 ---
 
-## 🚀 **DEPLOYMENT**
+## 📱 **MOBILE OPTIMIZATION**
 
-### 📦 **Build Process:**
+### **1. Touch Interactions**
+```css
+/* Large touch targets */
+.btn {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Touch-friendly form inputs */
+.form-control {
+  font-size: 16px; /* Prevents zoom on iOS */
+  padding: 12px;
+}
+```
+
+### **2. Mobile Navigation**
+```javascript
+// Collapsible mobile menu
+const [navbarCollapse, setNavbarCollapse] = useState(false);
+
+<button 
+  className="navbar-toggler"
+  onClick={() => setNavbarCollapse(!navbarCollapse)}
+>
+  <span className="navbar-toggler-icon"></span>
+</button>
+```
+
+---
+
+## 🔧 **DEPLOYMENT**
+
+### **1. Build Process**
 ```bash
 # Install dependencies
 npm install
@@ -468,150 +508,116 @@ npm install
 # Build for production
 npm run build
 
-# Preview build
-npm run preview
+# Start production server
+npm start
 ```
 
-### 🌐 **Deployment Options:**
-- **Netlify** - Static site hosting
-- **Vercel** - React app deployment
-- **GitHub Pages** - Free hosting
-- **AWS S3** - Static website hosting
+### **2. Environment Variables**
+```env
+# API Configuration
+REACT_APP_API_URL=http://localhost:5000/api
 
-### 🔧 **Build Configuration:**
+# EmailJS Configuration
+REACT_APP_EMAILJS_SERVICE_ID=service_iggrh35
+REACT_APP_EMAILJS_TEMPLATE_ID=template_n1es8q7
+REACT_APP_EMAILJS_USER_ID=cERh5Eezr8mKQn9Vt
+```
+
+### **3. Static File Serving**
 ```javascript
-// vite.config.js
-export default defineConfig({
-  plugins: [react()],
-  build: {
-    outDir: 'dist',
-    sourcemap: false,
-    minify: 'terser'
-  },
-  server: {
-    port: 5173,
-    proxy: {
-      '/api': 'http://localhost:5000'
-    }
-  }
+// Serve static files
+app.use(express.static('build'));
+
+// Handle client-side routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 ```
 
 ---
 
-## 📊 **PERFORMANCE OPTIMIZATION**
+## 📊 **ANALYTICS & MONITORING**
 
-### ⚡ **Code Splitting:**
+### **1. Error Tracking**
 ```javascript
-// Lazy load components
-const BookingPage = lazy(() => import('./pages/BookingPage'));
-const AboutUs = lazy(() => import('./pages/AboutUs'));
-
-// Suspense wrapper
-<Suspense fallback={<LoadingSpinner />}>
-  <BookingPage />
-</Suspense>
+// Error boundary
+class ErrorBoundary extends React.Component {
+  componentDidCatch(error, errorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+    // Send to error tracking service
+  }
+}
 ```
 
-### 🖼️ **Image Optimization:**
+### **2. Performance Monitoring**
 ```javascript
-// Optimized images
-<img 
-  src="/assets/img/optimized-image.webp"
-  loading="lazy"
-  alt="Kampung Kwau"
-/>
-```
-
-### 📦 **Bundle Optimization:**
-```javascript
-// Tree shaking
-import { useState, useEffect } from 'react';
-// Instead of: import React from 'react';
+// Measure component render time
+const startTime = performance.now();
+// ... component logic
+const endTime = performance.now();
+console.log(`Component rendered in ${endTime - startTime}ms`);
 ```
 
 ---
 
-## 🔒 **SECURITY**
+## 📝 **CHANGELOG**
 
-### 🛡️ **Security Measures:**
-- **Input validation** - Sanitize user inputs
-- **XSS prevention** - React built-in protection
-- **CSRF protection** - API token validation
-- **HTTPS enforcement** - Secure connections
+### **v2.0 (Current)**
+- ✅ **Added:** Admin dashboard with booking management
+- ✅ **Fixed:** Duplicate email issue
+- ✅ **Added:** Real-time booking status updates
+- ✅ **Improved:** Form validation and error handling
+- ✅ **Added:** Multi-language support for dashboard
 
-### 🔐 **Data Protection:**
-```javascript
-// Sensitive data handling
-const sanitizeUserInput = (input) => {
-  return DOMPurify.sanitize(input);
-};
-
-// API key protection
-const API_KEY = import.meta.env.VITE_API_KEY;
-```
+### **v1.0 (Previous)**
+- ✅ **Added:** Multi-step booking form
+- ✅ **Added:** Email integration
+- ✅ **Added:** Responsive design
+- ✅ **Added:** Basic navigation
 
 ---
 
-## 🔄 **MAINTENANCE**
+## 🎯 **BEST PRACTICES**
 
-### 🧹 **Regular Tasks:**
-- **Dependency updates** - Security patches
-- **Performance monitoring** - Bundle size analysis
-- **Code cleanup** - Remove unused code
-- **Documentation updates** - Keep docs current
+### **1. Code Organization**
+- ✅ Use functional components with hooks
+- ✅ Separate concerns (UI, logic, data)
+- ✅ Consistent naming conventions
+- ✅ Proper file structure
 
-### 🛠️ **Troubleshooting:**
-```bash
-# Check for issues
-npm audit
+### **2. Performance**
+- ✅ Lazy load components
+- ✅ Memoize expensive calculations
+- ✅ Optimize re-renders
+- ✅ Use proper key props
 
-# Fix vulnerabilities
-npm audit fix
+### **3. Accessibility**
+- ✅ Semantic HTML elements
+- ✅ ARIA labels and roles
+- ✅ Keyboard navigation
+- ✅ Screen reader support
 
-# Update dependencies
-npm update
-
-# Clear cache
-npm run clean
-```
-
----
-
-## 📞 **SUPPORT & CONTACT**
-
-### 🛠️ **Development Team:**
-- **Lead Developer:** AI Assistant
-- **Project:** Kampung Kwau Booking System
-- **Repository:** Local development
-
-### 📧 **Contact Information:**
-- **Email:** support@kampungkwaupapua.com
-- **Documentation:** actions/FRONTEND_DOCUMENTATION.md
-- **Last Updated:** December 2024
+### **4. User Experience**
+- ✅ Clear error messages
+- ✅ Loading states
+- ✅ Form validation feedback
+- ✅ Responsive design
 
 ---
 
-## 📋 **CHECKLIST**
+## 📞 **SUPPORT**
 
-### ✅ **Pre-deployment Checklist:**
-- [ ] All tests passing
-- [ ] Build successful
-- [ ] Performance optimized
-- [ ] Security audit passed
-- [ ] Documentation updated
-- [ ] Environment variables set
-- [ ] API endpoints tested
-- [ ] Email service configured
+### **Development Tools**
+- **React DevTools:** Browser extension for debugging
+- **Redux DevTools:** State management debugging
+- **Lighthouse:** Performance auditing
 
-### ✅ **Post-deployment Checklist:**
-- [ ] Website accessible
-- [ ] Booking form functional
-- [ ] Email notifications working
-- [ ] Database connection stable
-- [ ] Error monitoring active
-- [ ] Performance monitoring active
+### **Documentation**
+- **React Docs:** https://reactjs.org/docs/
+- **Bootstrap Docs:** https://getbootstrap.com/docs/
+- **EmailJS Docs:** https://www.emailjs.com/docs/
 
----
-
-*Dokumentasi ini dibuat untuk frontend React Kampung Kwau - Papua Barat* 
+### **Community**
+- **React Community:** https://reactjs.org/community/
+- **Stack Overflow:** React.js tagged questions
+- **GitHub Issues:** Project-specific issues 

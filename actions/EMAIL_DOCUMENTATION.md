@@ -1,521 +1,443 @@
-# 📧 EMAIL DOCUMENTATION - KAMPUNG KWAU
+# 📧 EMAIL SYSTEM DOCUMENTATION
+## Kampung Kwau Booking System
 
-## 📋 **OVERVIEW**
-Sistem email otomatis untuk Kampung Kwau menggunakan EmailJS yang menangani konfirmasi booking, notifikasi admin, dan komunikasi dengan pelanggan.
-
----
-
-## 🏗️ **EMAIL SYSTEM ARCHITECTURE**
-
-### 📊 **Tech Stack:**
-- **Email Service:** EmailJS
-- **Template Engine:** EmailJS Templates
-- **Frontend Integration:** React.js
-- **Email Provider:** Gmail/SMTP
-- **Language Support:** Multi-language (ID/EN)
-
-### 🔄 **Email Flow:**
-```
-Booking Created → EmailJS Service → Template Processing → Email Sent → Customer Receives
-```
+### 📋 **OVERVIEW**
+Sistem email Kampung Kwau menggunakan **EmailJS** untuk mengirim email konfirmasi booking ke customer dan notifikasi ke admin.
 
 ---
 
-## 📁 **PROJECT STRUCTURE**
+## 🎯 **EMAIL TYPES**
 
+### 1. **Customer Confirmation Email**
+- **Recipient:** Customer email (dari form booking)
+- **Purpose:** Konfirmasi booking yang berhasil dibuat
+- **Template:** `template_n1es8q7`
+
+### 2. **Admin Notification Email**
+- **Recipient:** `farrelmamengko@gmail.com`
+- **Purpose:** Notifikasi booking baru ke admin
+- **Template:** `template_n1es8q7` (sama dengan customer)
+
+---
+
+## ⚙️ **CONFIGURATION**
+
+### **EmailJS Configuration**
+```javascript
+const EMAIL_CONFIG = {
+  serviceId: 'service_iggrh35',     // Gmail service ID
+  templateId: 'template_n1es8q7',   // Email template ID
+  userId: 'cERh5Eezr8mKQn9Vt',      // Public key
+  testMode: false,                  // Production mode
+  adminEmail: 'farrelmamengko@gmail.com'  // Admin email
+};
 ```
-src/services/
-└── emailService.js          # Email service implementation
 
-EmailJS Templates:
-├── booking_confirmation     # Konfirmasi booking
-├── admin_notification       # Notifikasi admin
-└── booking_reminder         # Reminder booking
+### **File Location**
+```
+src/services/emailService.js
 ```
 
 ---
 
-## 🚀 **SETUP & CONFIGURATION**
+## 🔧 **EMAIL FUNCTIONS**
 
-### 📦 **Dependencies:**
-```json
+### **1. sendBookingConfirmation(bookingData)**
+Mengirim email konfirmasi ke customer.
+
+#### **Parameters:**
+```javascript
 {
-  "@emailjs/browser": "^3.11.0"
+  customer: {
+    name: "Customer Name",
+    email: "customer@gmail.com",
+    phone: "08123456789",
+    nationality: "Indonesia",
+    emergencyContact: "Emergency Contact"
+  },
+  bookingNumber: "KW-20250720-XXX",
+  booking: {
+    packageName: "Basic Package",
+    checkIn: "2025-07-20T00:00:00.000Z",
+    checkOut: "2025-07-21T00:00:00.000Z",
+    duration: 1,
+    guests: {
+      adults: 2,
+      children: 0
+    }
+  },
+  pricing: {
+    total: 275000
+  },
+  specialRequests: {
+    dietaryRestrictions: "",
+    accessibilityNeeds: "",
+    specialOccasion: "",
+    additionalNotes: ""
+  }
 }
 ```
 
-### 🔧 **Installation:**
-```bash
-# Install EmailJS
-npm install @emailjs/browser
+#### **Template Variables:**
+- `{{email}}` - Customer email address
+- `{{customer_name}}` - Customer name
+- `{{booking_number}}` - Booking number
+- `{{package_name}}` - Package name
+- `{{check_in}}` - Check-in date (formatted)
+- `{{check_out}}` - Check-out date (formatted)
+- `{{duration}}` - Duration in days
+- `{{adults}}` - Number of adults
+- `{{children}}` - Number of children
+- `{{package_total}}` - Package total (formatted)
+- `{{tax}}` - Tax amount (formatted)
+- `{{total}}` - Total amount (formatted)
 
-# Initialize EmailJS
-import emailjs from '@emailjs/browser';
-emailjs.init('YOUR_PUBLIC_KEY');
-```
+### **2. sendAdminNotification(bookingData)**
+Mengirim notifikasi ke admin.
 
-### ⚙️ **Environment Variables:**
-```env
-# EmailJS Configuration
-VITE_EMAILJS_SERVICE_ID=your_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_template_id
-VITE_EMAILJS_PUBLIC_KEY=your_public_key
-```
-
----
-
-## 🔌 **EMAIL SERVICE IMPLEMENTATION**
-
-### 📧 **Email Service (emailService.js)**
-
-#### **Service Configuration:**
+#### **Parameters:**
 ```javascript
-import emailjs from '@emailjs/browser';
-
-const EMAIL_CONFIG = {
-  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
-  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-};
-
-// Initialize EmailJS
-emailjs.init(EMAIL_CONFIG.publicKey);
-```
-
-#### **Send Booking Confirmation:**
-```javascript
-export const sendBookingConfirmation = async (bookingData) => {
-  try {
-    const templateParams = {
-      to_email: bookingData.customer.email,
-      customer_name: bookingData.customer.name,
-      booking_number: bookingData.booking_number,
-      package_name: bookingData.package.name,
-      check_in_date: bookingData.check_in_date,
-      check_out_date: bookingData.check_out_date,
-      total_amount: formatCurrency(bookingData.total_amount),
-      adults_count: bookingData.adults_count,
-      children_count: bookingData.children_count,
-      special_requests: bookingData.special_requests || 'Tidak ada'
-    };
-
-    const response = await emailjs.send(
-      EMAIL_CONFIG.serviceId,
-      EMAIL_CONFIG.templateId,
-      templateParams,
-      EMAIL_CONFIG.publicKey
-    );
-
-    return {
-      success: true,
-      message: 'Email konfirmasi berhasil dikirim',
-      data: response
-    };
-
-  } catch (error) {
-    console.error('Email error:', error);
-    throw new Error('Gagal mengirim email konfirmasi');
+{
+  customer: {
+    name: "Customer Name",
+    email: "customer@gmail.com",
+    phone: "08123456789",
+    nationality: "Indonesia",
+    emergencyContact: "Emergency Contact"
+  },
+  bookingNumber: "KW-20250720-XXX",
+  booking: {
+    packageName: "Basic Package",
+    checkIn: "2025-07-20T00:00:00.000Z",
+    checkOut: "2025-07-21T00:00:00.000Z",
+    duration: 1,
+    guests: {
+      adults: 2,
+      children: 0
+    }
+  },
+  pricing: {
+    total: 275000
+  },
+  specialRequests: {
+    dietaryRestrictions: "",
+    accessibilityNeeds: "",
+    specialOccasion: "",
+    additionalNotes: ""
   }
-};
+}
 ```
 
-#### **Send Admin Notification:**
-```javascript
-export const sendAdminNotification = async (bookingData) => {
-  try {
-    const templateParams = {
-      to_email: 'admin@kampungkwaupapua.com',
-      subject: 'Booking Baru - Kampung Kwau',
-      customer_name: bookingData.customer.name,
-      customer_email: bookingData.customer.email,
-      customer_phone: bookingData.customer.phone,
-      booking_number: bookingData.booking_number,
-      package_name: bookingData.package.name,
-      total_amount: formatCurrency(bookingData.total_amount),
-      booking_date: new Date().toLocaleDateString('id-ID')
-    };
-
-    const response = await emailjs.send(
-      EMAIL_CONFIG.serviceId,
-      'admin_notification_template',
-      templateParams,
-      EMAIL_CONFIG.publicKey
-    );
-
-    return {
-      success: true,
-      message: 'Notifikasi admin berhasil dikirim',
-      data: response
-    };
-
-  } catch (error) {
-    console.error('Admin notification error:', error);
-    throw new Error('Gagal mengirim notifikasi admin');
-  }
-};
-```
+#### **Template Variables:**
+- `{{email}}` - Admin email address
+- `{{customer_name}}` - Customer name
+- `{{customer_email}}` - Customer email
+- `{{customer_phone}}` - Customer phone
+- `{{booking_number}}` - Booking number
+- `{{package_name}}` - Package name
+- `{{check_in}}` - Check-in date (formatted)
+- `{{check_out}}` - Check-out date (formatted)
+- `{{duration}}` - Duration in days
+- `{{adults}}` - Number of adults
+- `{{children}}` - Number of children
+- `{{total}}` - Total amount (formatted)
+- `{{special_requests}}` - Special requests (JSON string)
+- `{{emergency_contact}}` - Emergency contact
 
 ---
 
 ## 📧 **EMAIL TEMPLATES**
 
-### 🎯 **Booking Confirmation Template**
+### **Customer Confirmation Email Template**
+```
+Subject: Konfirmasi Booking Kampung Kwau - {{booking_number}}
 
-#### **HTML Template:**
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>Konfirmasi Booking - Kampung Kwau</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; }
-        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-        .header { background: #007bff; color: white; padding: 20px; text-align: center; }
-        .content { padding: 20px; background: #f8f9fa; }
-        .booking-details { background: white; padding: 15px; margin: 15px 0; border-radius: 5px; }
-        .footer { text-align: center; padding: 20px; color: #666; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>🎉 Konfirmasi Booking Kampung Kwau</h1>
-        </div>
-        
-        <div class="content">
-            <p>Halo {{customer_name}},</p>
-            
-            <p>Terima kasih telah memilih Kampung Kwau untuk liburan Anda! Booking Anda telah berhasil dibuat.</p>
-            
-            <div class="booking-details">
-                <h3>📋 Detail Booking:</h3>
-                <p><strong>Nomor Booking:</strong> {{booking_number}}</p>
-                <p><strong>Paket Wisata:</strong> {{package_name}}</p>
-                <p><strong>Check-in:</strong> {{check_in_date}}</p>
-                <p><strong>Check-out:</strong> {{check_out_date}}</p>
-                <p><strong>Jumlah Tamu:</strong> {{adults_count}} dewasa, {{children_count}} anak</p>
-                <p><strong>Total Pembayaran:</strong> {{total_amount}}</p>
-                <p><strong>Request Khusus:</strong> {{special_requests}}</p>
-            </div>
-            
-            <p><strong>📞 Langkah Selanjutnya:</strong></p>
-            <ol>
-                <li>Tim kami akan menghubungi Anda dalam 1x24 jam</li>
-                <li>Konfirmasi pembayaran dan detail perjalanan</li>
-                <li>Persiapan akomodasi dan aktivitas</li>
-            </ol>
-            
-            <p><strong>📍 Lokasi:</strong><br>
-            Kampung Kwau, Distrik Mokwam, Kabupaten Manokwari, Papua Barat</p>
-        </div>
-        
-        <div class="footer">
-            <p>© 2024 Kampung Kwau. Semua hak dilindungi.</p>
-            <p>Email: info@kampungkwaupapua.com | Phone: +62 823-3333</p>
-        </div>
-    </div>
-</body>
-</html>
+Halo {{customer_name}},
+
+Terima kasih telah melakukan booking di Kampung Kwau!
+
+DETAIL BOOKING:
+═══════════════════════════════════════
+Nomor Booking: {{booking_number}}
+Status: Menunggu Konfirmasi
+
+PAKET WISATA:
+{{package_name}}
+Check-in: {{check_in}}
+Check-out: {{check_out}}
+Durasi: {{duration}} hari
+Jumlah Tamu: {{adults}} dewasa{{#if children}}, {{children}} anak{{/if}}
+
+RINCIAN BIAYA:
+═══════════════════════════════════════
+Paket: {{package_total}}
+Pajak (10%): {{tax}}
+──────────────────────────────────────
+TOTAL: {{total}}
+
+LANGKAH SELANJUTNYA:
+1. Tim kami akan menghubungi Anda dalam 24 jam untuk konfirmasi
+2. Setelah dikonfirmasi, Anda akan menerima instruksi pembayaran
+3. Silakan simpan email ini sebagai bukti booking
+
+Jika ada pertanyaan, hubungi kami:
+📞 WhatsApp: +62-823-xxxx-xxxx
+📧 Email: farrelmamengko@gmail.com
+
+Terima kasih dan sampai jumpa di Kampung Kwau!
+
+Salam,
+Tim Kampung Kwau
+Ekowisata Papua Barat
 ```
 
-#### **Template Variables:**
-```javascript
-const templateVariables = {
-  customer_name: 'John Doe',
-  booking_number: 'KW-20241225-001',
-  package_name: 'Basic Package',
-  check_in_date: '2024-12-25',
-  check_out_date: '2024-12-26',
-  adults_count: 2,
-  children_count: 1,
-  total_amount: 'Rp 625.000',
-  special_requests: 'Vegetarian meal'
-};
+### **Admin Notification Email Template**
+```
+Subject: [BOOKING BARU] {{booking_number}}
+
+BOOKING BARU DITERIMA!
+
+DETAIL CUSTOMER:
+═══════════════════════════════════════
+Nama: {{customer_name}}
+Email: {{customer_email}}
+Phone: {{customer_phone}}
+Nationality: Indonesia
+Emergency Contact: {{emergency_contact}}
+
+DETAIL BOOKING:
+═══════════════════════════════════════
+Nomor Booking: {{booking_number}}
+Paket: {{package_name}}
+Check-in: {{check_in}}
+Check-out: {{check_out}}
+Durasi: {{duration}} hari
+Jumlah Tamu: {{adults}} dewasa, {{children}} anak
+Total: {{total}}
+
+PERMINTAAN KHUSUS:
+{{special_requests}}
+
+LANGKAH SELANJUTNYA:
+1. Review booking details
+2. Hubungi customer untuk konfirmasi
+3. Update status di dashboard admin
+4. Kirim instruksi pembayaran
+
+Dashboard: http://localhost:3000/dashboard
 ```
 
 ---
 
-## 🔧 **INTEGRATION WITH BOOKING SYSTEM**
+## 🚀 **IMPLEMENTATION**
 
-### 📝 **Booking Page Integration:**
+### **Frontend Integration**
 ```javascript
 // In BookingPage.js
-import { sendBookingConfirmation } from '../services/emailService';
+import { sendBookingConfirmation, sendAdminNotification } from '../services/emailService';
 
-const onSubmit = async (data) => {
-  try {
-    // 1. Send to backend API
-    const apiResult = await bookingAPI.create(cleanBookingData);
-    
-    // 2. Send email confirmation
-    const emailResult = await sendBookingConfirmation({
-      customer: {
-        name: data.customerName,
-        email: data.email
-      },
-      booking_number: apiResult.data.booking_number,
-      package: selectedPackage,
-      check_in_date: checkInDate.toISOString().split('T')[0],
-      check_out_date: checkOutDate.toISOString().split('T')[0],
-      adults_count: parseInt(data.adults),
-      children_count: parseInt(data.children),
-      total_amount: totalPricing.total,
-      special_requests: data.additionalNotes || 'Tidak ada'
-    });
-    
-    // 3. Show success message
-    setSuccess(true);
-    setBookingNumber(apiResult.data.booking_number);
-    
-  } catch (error) {
-    setError('Gagal membuat booking: ' + error.message);
-  }
+// Send admin notification
+const adminNotificationData = {
+  customer: { /* customer data */ },
+  bookingNumber: apiResult.data.booking_number,
+  booking: { /* booking data */ },
+  pricing: { /* pricing data */ },
+  specialRequests: { /* special requests */ }
 };
+
+await sendAdminNotification(adminNotificationData);
+
+// Send customer confirmation
+const customerEmailData = {
+  customer: { /* customer data */ },
+  bookingNumber: apiResult.data.booking_number,
+  booking: { /* booking data */ },
+  pricing: { /* pricing data */ },
+  specialRequests: { /* special requests */ }
+};
+
+await sendBookingConfirmation(customerEmailData);
 ```
 
-### 🔄 **Error Handling:**
+### **Error Handling**
 ```javascript
-const handleEmailError = (error) => {
-  console.error('Email service error:', error);
-  
-  // Log error for debugging
-  if (import.meta.env.DEV) {
-    console.log('Email error details:', {
-      error: error.message,
-      timestamp: new Date().toISOString(),
-      bookingData: bookingData
-    });
-  }
-  
-  // Show user-friendly error
-  throw new Error('Gagal mengirim email konfirmasi. Booking tetap tersimpan.');
-};
-```
-
----
-
-## 🌍 **MULTI-LANGUAGE SUPPORT**
-
-### 🇮🇩 **Indonesian Template:**
-```javascript
-const indonesianTemplate = {
-  subject: 'Konfirmasi Booking - Kampung Kwau',
-  greeting: 'Halo {{customer_name}},',
-  message: 'Terima kasih telah memilih Kampung Kwau untuk liburan Anda!',
-  nextSteps: 'Langkah Selanjutnya:',
-  contact: 'Tim kami akan menghubungi Anda dalam 1x24 jam'
-};
-```
-
-### 🇺🇸 **English Template:**
-```javascript
-const englishTemplate = {
-  subject: 'Booking Confirmation - Kampung Kwau',
-  greeting: 'Hello {{customer_name}},',
-  message: 'Thank you for choosing Kampung Kwau for your vacation!',
-  nextSteps: 'Next Steps:',
-  contact: 'Our team will contact you within 24 hours'
-};
-```
-
-### 🔄 **Language Detection:**
-```javascript
-const getEmailTemplate = (language = 'id') => {
-  const templates = {
-    id: indonesianTemplate,
-    en: englishTemplate
-  };
-  
-  return templates[language] || templates.id;
-};
-```
-
----
-
-## 📊 **EMAIL ANALYTICS & MONITORING**
-
-### 📈 **Success Rate Tracking:**
-```javascript
-const trackEmailSuccess = (emailType, success) => {
-  const analytics = {
-    emailType,
-    success,
-    timestamp: new Date().toISOString(),
-    userAgent: navigator.userAgent
-  };
-  
-  // Send to analytics service
-  console.log('Email analytics:', analytics);
-};
-```
-
-### 📊 **Email Metrics:**
-```javascript
-const emailMetrics = {
-  totalSent: 0,
-  successCount: 0,
-  failureCount: 0,
-  averageResponseTime: 0
-};
-
-const updateMetrics = (success, responseTime) => {
-  emailMetrics.totalSent++;
-  if (success) {
-    emailMetrics.successCount++;
-  } else {
-    emailMetrics.failureCount++;
-  }
-  emailMetrics.averageResponseTime = 
-    (emailMetrics.averageResponseTime + responseTime) / 2;
-};
-```
-
----
-
-## 🔒 **SECURITY & VALIDATION**
-
-### ✅ **Email Validation:**
-```javascript
-const validateEmail = (email) => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-};
-
-const sanitizeEmailData = (data) => {
-  return {
-    ...data,
-    customer_name: data.customer_name.trim(),
-    customer_email: data.customer_email.toLowerCase().trim(),
-    booking_number: data.booking_number.toUpperCase()
-  };
-};
-```
-
-### 🛡️ **Rate Limiting:**
-```javascript
-const emailRateLimit = {
-  maxEmailsPerHour: 10,
-  currentCount: 0,
-  resetTime: Date.now() + 3600000 // 1 hour
-};
-
-const checkRateLimit = () => {
-  if (Date.now() > emailRateLimit.resetTime) {
-    emailRateLimit.currentCount = 0;
-    emailRateLimit.resetTime = Date.now() + 3600000;
-  }
-  
-  if (emailRateLimit.currentCount >= emailRateLimit.maxEmailsPerHour) {
-    throw new Error('Email rate limit exceeded. Please try again later.');
-  }
-  
-  emailRateLimit.currentCount++;
-};
-```
-
----
-
-## 🚀 **DEPLOYMENT & PRODUCTION**
-
-### 🔧 **Production Configuration:**
-```javascript
-const productionConfig = {
-  serviceId: 'production_service_id',
-  templateId: 'production_template_id',
-  publicKey: 'production_public_key',
-  rateLimit: {
-    maxEmailsPerHour: 100,
-    maxEmailsPerDay: 1000
-  }
-};
-```
-
-### 📧 **Email Provider Setup:**
-```javascript
-// Gmail SMTP Configuration
-const smtpConfig = {
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
-  auth: {
-    user: 'info@kampungkwaupapua.com',
-    pass: 'app_password'
-  }
-};
-```
-
----
-
-## 🛠️ **TROUBLESHOOTING**
-
-### 🚨 **Common Issues:**
-
-#### **1. Email Not Sending:**
-```javascript
-// Check EmailJS initialization
-if (!emailjs) {
-  console.error('EmailJS not initialized');
-  return;
-}
-
-// Check configuration
-if (!EMAIL_CONFIG.serviceId || !EMAIL_CONFIG.templateId) {
-  console.error('EmailJS configuration missing');
-  return;
+try {
+  await sendBookingConfirmation(bookingData);
+  console.log('✅ Email berhasil dikirim');
+} catch (error) {
+  console.warn('⚠️ Email gagal dikirim:', error);
+  // Don't throw error - booking is still valid
 }
 ```
 
-#### **2. Template Variables Missing:**
+---
+
+## 📊 **EMAIL LIMITS**
+
+### **EmailJS Free Plan**
+- **Monthly Limit:** 200 emails
+- **Daily Limit:** ~6-7 emails
+- **Templates:** 2 templates
+
+### **EmailJS Paid Plans**
+- **Starter ($15/month):** 1,000 emails
+- **Professional ($49/month):** 10,000 emails
+
+### **Usage Tracking**
 ```javascript
-// Validate template parameters
-const validateTemplateParams = (params) => {
-  const required = ['customer_name', 'booking_number', 'package_name'];
-  const missing = required.filter(field => !params[field]);
-  
-  if (missing.length > 0) {
-    throw new Error(`Missing required fields: ${missing.join(', ')}`);
-  }
+// Email count tracking
+let emailCount = {
+  daily: 0,
+  monthly: 0,
+  lastReset: new Date().getDate()
 };
+
+// Check limits before sending
+const limitCheck = checkEmailLimits();
+if (!limitCheck.canSend) {
+  console.warn(`⚠️ Email limit reached: ${limitCheck.reason}`);
+  return { success: false, error: limitCheck.reason };
+}
 ```
 
-#### **3. Network Issues:**
+---
+
+## 🔧 **TROUBLESHOOTING**
+
+### **Common Issues**
+
+#### **1. Email Not Sent**
 ```javascript
-// Retry mechanism
-const sendEmailWithRetry = async (params, maxRetries = 3) => {
-  for (let i = 0; i < maxRetries; i++) {
-    try {
-      return await emailjs.send(
-        EMAIL_CONFIG.serviceId,
-        EMAIL_CONFIG.templateId,
-        params,
-        EMAIL_CONFIG.publicKey
-      );
-    } catch (error) {
-      if (i === maxRetries - 1) throw error;
-      await new Promise(resolve => setTimeout(resolve, 1000 * (i + 1)));
-    }
-  }
+// Check EmailJS configuration
+console.log('EmailJS Config:', EMAIL_CONFIG);
+
+// Check template parameters
+console.log('Template Params:', templateParams);
+
+// Check network requests
+// Browser DevTools → Network → Filter by "emailjs"
+```
+
+#### **2. Duplicate Emails**
+- **Cause:** Multiple function calls
+- **Solution:** Ensure single email call per booking
+- **Fixed:** Removed duplicate `createBooking()` call
+
+#### **3. Template Variables Not Working**
+- **Check:** Variable names match template
+- **Format:** Use correct data types
+- **Test:** Use EmailJS dashboard
+
+### **Debug Mode**
+```javascript
+// Enable test mode
+const EMAIL_CONFIG = {
+  testMode: true,  // Logs email content instead of sending
+  // ... other config
 };
 ```
 
 ---
 
-## 📞 **SUPPORT & MAINTENANCE**
+## 📈 **MONITORING**
 
-### 🛠️ **Regular Tasks:**
-- Monitor email delivery rates
-- Update email templates
-- Check EmailJS service status
-- Review email analytics
-- Update contact information
+### **Console Logs**
+```javascript
+// Successful email
+✅ Email berhasil dikirim: EmailJSResponseStatus {status: 200, text: 'OK'}
 
-### 📧 **Contact Information:**
-- **EmailJS Support:** support@emailjs.com
-- **Kampung Kwau Email:** info@kampungkwaupapua.com
-- **Documentation:** actions/EMAIL_DOCUMENTATION.md
-- **Last Updated:** December 2024
+// Admin notification
+✅ Admin notification sent: EmailJSResponseStatus {status: 200, text: 'OK'}
+
+// Error
+❌ Error mengirim email: Error message
+```
+
+### **EmailJS Dashboard**
+- **URL:** https://dashboard.emailjs.com
+- **Features:** Email logs, delivery status, usage statistics
+- **Monitoring:** Failed emails, delivery rates
 
 ---
 
-*Dokumentasi ini dibuat untuk sistem email Kampung Kwau - Papua Barat* 
+## 🔒 **SECURITY**
+
+### **Email Validation**
+```javascript
+// Validate customer email
+if (!cleanBookingData.customer?.email) {
+  throw new Error('Email customer tidak boleh kosong');
+}
+
+// Validate customer name
+if (!cleanBookingData.customer?.name) {
+  throw new Error('Nama customer tidak boleh kosong');
+}
+```
+
+### **Data Sanitization**
+```javascript
+// Clean circular references
+const cleanBookingData = JSON.parse(JSON.stringify(bookingData));
+
+// Sanitize special characters
+const sanitizeText = (text) => {
+  return text.replace(/[<>]/g, '');
+};
+```
+
+---
+
+## 📝 **CHANGELOG**
+
+### **v2.0 (Current)**
+- ✅ **Fixed:** Duplicate email issue
+- ✅ **Added:** Admin notification email
+- ✅ **Improved:** Error handling
+- ✅ **Added:** Email limits tracking
+- ✅ **Updated:** Template variables
+
+### **v1.0 (Previous)**
+- ✅ **Added:** Customer confirmation email
+- ✅ **Added:** EmailJS integration
+- ✅ **Added:** Basic template
+
+---
+
+## 🎯 **BEST PRACTICES**
+
+### **1. Email Content**
+- ✅ Use clear, professional language
+- ✅ Include all necessary booking details
+- ✅ Provide contact information
+- ✅ Add next steps instructions
+
+### **2. Error Handling**
+- ✅ Don't break booking flow for email failures
+- ✅ Log errors for debugging
+- ✅ Provide fallback options
+
+### **3. Performance**
+- ✅ Send emails asynchronously
+- ✅ Use proper error boundaries
+- ✅ Monitor email delivery rates
+
+### **4. Testing**
+- ✅ Test with different email providers
+- ✅ Verify template variables
+- ✅ Check mobile email rendering
+- ✅ Test error scenarios
+
+---
+
+## 📞 **SUPPORT**
+
+### **EmailJS Support**
+- **Documentation:** https://www.emailjs.com/docs/
+- **Community:** https://community.emailjs.com/
+- **Contact:** support@emailjs.com
+
+### **Kampung Kwau Support**
+- **Email:** farrelmamengko@gmail.com
+- **WhatsApp:** +62-823-xxxx-xxxx
+- **Dashboard:** http://localhost:3000/dashboard 

@@ -1,119 +1,166 @@
-# 🔌 API ENDPOINTS DOCUMENTATION - KAMPUNG KWAU
+# 🔌 API ENDPOINTS DOCUMENTATION
+## Kampung Kwau Booking System
 
-## 📋 **OVERVIEW**
-Dokumentasi lengkap untuk REST API endpoints Kampung Kwau yang menangani operasi booking, customer management, dan package information.
+### 📋 **OVERVIEW**
+Backend API Kampung Kwau menggunakan **Node.js**, **Express.js**, dan **SQLite** untuk menyediakan RESTful endpoints untuk booking system, dashboard admin, dan email notifications.
 
 ---
 
-## 🏗️ **API ARCHITECTURE**
+## 🏗️ **TECHNOLOGY STACK**
 
-### 📊 **Base Configuration:**
-- **Base URL:** `http://localhost:5000`
-- **API Version:** v1
-- **Content Type:** `application/json`
-- **Authentication:** None (public API)
-- **CORS:** Enabled for frontend
+### **Backend Technologies:**
+- **Node.js 18** - Runtime environment
+- **Express.js 4** - Web framework
+- **SQLite3** - Database (better-sqlite3)
+- **CORS** - Cross-origin resource sharing
+- **Body Parser** - Request body parsing
 
-### 🔄 **Request/Response Format:**
+### **Database:**
+- **SQLite** - File-based database
+- **better-sqlite3** - High-performance SQLite client
+- **Database File:** `kwau_booking.db`
+
+---
+
+## 📁 **PROJECT STRUCTURE**
+
+```
+backend/
+├── server.js                 # Main server file
+├── package.json              # Dependencies
+├── database/
+│   ├── init.js               # Database initialization
+│   └── kwau_booking.db       # SQLite database file
+└── routes/
+    └── bookings.js           # Booking endpoints
+```
+
+---
+
+## 🚀 **SETUP & INSTALLATION**
+
+### **1. Install Dependencies**
+```bash
+cd backend
+npm install
+```
+
+### **2. Initialize Database**
+```bash
+node database/init.js
+```
+
+### **3. Start Server**
+```bash
+npm start
+# or
+node server.js
+```
+
+### **4. Server Configuration**
 ```javascript
-// Success Response
-{
-  "success": true,
-  "message": "Operation successful",
-  "data": { ... },
-  "timestamp": "2024-12-25T10:30:00Z"
-}
-
-// Error Response
-{
-  "success": false,
-  "error": "Error type",
-  "message": "Detailed error message",
-  "timestamp": "2024-12-25T10:30:00Z"
-}
+const PORT = process.env.PORT || 5000;
+const server = app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
 ```
 
 ---
 
-## 🏥 **HEALTH CHECK ENDPOINTS**
+## 📊 **DATABASE SCHEMA**
 
-### **GET /health**
-Health check endpoint untuk memverifikasi server status.
-
-#### **Request:**
-```http
-GET /health
+### **1. Packages Table**
+```sql
+CREATE TABLE packages (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  description TEXT,
+  price_per_person INTEGER NOT NULL,
+  max_guests INTEGER DEFAULT 10,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
 ```
 
-#### **Response (200):**
-```json
-{
-  "success": true,
-  "status": "ok",
-  "message": "Kampung Kwau Backend Server is running",
-  "timestamp": "2024-12-25T10:30:00Z",
-  "version": "1.0.0",
-  "uptime": "2h 15m 30s"
-}
+### **2. Customers Table**
+```sql
+CREATE TABLE customers (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL UNIQUE,
+  phone TEXT,
+  nationality TEXT DEFAULT 'Indonesia',
+  emergency_contact TEXT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
 ```
 
-#### **Usage:**
-```javascript
-// Frontend health check
-const checkServerHealth = async () => {
-  try {
-    const response = await fetch('http://localhost:5000/health');
-    const data = await response.json();
-    
-    if (data.success) {
-      console.log('Server is healthy:', data.message);
-      return true;
-    }
-  } catch (error) {
-    console.error('Server health check failed:', error);
-    return false;
-  }
-};
+### **3. Bookings Table**
+```sql
+CREATE TABLE bookings (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  booking_number TEXT NOT NULL UNIQUE,
+  customer_id INTEGER NOT NULL,
+  package_id INTEGER NOT NULL,
+  check_in_date DATE NOT NULL,
+  check_out_date DATE NOT NULL,
+  duration INTEGER NOT NULL,
+  adults_count INTEGER NOT NULL DEFAULT 1,
+  children_count INTEGER NOT NULL DEFAULT 0,
+  total_amount INTEGER NOT NULL,
+  status TEXT DEFAULT 'pending',
+  special_requests TEXT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (customer_id) REFERENCES customers (id),
+  FOREIGN KEY (package_id) REFERENCES packages (id)
+);
+```
+
+### **4. Booking Status History Table**
+```sql
+CREATE TABLE booking_status_history (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  booking_id INTEGER NOT NULL,
+  status TEXT NOT NULL,
+  changed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (booking_id) REFERENCES bookings (id)
+);
 ```
 
 ---
 
-## 📝 **BOOKINGS ENDPOINTS**
+## 🔌 **API ENDPOINTS**
 
-### **POST /api/bookings**
-Membuat booking baru dengan data customer, package, dan booking details.
+### **1. 📋 BOOKING ENDPOINTS**
 
-#### **Request:**
-```http
-POST /api/bookings
-Content-Type: application/json
-```
+#### **POST /api/bookings**
+**Create a new booking**
 
-#### **Request Body:**
+**Request Body:**
 ```json
 {
   "customer": {
-    "name": "John Doe",
-    "email": "john@example.com",
-    "phone": "+6281234567890",
+    "name": "Farrel Nehemiah Davidjoy Mamengko",
+    "email": "farrel@gmail.com",
+    "phone": "08123456789",
     "nationality": "Indonesia",
-    "emergencyContact": "Jane Doe - +6281234567891"
+    "emergencyContact": "Emergency Contact"
   },
-  "package": {
-    "name": "Basic Package",
-    "price": 250000,
-    "duration": "2D1N",
-    "maxGuests": 4
+  "booking": {
+    "packageName": "Basic Package",
+    "checkIn": "2025-07-20T00:00:00.000Z",
+    "checkOut": "2025-07-21T00:00:00.000Z",
+    "duration": 1,
+    "guests": {
+      "adults": 2,
+      "children": 0
+    }
   },
-  "check_in_date": "2024-12-25",
-  "check_out_date": "2024-12-26",
-  "duration": 1,
-  "adults_count": 2,
-  "children_count": 1,
-  "adult_price": 250000,
-  "child_price": 125000,
-  "special_requests": {
-    "dietaryRestrictions": "Vegetarian",
+  "pricing": {
+    "total": 275000
+  },
+  "specialRequests": {
+    "dietaryRestrictions": "",
     "accessibilityNeeds": "",
     "specialOccasion": "",
     "additionalNotes": ""
@@ -121,337 +168,308 @@ Content-Type: application/json
 }
 ```
 
-#### **Response (200):**
+**Response:**
 ```json
 {
   "success": true,
   "message": "Booking created successfully",
   "data": {
-    "booking_number": "KW-20241225-001",
+    "id": 1,
+    "booking_number": "KW-20250720-081",
     "customer_id": 1,
     "package_id": 1,
-    "total_amount": 625000,
+    "check_in_date": "2025-07-20",
+    "check_out_date": "2025-07-21",
+    "duration": 1,
+    "adults_count": 2,
+    "children_count": 0,
+    "total_amount": 275000,
     "status": "pending",
-    "created_at": "2024-12-25T10:30:00Z"
+    "created_at": "2025-07-20T09:44:44.000Z"
   }
 }
 ```
 
-#### **Response (400):**
-```json
-{
-  "success": false,
-  "error": "Validation Error",
-  "message": "Package not found: Basic Package",
-  "timestamp": "2024-12-25T10:30:00Z"
-}
-```
-
-#### **Response (500):**
-```json
-{
-  "success": false,
-  "error": "Database Error",
-  "message": "Failed to create booking",
-  "timestamp": "2024-12-25T10:30:00Z"
-}
-```
-
-#### **Frontend Implementation:**
+**Implementation:**
 ```javascript
-// apiService.js
-const createBooking = async (bookingData) => {
+app.post('/api/bookings', async (req, res) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/bookings`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(bookingData)
-    });
-
-    const result = await response.json();
+    const { customer, booking, pricing, specialRequests } = req.body;
     
-    if (!result.success) {
-      throw new Error(result.message);
+    // Generate booking number
+    const bookingNumber = generateBookingNumber();
+    
+    // Insert customer
+    const customerResult = db.prepare(`
+      INSERT INTO customers (name, email, phone, nationality, emergency_contact)
+      VALUES (?, ?, ?, ?, ?)
+    `).run(customer.name, customer.email, customer.phone, 
+           customer.nationality, customer.emergencyContact);
+    
+    const customerId = customerResult.lastInsertRowid;
+    
+    // Get package ID
+    const packageResult = db.prepare(`
+      SELECT id FROM packages WHERE name = ?
+    `).get(booking.packageName);
+    
+    if (!packageResult) {
+      return res.status(400).json({
+        success: false,
+        message: 'Package not found'
+      });
     }
     
-    return result;
+    // Insert booking
+    const bookingResult = db.prepare(`
+      INSERT INTO bookings (
+        booking_number, customer_id, package_id, check_in_date, 
+        check_out_date, duration, adults_count, children_count, 
+        total_amount, special_requests
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `).run(
+      bookingNumber, customerId, packageResult.id,
+      booking.checkIn.split('T')[0], booking.checkOut.split('T')[0],
+      booking.duration, booking.guests.adults, booking.guests.children,
+      pricing.total, JSON.stringify(specialRequests)
+    );
+    
+    const bookingId = bookingResult.lastInsertRowid;
+    
+    // Insert status history
+    db.prepare(`
+      INSERT INTO booking_status_history (booking_id, status)
+      VALUES (?, ?)
+    `).run(bookingId, 'pending');
+    
+    res.json({
+      success: true,
+      message: 'Booking created successfully',
+      data: {
+        id: bookingId,
+        booking_number: bookingNumber,
+        customer_id: customerId,
+        package_id: packageResult.id,
+        check_in_date: booking.checkIn.split('T')[0],
+        check_out_date: booking.checkOut.split('T')[0],
+        duration: booking.duration,
+        adults_count: booking.guests.adults,
+        children_count: booking.guests.children,
+        total_amount: pricing.total,
+        status: 'pending',
+        created_at: new Date().toISOString()
+      }
+    });
+    
   } catch (error) {
-    console.error('API Error:', error);
-    throw new Error('Failed to create booking');
+    console.error('Error creating booking:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error'
+    });
   }
-};
+});
 ```
 
----
+#### **GET /api/bookings**
+**Get all bookings (for dashboard)**
 
-### **GET /api/bookings**
-Mengambil semua data booking dengan informasi customer dan package.
-
-#### **Request:**
-```http
-GET /api/bookings
-```
-
-#### **Query Parameters:**
-```javascript
-// Optional filters
-{
-  status: 'pending' | 'confirmed' | 'cancelled' | 'completed',
-  customer_email: 'john@example.com',
-  date_from: '2024-12-01',
-  date_to: '2024-12-31',
-  limit: 10,
-  offset: 0
-}
-```
-
-#### **Response (200):**
+**Response:**
 ```json
 {
   "success": true,
   "data": [
     {
       "id": 1,
-      "booking_number": "KW-20241225-001",
-      "customer_name": "John Doe",
-      "customer_email": "john@example.com",
+      "booking_number": "KW-20250720-081",
+      "customer_name": "Farrel Nehemiah Davidjoy Mamengko",
+      "customer_email": "farrel@gmail.com",
+      "customer_phone": "08123456789",
       "package_name": "Basic Package",
+      "check_in_date": "2025-07-20",
+      "check_out_date": "2025-07-21",
+      "duration": 1,
+      "adults_count": 2,
+      "children_count": 0,
+      "total_amount": 275000,
       "status": "pending",
-      "check_in_date": "2024-12-25",
-      "check_out_date": "2024-12-26",
-      "total_amount": 625000,
-      "created_at": "2024-12-25T10:30:00Z"
-    },
-    {
-      "id": 2,
-      "booking_number": "KW-20241225-002",
-      "customer_name": "Jane Smith",
-      "customer_email": "jane@example.com",
-      "package_name": "Standard Package",
-      "status": "confirmed",
-      "check_in_date": "2024-12-26",
-      "check_out_date": "2024-12-28",
-      "total_amount": 1350000,
-      "created_at": "2024-12-25T11:15:00Z"
+      "created_at": "2025-07-20T09:44:44.000Z",
+      "updated_at": "2025-07-20T09:44:44.000Z"
     }
-  ],
-  "pagination": {
-    "total": 2,
-    "limit": 10,
-    "offset": 0,
-    "has_more": false
-  }
+  ]
 }
 ```
 
-#### **Frontend Implementation:**
+**Implementation:**
 ```javascript
-const getBookings = async (filters = {}) => {
+app.get('/api/bookings', (req, res) => {
   try {
-    const queryParams = new URLSearchParams(filters);
-    const response = await fetch(`${API_BASE_URL}/bookings?${queryParams}`);
-    const result = await response.json();
+    const bookings = db.prepare(`
+      SELECT 
+        b.id,
+        b.booking_number,
+        c.name as customer_name,
+        c.email as customer_email,
+        c.phone as customer_phone,
+        p.name as package_name,
+        b.check_in_date,
+        b.check_out_date,
+        b.duration,
+        b.adults_count,
+        b.children_count,
+        b.total_amount,
+        b.status,
+        b.created_at,
+        b.updated_at
+      FROM bookings b
+      JOIN customers c ON b.customer_id = c.id
+      JOIN packages p ON b.package_id = p.id
+      ORDER BY b.created_at DESC
+    `).all();
     
-    if (!result.success) {
-      throw new Error(result.message);
-    }
+    res.json({
+      success: true,
+      data: bookings
+    });
     
-    return result;
   } catch (error) {
-    console.error('API Error:', error);
-    throw new Error('Failed to fetch bookings');
+    console.error('Error fetching bookings:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error'
+    });
   }
-};
-
-// Usage
-const bookings = await getBookings({
-  status: 'pending',
-  limit: 5
 });
 ```
 
----
+#### **PUT /api/bookings/:id/status**
+**Update booking status**
 
-### **GET /api/bookings/:bookingNumber**
-Mengambil detail booking berdasarkan nomor booking.
-
-#### **Request:**
-```http
-GET /api/bookings/KW-20241225-001
-```
-
-#### **Response (200):**
+**Request Body:**
 ```json
 {
-  "success": true,
-  "data": {
-    "id": 1,
-    "booking_number": "KW-20241225-001",
-    "customer": {
-      "id": 1,
-      "name": "John Doe",
-      "email": "john@example.com",
-      "phone": "+6281234567890",
-      "nationality": "Indonesia",
-      "emergency_contact": "Jane Doe - +6281234567891"
-    },
-    "package": {
-      "id": 1,
-      "name": "Basic Package",
-      "description": "Basic tour package covering homestay accommodation...",
-      "base_price": 250000,
-      "duration": "2D1N",
-      "max_guests": 4
-    },
-    "booking_details": {
-      "check_in_date": "2024-12-25",
-      "check_out_date": "2024-12-26",
-      "duration": 1,
-      "adults_count": 2,
-      "children_count": 1,
-      "adult_price": 250000,
-      "child_price": 125000,
-      "subtotal": 625000,
-      "tax_amount": 62500,
-      "total_amount": 687500,
-      "status": "pending",
-      "special_requests": {
-        "dietaryRestrictions": "Vegetarian",
-        "accessibilityNeeds": "",
-        "specialOccasion": "",
-        "additionalNotes": ""
-      }
-    },
-    "created_at": "2024-12-25T10:30:00Z",
-    "updated_at": "2024-12-25T10:30:00Z"
-  }
+  "status": "confirmed"
 }
 ```
 
-#### **Response (404):**
-```json
-{
-  "success": false,
-  "error": "Not Found",
-  "message": "Booking not found: KW-20241225-999",
-  "timestamp": "2024-12-25T10:30:00Z"
-}
-```
-
----
-
-### **PUT /api/bookings/:bookingNumber/status**
-Update status booking (admin only).
-
-#### **Request:**
-```http
-PUT /api/bookings/KW-20241225-001/status
-Content-Type: application/json
-```
-
-#### **Request Body:**
-```json
-{
-  "status": "confirmed",
-  "notes": "Payment received, booking confirmed"
-}
-```
-
-#### **Response (200):**
+**Response:**
 ```json
 {
   "success": true,
   "message": "Booking status updated successfully",
   "data": {
-    "booking_number": "KW-20241225-001",
-    "old_status": "pending",
-    "new_status": "confirmed",
-    "updated_at": "2024-12-25T11:45:00Z"
+    "id": 1,
+    "status": "confirmed",
+    "updated_at": "2025-07-20T10:30:00.000Z"
   }
 }
 ```
 
----
-
-## 👥 **CUSTOMERS ENDPOINTS**
-
-### **GET /api/customers**
-Mengambil data customer dengan optional filtering.
-
-#### **Request:**
-```http
-GET /api/customers?email=john@example.com
-```
-
-#### **Response (200):**
-```json
-{
-  "success": true,
-  "data": [
-    {
-      "id": 1,
-      "name": "John Doe",
-      "email": "john@example.com",
-      "phone": "+6281234567890",
-      "nationality": "Indonesia",
-      "emergency_contact": "Jane Doe - +6281234567891",
-      "created_at": "2024-12-25T10:30:00Z",
-      "total_bookings": 2
+**Implementation:**
+```javascript
+app.put('/api/bookings/:id/status', (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+    
+    // Validate status
+    const validStatuses = ['pending', 'confirmed', 'completed', 'cancelled'];
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid status'
+      });
     }
-  ]
-}
+    
+    // Update booking status
+    const result = db.prepare(`
+      UPDATE bookings 
+      SET status = ?, updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?
+    `).run(status, id);
+    
+    if (result.changes === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Booking not found'
+      });
+    }
+    
+    // Insert status history
+    db.prepare(`
+      INSERT INTO booking_status_history (booking_id, status)
+      VALUES (?, ?)
+    `).run(id, status);
+    
+    res.json({
+      success: true,
+      message: 'Booking status updated successfully',
+      data: {
+        id: parseInt(id),
+        status: status,
+        updated_at: new Date().toISOString()
+      }
+    });
+    
+  } catch (error) {
+    console.error('Error updating booking status:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error'
+    });
+  }
+});
 ```
 
----
+#### **GET /api/bookings/:id**
+**Get specific booking details**
 
-### **GET /api/customers/:id**
-Mengambil detail customer berdasarkan ID.
-
-#### **Request:**
-```http
-GET /api/customers/1
-```
-
-#### **Response (200):**
+**Response:**
 ```json
 {
   "success": true,
   "data": {
     "id": 1,
-    "name": "John Doe",
-    "email": "john@example.com",
-    "phone": "+6281234567890",
-    "nationality": "Indonesia",
-    "emergency_contact": "Jane Doe - +6281234567891",
-    "created_at": "2024-12-25T10:30:00Z",
-    "bookings": [
-      {
-        "booking_number": "KW-20241225-001",
-        "package_name": "Basic Package",
-        "status": "pending",
-        "total_amount": 625000,
-        "created_at": "2024-12-25T10:30:00Z"
-      }
-    ]
+    "booking_number": "KW-20250720-081",
+    "customer": {
+      "name": "Farrel Nehemiah Davidjoy Mamengko",
+      "email": "farrel@gmail.com",
+      "phone": "08123456789",
+      "nationality": "Indonesia",
+      "emergency_contact": "Emergency Contact"
+    },
+    "package": {
+      "name": "Basic Package",
+      "description": "Basic tour package",
+      "price_per_person": 125000
+    },
+    "booking": {
+      "check_in_date": "2025-07-20",
+      "check_out_date": "2025-07-21",
+      "duration": 1,
+      "adults_count": 2,
+      "children_count": 0,
+      "total_amount": 275000,
+      "status": "pending"
+    },
+    "special_requests": {
+      "dietaryRestrictions": "",
+      "accessibilityNeeds": "",
+      "specialOccasion": "",
+      "additionalNotes": ""
+    },
+    "created_at": "2025-07-20T09:44:44.000Z",
+    "updated_at": "2025-07-20T09:44:44.000Z"
   }
 }
 ```
 
----
+### **2. 📦 PACKAGE ENDPOINTS**
 
-## 📦 **PACKAGES ENDPOINTS**
+#### **GET /api/packages**
+**Get all available packages**
 
-### **GET /api/packages**
-Mengambil semua paket wisata yang tersedia.
-
-#### **Request:**
-```http
-GET /api/packages
-```
-
-#### **Response (200):**
+**Response:**
 ```json
 {
   "success": true,
@@ -459,433 +477,355 @@ GET /api/packages
     {
       "id": 1,
       "name": "Basic Package",
-      "description": "Basic tour package covering homestay accommodation...",
-      "base_price": 250000,
-      "duration": "2D1N",
-      "max_guests": 4,
-      "includes": [
-        "1 night homestay",
-        "3x local meals",
-        "Birdwatching tour (3 hours)",
-        "Local guide",
-        "Local transportation"
-      ],
-      "is_active": true,
-      "created_at": "2024-12-01T00:00:00Z"
+      "description": "Basic tour package with accommodation",
+      "price_per_person": 125000,
+      "max_guests": 10,
+      "created_at": "2025-07-20T00:00:00.000Z"
     },
     {
       "id": 2,
-      "name": "Standard Package",
-      "description": "Complete tour package with Arfak tribe cultural experience...",
-      "base_price": 450000,
-      "duration": "3D2N",
-      "max_guests": 6,
-      "includes": [
-        "2 nights premium homestay",
-        "All meals + snacks",
-        "Birdwatching + tracking",
-        "Cultural tour",
-        "Waterfall tour",
-        "Craft workshop"
-      ],
-      "is_active": true,
-      "created_at": "2024-12-01T00:00:00Z"
-    },
-    {
-      "id": 3,
       "name": "Premium Package",
-      "description": "Premium tour package with all the best facilities...",
-      "base_price": 750000,
-      "duration": "4D3N",
+      "description": "Premium tour package with additional activities",
+      "price_per_person": 250000,
       "max_guests": 8,
-      "includes": [
-        "3 nights VIP homestay",
-        "All meals + welcome drink",
-        "Private birdwatching",
-        "Photography workshop",
-        "Cooking class",
-        "Souvenir package"
-      ],
-      "is_active": true,
-      "created_at": "2024-12-01T00:00:00Z"
+      "created_at": "2025-07-20T00:00:00.000Z"
     }
   ]
 }
 ```
 
-#### **Frontend Implementation:**
-```javascript
-const getPackages = async () => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/packages`);
-    const result = await response.json();
-    
-    if (!result.success) {
-      throw new Error(result.message);
-    }
-    
-    return result.data;
-  } catch (error) {
-    console.error('API Error:', error);
-    throw new Error('Failed to fetch packages');
-  }
-};
-```
+### **3. 📊 DASHBOARD ENDPOINTS**
 
----
+#### **GET /api/dashboard/stats**
+**Get dashboard statistics**
 
-### **GET /api/packages/:id**
-Mengambil detail paket wisata berdasarkan ID.
-
-#### **Request:**
-```http
-GET /api/packages/1
-```
-
-#### **Response (200):**
+**Response:**
 ```json
 {
   "success": true,
   "data": {
-    "id": 1,
-    "name": "Basic Package",
-    "description": "Basic tour package covering homestay accommodation...",
-    "base_price": 250000,
-    "duration": "2D1N",
-    "max_guests": 4,
-    "includes": [
-      "1 night homestay",
-      "3x local meals",
-      "Birdwatching tour (3 hours)",
-      "Local guide",
-      "Local transportation"
-    ],
-    "is_active": true,
-    "created_at": "2024-12-01T00:00:00Z",
-    "updated_at": "2024-12-01T00:00:00Z"
+    "total_bookings": 10,
+    "pending_bookings": 3,
+    "confirmed_bookings": 4,
+    "completed_bookings": 2,
+    "cancelled_bookings": 1,
+    "unique_customers": 8,
+    "total_revenue": 2750000,
+    "average_booking_value": 275000
   }
 }
 ```
 
----
+#### **GET /api/dashboard/recent-bookings**
+**Get recent bookings for dashboard**
 
-## 📊 **STATISTICS ENDPOINTS**
+**Query Parameters:**
+- `limit` (optional): Number of recent bookings (default: 10)
 
-### **GET /api/statistics**
-Mengambil statistik booking dan customer.
-
-#### **Request:**
-```http
-GET /api/statistics
-```
-
-#### **Response (200):**
-```json
-{
-  "success": true,
-  "data": {
-    "bookings": {
-      "total": 25,
-      "pending": 5,
-      "confirmed": 15,
-      "cancelled": 2,
-      "completed": 3
-    },
-    "customers": {
-      "total": 20,
-      "new_this_month": 8
-    },
-    "revenue": {
-      "total": 15000000,
-      "this_month": 3000000,
-      "average_per_booking": 600000
-    },
-    "packages": {
-      "basic": 10,
-      "standard": 12,
-      "premium": 3
-    }
-  }
-}
-```
-
----
-
-## 🔍 **SEARCH ENDPOINTS**
-
-### **GET /api/search/bookings**
-Search booking berdasarkan berbagai kriteria.
-
-#### **Request:**
-```http
-GET /api/search/bookings?q=john&status=pending
-```
-
-#### **Query Parameters:**
-```javascript
-{
-  q: 'search term',           // Search in customer name, email, booking number
-  status: 'pending',          // Filter by status
-  date_from: '2024-12-01',   // Filter by date range
-  date_to: '2024-12-31',
-  package: 'Basic Package',   // Filter by package
-  limit: 10,                  // Pagination
-  offset: 0
-}
-```
-
-#### **Response (200):**
+**Response:**
 ```json
 {
   "success": true,
   "data": [
     {
-      "booking_number": "KW-20241225-001",
-      "customer_name": "John Doe",
-      "customer_email": "john@example.com",
+      "id": 1,
+      "booking_number": "KW-20250720-081",
+      "customer_name": "Farrel Nehemiah Davidjoy Mamengko",
       "package_name": "Basic Package",
+      "check_in_date": "2025-07-20",
+      "total_amount": 275000,
       "status": "pending",
-      "total_amount": 625000,
-      "created_at": "2024-12-25T10:30:00Z"
+      "created_at": "2025-07-20T09:44:44.000Z"
     }
-  ],
-  "pagination": {
-    "total": 1,
-    "limit": 10,
-    "offset": 0,
-    "has_more": false
-  }
+  ]
 }
 ```
 
 ---
 
-## 🔒 **ERROR HANDLING**
+## 🔧 **UTILITY FUNCTIONS**
 
-### 🚨 **Error Response Format:**
-```json
-{
-  "success": false,
-  "error": "Error Type",
-  "message": "Detailed error message",
-  "timestamp": "2024-12-25T10:30:00Z",
-  "details": {
-    "field": "error details for specific field"
-  }
-}
+### **1. Booking Number Generation**
+```javascript
+const generateBookingNumber = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  
+  // Get count of bookings today
+  const todayBookings = db.prepare(`
+    SELECT COUNT(*) as count 
+    FROM bookings 
+    WHERE DATE(created_at) = DATE('now')
+  `).get();
+  
+  const sequence = String(todayBookings.count + 1).padStart(3, '0');
+  
+  return `KW-${year}${month}${day}-${sequence}`;
+};
 ```
 
-### 📋 **Error Types:**
-
-#### **400 Bad Request:**
-- Validation errors
-- Missing required fields
-- Invalid data format
-- Package not found
-
-#### **404 Not Found:**
-- Booking not found
-- Customer not found
-- Package not found
-
-#### **500 Internal Server Error:**
-- Database errors
-- Server errors
-- Unexpected errors
-
-### 🛡️ **Error Handling Example:**
+### **2. Database Initialization**
 ```javascript
-const handleApiError = (error) => {
-  if (error.response) {
-    // Server responded with error status
-    const errorData = error.response.data;
+const initializeDatabase = () => {
+  // Create tables
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS packages (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      description TEXT,
+      price_per_person INTEGER NOT NULL,
+      max_guests INTEGER DEFAULT 10,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
     
-    switch (error.response.status) {
-      case 400:
-        console.error('Validation Error:', errorData.message);
-        return `Data tidak valid: ${errorData.message}`;
-        
-      case 404:
-        console.error('Not Found:', errorData.message);
-        return 'Data tidak ditemukan';
-        
-      case 500:
-        console.error('Server Error:', errorData.message);
-        return 'Terjadi kesalahan server. Silakan coba lagi.';
-        
-      default:
-        console.error('API Error:', errorData.message);
-        return 'Terjadi kesalahan. Silakan coba lagi.';
-    }
-  } else if (error.request) {
-    // Network error
-    console.error('Network Error:', error.request);
-    return 'Tidak dapat terhubung ke server. Periksa koneksi internet Anda.';
-  } else {
-    // Other error
-    console.error('Error:', error.message);
-    return 'Terjadi kesalahan yang tidak diketahui.';
+    CREATE TABLE IF NOT EXISTS customers (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      email TEXT NOT NULL UNIQUE,
+      phone TEXT,
+      nationality TEXT DEFAULT 'Indonesia',
+      emergency_contact TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+    
+    CREATE TABLE IF NOT EXISTS bookings (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      booking_number TEXT NOT NULL UNIQUE,
+      customer_id INTEGER NOT NULL,
+      package_id INTEGER NOT NULL,
+      check_in_date DATE NOT NULL,
+      check_out_date DATE NOT NULL,
+      duration INTEGER NOT NULL,
+      adults_count INTEGER NOT NULL DEFAULT 1,
+      children_count INTEGER NOT NULL DEFAULT 0,
+      total_amount INTEGER NOT NULL,
+      status TEXT DEFAULT 'pending',
+      special_requests TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (customer_id) REFERENCES customers (id),
+      FOREIGN KEY (package_id) REFERENCES packages (id)
+    );
+    
+    CREATE TABLE IF NOT EXISTS booking_status_history (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      booking_id INTEGER NOT NULL,
+      status TEXT NOT NULL,
+      changed_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      FOREIGN KEY (booking_id) REFERENCES bookings (id)
+    );
+  `);
+  
+  // Insert sample packages
+  const packageCount = db.prepare('SELECT COUNT(*) as count FROM packages').get();
+  if (packageCount.count === 0) {
+    db.prepare(`
+      INSERT INTO packages (name, description, price_per_person, max_guests)
+      VALUES (?, ?, ?, ?)
+    `).run('Basic Package', 'Basic tour package with accommodation', 125000, 10);
+    
+    db.prepare(`
+      INSERT INTO packages (name, description, price_per_person, max_guests)
+      VALUES (?, ?, ?, ?)
+    `).run('Premium Package', 'Premium tour package with additional activities', 250000, 8);
   }
 };
 ```
 
 ---
 
-## 📊 **RATE LIMITING**
+## 🔒 **SECURITY FEATURES**
 
-### ⏱️ **Rate Limit Configuration:**
+### **1. Input Validation**
 ```javascript
-const rateLimit = {
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
-  message: {
+const validateBookingData = (data) => {
+  const errors = [];
+  
+  if (!data.customer?.name) errors.push('Customer name is required');
+  if (!data.customer?.email) errors.push('Customer email is required');
+  if (!data.booking?.packageName) errors.push('Package name is required');
+  if (!data.booking?.checkIn) errors.push('Check-in date is required');
+  if (!data.booking?.checkOut) errors.push('Check-out date is required');
+  
+  return errors;
+};
+```
+
+### **2. CORS Configuration**
+```javascript
+const cors = require('cors');
+
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:5173'],
+  credentials: true
+}));
+```
+
+### **3. Error Handling**
+```javascript
+// Global error handler
+app.use((error, req, res, next) => {
+  console.error('Global error:', error);
+  res.status(500).json({
     success: false,
-    error: "Rate Limit Exceeded",
-    message: "Too many requests from this IP, please try again later.",
-    timestamp: new Date().toISOString()
-  }
-};
-```
+    message: 'Internal server error',
+    error: process.env.NODE_ENV === 'development' ? error.message : undefined
+  });
+});
 
-### 📈 **Rate Limit Headers:**
-```http
-X-RateLimit-Limit: 100
-X-RateLimit-Remaining: 95
-X-RateLimit-Reset: 1640995200
-```
-
----
-
-## 🔧 **CORS CONFIGURATION**
-
-### 🌐 **CORS Settings:**
-```javascript
-const corsOptions = {
-  origin: [
-    'http://localhost:3000',
-    'http://localhost:5173',
-    'https://kampungkwaupapua.com'
-  ],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-};
+// 404 handler
+app.use('*', (req, res) => {
+  res.status(404).json({
+    success: false,
+    message: 'Endpoint not found'
+  });
+});
 ```
 
 ---
 
-## 📝 **LOGGING & MONITORING**
+## 📊 **MONITORING & LOGGING**
 
-### 📊 **Request Logging:**
+### **1. Request Logging**
 ```javascript
-// Log all API requests
+// Log all requests
 app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
   next();
 });
+```
 
-// Log API responses
+### **2. Performance Monitoring**
+```javascript
+// Monitor response times
 app.use((req, res, next) => {
-  const originalSend = res.send;
-  res.send = function(data) {
-    console.log(`${new Date().toISOString()} - ${req.method} ${req.path} - ${res.statusCode}`);
-    originalSend.call(this, data);
-  };
-  next();
-});
-```
-
-### 📈 **API Metrics:**
-```javascript
-const apiMetrics = {
-  totalRequests: 0,
-  successfulRequests: 0,
-  failedRequests: 0,
-  averageResponseTime: 0,
-  endpoints: {}
-};
-
-const trackApiMetrics = (req, res, next) => {
-  const startTime = Date.now();
-  
-  apiMetrics.totalRequests++;
-  apiMetrics.endpoints[req.path] = (apiMetrics.endpoints[req.path] || 0) + 1;
-  
+  const start = Date.now();
   res.on('finish', () => {
-    const responseTime = Date.now() - startTime;
-    apiMetrics.averageResponseTime = 
-      (apiMetrics.averageResponseTime + responseTime) / 2;
-    
-    if (res.statusCode >= 200 && res.statusCode < 300) {
-      apiMetrics.successfulRequests++;
-    } else {
-      apiMetrics.failedRequests++;
-    }
+    const duration = Date.now() - start;
+    console.log(`${req.method} ${req.path} - ${res.statusCode} - ${duration}ms`);
   });
-  
   next();
-};
+});
 ```
 
 ---
 
-## 🚀 **DEPLOYMENT**
+## 🧪 **TESTING**
 
-### 🔧 **Production Configuration:**
+### **1. API Testing**
 ```javascript
-const productionConfig = {
-  port: process.env.PORT || 5000,
-  cors: {
-    origin: ['https://kampungkwaupapua.com'],
-    credentials: true
-  },
-  rateLimit: {
-    windowMs: 15 * 60 * 1000,
-    max: 1000
-  },
-  logging: {
-    level: 'info',
-    file: 'logs/api.log'
-  }
-};
+// Test booking creation
+describe('POST /api/bookings', () => {
+  test('creates booking successfully', async () => {
+    const bookingData = {
+      customer: {
+        name: 'Test Customer',
+        email: 'test@example.com',
+        phone: '08123456789'
+      },
+      booking: {
+        packageName: 'Basic Package',
+        checkIn: '2025-07-20T00:00:00.000Z',
+        checkOut: '2025-07-21T00:00:00.000Z',
+        duration: 1,
+        guests: { adults: 2, children: 0 }
+      },
+      pricing: { total: 275000 }
+    };
+    
+    const response = await request(app)
+      .post('/api/bookings')
+      .send(bookingData)
+      .expect(200);
+    
+    expect(response.body.success).toBe(true);
+    expect(response.body.data.booking_number).toMatch(/KW-\d{8}-\d{3}/);
+  });
+});
 ```
 
-### 📊 **Health Check Endpoint:**
+### **2. Database Testing**
 ```javascript
-app.get('/health', (req, res) => {
-  const health = {
-    status: 'ok',
-    timestamp: new Date().toISOString(),
-    uptime: process.uptime(),
-    memory: process.memoryUsage(),
-    database: checkDatabaseConnection()
-  };
-  
-  res.json({
-    success: true,
-    ...health
+// Test database operations
+describe('Database Operations', () => {
+  test('generates unique booking numbers', () => {
+    const booking1 = generateBookingNumber();
+    const booking2 = generateBookingNumber();
+    
+    expect(booking1).not.toBe(booking2);
+    expect(booking1).toMatch(/KW-\d{8}-\d{3}/);
   });
 });
 ```
 
 ---
 
-## 📞 **SUPPORT & MAINTENANCE**
+## 📝 **CHANGELOG**
 
-### 🛠️ **API Versioning:**
-```javascript
-// Version 1 API
-app.use('/api/v1', v1Routes);
+### **v2.0 (Current)**
+- ✅ **Added:** Dashboard endpoints
+- ✅ **Added:** Status update functionality
+- ✅ **Fixed:** Email integration
+- ✅ **Added:** Comprehensive error handling
+- ✅ **Added:** Input validation
+- ✅ **Added:** Database initialization
 
-// Health check for all versions
-app.get('/health', healthCheck);
-```
-
-### 📧 **Contact Information:**
-- **Email:** support@kampungkwaupapua.com
-- **Documentation:** actions/API_ENDPOINTS_DOCUMENTATION.md
-- **Last Updated:** December 2024
+### **v1.0 (Previous)**
+- ✅ **Added:** Basic booking endpoints
+- ✅ **Added:** SQLite database integration
+- ✅ **Added:** Package management
+- ✅ **Added:** Customer management
 
 ---
 
-*Dokumentasi ini dibuat untuk API endpoints Kampung Kwau - Papua Barat* 
+## 🎯 **BEST PRACTICES**
+
+### **1. API Design**
+- ✅ Use consistent response format
+- ✅ Implement proper HTTP status codes
+- ✅ Validate all inputs
+- ✅ Handle errors gracefully
+
+### **2. Database Operations**
+- ✅ Use prepared statements
+- ✅ Implement transactions for complex operations
+- ✅ Add proper indexes
+- ✅ Regular database backups
+
+### **3. Security**
+- ✅ Validate and sanitize inputs
+- ✅ Implement rate limiting
+- ✅ Use HTTPS in production
+- ✅ Log security events
+
+### **4. Performance**
+- ✅ Optimize database queries
+- ✅ Implement caching where appropriate
+- ✅ Monitor response times
+- ✅ Use connection pooling
+
+---
+
+## 📞 **SUPPORT**
+
+### **Development Resources**
+- **Express.js Docs:** https://expressjs.com/
+- **SQLite Docs:** https://www.sqlite.org/docs.html
+- **better-sqlite3 Docs:** https://github.com/JoshuaWise/better-sqlite3
+
+### **Contact Information**
+- **Email:** farrelmamengko@gmail.com
+- **API Base URL:** http://localhost:5000/api
+- **Dashboard:** http://localhost:3000/dashboard
+
+### **Troubleshooting**
+- **Check Server Logs:** Monitor console output
+- **Database Health:** Check SQLite file integrity
+- **API Testing:** Use Postman or curl for testing
+- **Port Conflicts:** Ensure port 5000 is available
+
+---
+
+*Dokumentasi API Endpoints Kampung Kwau - Papua Barat* 
