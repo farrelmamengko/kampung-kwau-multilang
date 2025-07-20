@@ -754,6 +754,7 @@ const monitorPerformance = () => {
 - ✅ **Added:** Real-time data refresh
 - ✅ **Added:** Responsive design
 - ✅ **Added:** Error handling
+- ✅ **Updated:** Admin email to kknkampungkwau@gmail.com
 
 ### **Future Features**
 - 🔄 **Planned:** Advanced filtering
@@ -800,7 +801,7 @@ const monitorPerformance = () => {
 - **API Documentation:** actions/API_ENDPOINTS_DOCUMENTATION.md
 
 ### **Contact Information**
-- **Email:** farrelmamengko@gmail.com
+- **Email:** kknkampungkwau@gmail.com
 - **Dashboard URL:** http://localhost:3000/dashboard
 - **Backend API:** http://localhost:5000/api
 

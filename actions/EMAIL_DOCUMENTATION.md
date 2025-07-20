@@ -14,7 +14,7 @@ Sistem email Kampung Kwau menggunakan **EmailJS** untuk mengirim email konfirmas
 - **Template:** `template_n1es8q7`
 
 ### 2. **Admin Notification Email**
-- **Recipient:** `farrelmamengko@gmail.com`
+- **Recipient:** `kknkampungkwau@gmail.com`
 - **Purpose:** Notifikasi booking baru ke admin
 - **Template:** `template_n1es8q7` (sama dengan customer)
 
@@ -29,7 +29,7 @@ const EMAIL_CONFIG = {
   templateId: 'template_n1es8q7',   // Email template ID
   userId: 'cERh5Eezr8mKQn9Vt',      // Public key
   testMode: false,                  // Production mode
-  adminEmail: 'farrelmamengko@gmail.com'  // Admin email
+  adminEmail: 'kknkampungkwau@gmail.com'  // Admin email
 };
 ```
 
@@ -182,7 +182,7 @@ LANGKAH SELANJUTNYA:
 
 Jika ada pertanyaan, hubungi kami:
 📞 WhatsApp: +62-823-xxxx-xxxx
-📧 Email: farrelmamengko@gmail.com
+📧 Email: kknkampungkwau@gmail.com
 
 Terima kasih dan sampai jumpa di Kampung Kwau!
 
@@ -396,6 +396,7 @@ const sanitizeText = (text) => {
 - ✅ **Improved:** Error handling
 - ✅ **Added:** Email limits tracking
 - ✅ **Updated:** Template variables
+- ✅ **Updated:** Admin email to kknkampungkwau@gmail.com
 
 ### **v1.0 (Previous)**
 - ✅ **Added:** Customer confirmation email
@@ -438,6 +439,6 @@ const sanitizeText = (text) => {
 - **Contact:** support@emailjs.com
 
 ### **Kampung Kwau Support**
-- **Email:** farrelmamengko@gmail.com
+- **Email:** kknkampungkwau@gmail.com
 - **WhatsApp:** +62-823-xxxx-xxxx
 - **Dashboard:** http://localhost:3000/dashboard 

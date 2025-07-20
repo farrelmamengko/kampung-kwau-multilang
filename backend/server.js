@@ -36,6 +36,8 @@ app.get('/api/bookings', (req, res) => {
         b.*,
         c.name as customer_name,
         c.email as customer_email,
+        c.phone as customer_phone,
+        c.nationality as customer_nationality,
         p.name as package_name
       FROM bookings b
       JOIN customers c ON b.customer_id = c.id
@@ -100,6 +102,8 @@ app.put('/api/bookings/:id/status', (req, res) => {
         b.*,
         c.name as customer_name,
         c.email as customer_email,
+        c.phone as customer_phone,
+        c.nationality as customer_nationality,
         p.name as package_name
       FROM bookings b
       JOIN customers c ON b.customer_id = c.id
@@ -211,6 +215,8 @@ app.post('/api/bookings', (req, res) => {
           b.*,
           c.name as customer_name,
           c.email as customer_email,
+          c.phone as customer_phone,
+          c.nationality as customer_nationality,
           p.name as package_name
         FROM bookings b
         JOIN customers c ON b.customer_id = c.id

@@ -2,13 +2,13 @@ import emailjs from '@emailjs/browser';
 
 // EmailJS Configuration
 const EMAIL_CONFIG = {
-  serviceId: 'service_iggrh35', // Gmail service ID dari EmailJS dashboard
-  templateId: 'template_n1es8q7', // Template Order Confirmation yang sudah diedit
-  userId: 'cERh5Eezr8mKQn9Vt', // Public Key dari EmailJS Account
+  serviceId: 'service_htloaex', // ✅ Service ID baru dari kknkampungkwau@gmail.com
+  templateId: 'template_z84bt4c', // ⚠️ Ganti dengan Template ID baru
+  userId: 'vC56rJUXXcuwaZ2BE', // ⚠️ Ganti dengan Public Key baru
   // Set false untuk production mode
   testMode: false, // Production mode - email akan terkirim real
   // Default admin email for notifications
-  adminEmail: 'farrelmamengko@gmail.com'
+  adminEmail: 'kknkampungkwau@gmail.com'
 };
 
 // Initialize EmailJS
@@ -101,7 +101,7 @@ LANGKAH SELANJUTNYA:
 
 Jika ada pertanyaan, hubungi kami:
 📞 WhatsApp: +62-823-xxxx-xxxx
-📧 Email: farrelmamengko@gmail.com
+📧 Email: kknkampungkwau@gmail.com
 
 Terima kasih dan sampai jumpa di Kampung Kwau!
 
